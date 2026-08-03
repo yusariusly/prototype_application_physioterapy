@@ -1,0 +1,443 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>PhysioCare | Online Booking</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;family=Manrope:wght@100..900&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#505355",
+                    "outline-variant": "#bec8cd",
+                    "surface-bright": "#f8f9ff",
+                    "error-container": "#ffdad6",
+                    "secondary": "#006877",
+                    "clinical-white": "#FFFFFF",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#004e5a",
+                    "on-secondary-container": "#00616f",
+                    "on-secondary": "#ffffff",
+                    "on-primary-container": "#d3f1ff",
+                    "on-surface-variant": "#3f484c",
+                    "surface-container": "#e6eeff",
+                    "secondary-fixed": "#a2eeff",
+                    "primary-container": "#0e7490",
+                    "surface-muted": "#F1F5F9",
+                    "on-tertiary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-error-container": "#93000a",
+                    "primary-fixed": "#b9eaff",
+                    "warning-amber": "#F59E0B",
+                    "on-error": "#ffffff",
+                    "surface-container-highest": "#d5e3fc",
+                    "on-tertiary-container": "#eaecee",
+                    "background": "#f8f9ff",
+                    "on-background": "#0d1c2e",
+                    "surface-container-low": "#eff4ff",
+                    "on-tertiary-fixed": "#191c1e",
+                    "secondary-container": "#3fe1fd",
+                    "surface-variant": "#d5e3fc",
+                    "primary-fixed-dim": "#81d1f0",
+                    "outline": "#6f787d",
+                    "secondary-fixed-dim": "#2fd9f4",
+                    "tertiary-container": "#686b6d",
+                    "inverse-primary": "#81d1f0",
+                    "primary": "#005a71",
+                    "on-primary": "#ffffff",
+                    "surface-dim": "#ccdbf3",
+                    "tertiary-fixed": "#e0e3e5",
+                    "on-surface": "#0d1c2e",
+                    "surface-tint": "#006781",
+                    "on-primary-fixed-variant": "#004d62",
+                    "emergency-red": "#EF4444",
+                    "surface": "#f8f9ff",
+                    "on-primary-fixed": "#001f29",
+                    "success-green": "#10B981",
+                    "tertiary-fixed-dim": "#c4c7c9",
+                    "on-secondary-fixed": "#001f25",
+                    "inverse-surface": "#233144",
+                    "surface-container-high": "#dce9ff",
+                    "on-tertiary-fixed-variant": "#444749",
+                    "inverse-on-surface": "#eaf1ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "section-padding-desktop": "5rem",
+                    "stack-sm": "0.5rem",
+                    "gutter": "1.5rem",
+                    "stack-md": "1rem",
+                    "section-padding-mobile": "2.5rem",
+                    "container-max": "1200px",
+                    "stack-lg": "2rem"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "label-sm": ["JetBrains Mono"],
+                    "headline-lg": ["Manrope"],
+                    "headline-md": ["Manrope"],
+                    "headline-lg-mobile": ["Manrope"],
+                    "button-text": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["30px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "button-text": ["16px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .step-active { @apply text-primary font-bold; }
+        .step-inactive { @apply text-outline; }
+        .booking-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .booking-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(14, 116, 144, 0.1), 0 10px 10px -5px rgba(14, 116, 144, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- Top Navigation -->
+<header class="bg-clinical-white dark:bg-on-background sticky top-0 w-full shadow-sm z-50">
+<nav class="flex justify-between items-center px-section-padding-desktop py-4 max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">
+                PhysioCare
+            </div>
+<div class="hidden md:flex items-center gap-8 font-body-md text-body-md">
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors duration-200" href="#">Home</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors duration-200" href="#">Services</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors duration-200" href="#">Our Team</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors duration-200" href="#">Articles</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-3 rounded-lg font-button-text active:scale-95 transition-transform">
+                Book Now
+            </button>
+</nav>
+</header>
+<main class="flex-grow w-full max-w-container-max mx-auto px-4 md:px-section-padding-desktop py-12">
+<!-- Progress Indicator -->
+<div class="mb-12">
+<div class="flex items-center justify-between max-w-3xl mx-auto mb-4">
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold">1</div>
+<span class="font-label-sm text-label-sm text-primary">Selection</span>
+</div>
+<div class="flex-grow h-[2px] bg-outline-variant mx-4 -mt-6"></div>
+<div class="flex flex-col items-center gap-2 opacity-50">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-bold">2</div>
+<span class="font-label-sm text-label-sm text-outline">Details</span>
+</div>
+<div class="flex-grow h-[2px] bg-outline-variant mx-4 -mt-6"></div>
+<div class="flex flex-col items-center gap-2 opacity-50">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-bold">3</div>
+<span class="font-label-sm text-label-sm text-outline">Payment</span>
+</div>
+</div>
+<h1 class="text-center font-headline-lg text-headline-lg mb-2">Book Your Appointment</h1>
+<p class="text-center text-on-surface-variant font-body-lg text-body-lg">Select your treatment and therapist to begin your recovery journey.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- Left Column: Selection Flow -->
+<div class="lg:col-span-8 space-y-stack-lg">
+<!-- Service Selection (Bento Style) -->
+<section class="bg-clinical-white p-8 rounded-xl shadow-sm">
+<h2 class="font-headline-md text-headline-md mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">medical_services</span>
+                        1. Select Service Type
+                    </h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<label class="relative group cursor-pointer">
+<input checked="" class="peer sr-only" name="service" type="radio">
+<div class="p-6 rounded-lg border-2 border-outline-variant peer-checked:border-primary peer-checked:bg-primary-fixed/10 transition-all hover:bg-surface-muted">
+<div class="flex items-start justify-between mb-2">
+<span class="material-symbols-outlined text-3xl text-primary" style="font-variation-settings: 'FILL' 1;">physical_therapy</span>
+<span class="font-label-sm text-label-sm text-secondary">$85.00</span>
+</div>
+<h3 class="font-bold text-lg mb-1">Standard Physiotherapy</h3>
+<p class="text-sm text-on-surface-variant">General musculoskeletal assessment and treatment.</p>
+</div>
+</label>
+<label class="relative group cursor-pointer">
+<input class="peer sr-only" name="service" type="radio">
+<div class="p-6 rounded-lg border-2 border-outline-variant peer-checked:border-primary peer-checked:bg-primary-fixed/10 transition-all hover:bg-surface-muted">
+<div class="flex items-start justify-between mb-2">
+<span class="material-symbols-outlined text-3xl text-primary" style="font-variation-settings: 'FILL' 1;">sports_gymnastics</span>
+<span class="font-label-sm text-label-sm text-secondary">$95.00</span>
+</div>
+<h3 class="font-bold text-lg mb-1">Sports Rehabilitation</h3>
+<p class="text-sm text-on-surface-variant">Specialized focus on athletic recovery and performance.</p>
+</div>
+</label>
+<label class="relative group cursor-pointer">
+<input class="peer sr-only" name="service" type="radio">
+<div class="p-6 rounded-lg border-2 border-outline-variant peer-checked:border-primary peer-checked:bg-primary-fixed/10 transition-all hover:bg-surface-muted">
+<div class="flex items-start justify-between mb-2">
+<span class="material-symbols-outlined text-3xl text-primary" style="font-variation-settings: 'FILL' 1;">neurology</span>
+<span class="font-label-sm text-label-sm text-secondary">$110.00</span>
+</div>
+<h3 class="font-bold text-lg mb-1">Neurological Physio</h3>
+<p class="text-sm text-on-surface-variant">Rehabilitation for stroke, MS, and spinal cord injuries.</p>
+</div>
+</label>
+<label class="relative group cursor-pointer">
+<input class="peer sr-only" name="service" type="radio">
+<div class="p-6 rounded-lg border-2 border-outline-variant peer-checked:border-primary peer-checked:bg-primary-fixed/10 transition-all hover:bg-surface-muted">
+<div class="flex items-start justify-between mb-2">
+<span class="material-symbols-outlined text-3xl text-primary" style="font-variation-settings: 'FILL' 1;">elderly</span>
+<span class="font-label-sm text-label-sm text-secondary">$80.00</span>
+</div>
+<h3 class="font-bold text-lg mb-1">Geriatric Wellness</h3>
+<p class="text-sm text-on-surface-variant">Improving mobility and balance for senior patients.</p>
+</div>
+</label>
+</div>
+</section>
+<!-- Therapist Selection -->
+<section class="bg-clinical-white p-8 rounded-xl shadow-sm">
+<h2 class="font-headline-md text-headline-md mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">group</span>
+                        2. Choose a Professional
+                    </h2>
+<div class="flex flex-col gap-4">
+<label class="flex items-center gap-4 p-4 rounded-lg border border-outline-variant hover:bg-surface-muted cursor-pointer transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary-fixed/5">
+<input checked="" class="peer sr-only" name="therapist" type="radio">
+<img class="w-16 h-16 rounded-full object-cover border-2 border-clinical-white shadow-sm" data-alt="A professional medical headshot of a friendly female physiotherapist in her late 30s wearing a clean blue scrub, smiling warmly in a bright clinical setting with soft natural light. High fidelity portrait with professional medical aesthetics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBv6j6t8w7xGP18svybdumyPmK54MnZex-_a3YJH1v4P0sknRbyTxTc6OT272dcwgWOx4JlxFOEHo4x6_G2j0-sUj4Xa9fAZ4EJnlQFVQpT783aflTzgX2VF3LQEK8zpdcKDOCgKpAPdLKx8y7YtfKIyYKkUuH5HeluE7BiIqHXjy-FGW6E6KqkB3L8N5anwxZZDL_c7nFWTqd68t_98n_4mTycKJ1C4xlIXCRlN5wvL4KGUvyYFrtcAg">
+<div class="flex-grow">
+<div class="flex items-center gap-2">
+<h4 class="font-bold">Dr. Sarah Jenkins</h4>
+<span class="bg-primary-fixed text-on-primary-fixed-variant text-[10px] px-2 py-0.5 rounded-full font-label-sm uppercase">STR Verified</span>
+</div>
+<p class="text-sm text-on-surface-variant">Senior Specialist • 12 years exp.</p>
+<div class="flex items-center gap-1 text-warning-amber">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold">4.9 (240 reviews)</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary opacity-0 peer-checked:opacity-100">check_circle</span>
+</label>
+<label class="flex items-center gap-4 p-4 rounded-lg border border-outline-variant hover:bg-surface-muted cursor-pointer transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary-fixed/5">
+<input class="peer sr-only" name="therapist" type="radio">
+<img class="w-16 h-16 rounded-full object-cover border-2 border-clinical-white shadow-sm" data-alt="A professional medical headshot of a male sports physiotherapist in athletic clinical attire, appearing confident and approachable. The background is a clean modern therapy room with high-key lighting and medical equipment visible in soft focus. Sophisticated and authoritative aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvh2WPpirZjpS1tb2knApRrEu0HnxEKMvJjBuVNhB7bqLyjOZbTepjXXBpJLCaY98q0JUYRbkn-A9dllTXciIdvvRnZxYfbKTOXFjJkpN3oTyfYLshdsu9YWLwivLnzW3pWifCaGuWQhSkjAXGwMuEaZWlUTBwqwOrXuDI4O1IctorgW3ofvtC0U3yw4Rzy6tUgx2os7NXjmfbuN_Ifk8oHLYl1UE5cuQAiKi1FHt3RfoenSFo7pxCKg">
+<div class="flex-grow">
+<div class="flex items-center gap-2">
+<h4 class="font-bold">Mark Thompson, PT</h4>
+<span class="bg-primary-fixed text-on-primary-fixed-variant text-[10px] px-2 py-0.5 rounded-full font-label-sm uppercase">STR Verified</span>
+</div>
+<p class="text-sm text-on-surface-variant">Sports Rehab Expert • 8 years exp.</p>
+<div class="flex items-center gap-1 text-warning-amber">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold">4.8 (185 reviews)</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary opacity-0 peer-checked:opacity-100">check_circle</span>
+</label>
+</div>
+</section>
+<!-- Initial Assessment Form -->
+<section class="bg-clinical-white p-8 rounded-xl shadow-sm">
+<h2 class="font-headline-md text-headline-md mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">assignment</span>
+                        3. Initial Assessment
+                    </h2>
+<div class="space-y-6">
+<div>
+<label class="block font-body-md font-bold mb-2 text-on-surface">Primary Pain Location</label>
+<select class="w-full p-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary focus:border-primary outline-none bg-clinical-white">
+<option>Neck &amp; Upper Back</option>
+<option>Lower Back</option>
+<option>Shoulder (Left/Right)</option>
+<option>Knee (Left/Right)</option>
+<option>Ankle/Foot</option>
+<option>Other</option>
+</select>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div>
+<label class="block font-body-md font-bold mb-2 text-on-surface">Pain Duration</label>
+<div class="flex gap-2">
+<label class="flex-1">
+<input checked="" class="sr-only peer" name="duration" type="radio">
+<div class="text-center py-2 border border-outline-variant rounded-lg peer-checked:bg-primary peer-checked:text-white cursor-pointer hover:bg-surface-muted transition-colors">Acute (&lt; 1wk)</div>
+</label>
+<label class="flex-1">
+<input class="sr-only peer" name="duration" type="radio">
+<div class="text-center py-2 border border-outline-variant rounded-lg peer-checked:bg-primary peer-checked:text-white cursor-pointer hover:bg-surface-muted transition-colors">Chronic</div>
+</label>
+</div>
+</div>
+<div>
+<label class="block font-body-md font-bold mb-2 text-on-surface">Pain Scale (1-10)</label>
+<input class="w-full h-2 bg-surface-muted rounded-lg appearance-none cursor-pointer accent-primary" max="10" min="1" type="range" value="5">
+<div class="flex justify-between text-xs text-outline mt-1 font-label-sm">
+<span>Mild</span>
+<span>Moderate</span>
+<span>Severe</span>
+</div>
+</div>
+</div>
+<div>
+<label class="block font-body-md font-bold mb-2 text-on-surface">Short Description of Injury/Pain</label>
+<textarea class="w-full p-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary outline-none h-24 resize-none" placeholder="e.g., Sharp pain when reaching overhead for the last 3 days..."></textarea>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Date/Time & Summary Sticky -->
+<div class="lg:col-span-4 space-y-stack-lg sticky top-24">
+<!-- Date/Time Selection Card -->
+<section class="bg-clinical-white p-6 rounded-xl shadow-sm">
+<h2 class="font-headline-md text-headline-md mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">calendar_month</span>
+                        4. Date &amp; Time
+                    </h2>
+<div class="mb-6">
+<label class="block font-label-sm text-xs text-outline mb-2 uppercase">Select Date</label>
+<div class="grid grid-cols-4 gap-2">
+<button class="flex flex-col items-center py-2 border border-outline-variant rounded-lg hover:border-primary transition-all">
+<span class="text-[10px] text-outline font-label-sm">MON</span>
+<span class="font-bold">12</span>
+</button>
+<button class="flex flex-col items-center py-2 border-2 border-primary bg-primary-fixed/20 rounded-lg">
+<span class="text-[10px] text-primary font-bold font-label-sm">TUE</span>
+<span class="font-bold">13</span>
+</button>
+<button class="flex flex-col items-center py-2 border border-outline-variant rounded-lg hover:border-primary transition-all">
+<span class="text-[10px] text-outline font-label-sm">WED</span>
+<span class="font-bold">14</span>
+</button>
+<button class="flex flex-col items-center py-2 border border-outline-variant rounded-lg hover:border-primary transition-all">
+<span class="text-[10px] text-outline font-label-sm">THU</span>
+<span class="font-bold">15</span>
+</button>
+</div>
+</div>
+<div class="mb-6">
+<label class="block font-label-sm text-xs text-outline mb-2 uppercase">Available Slots</label>
+<div class="grid grid-cols-2 gap-2">
+<button class="py-2 text-sm border border-outline-variant rounded hover:bg-primary hover:text-white transition-colors">09:00 AM</button>
+<button class="py-2 text-sm border border-outline-variant rounded hover:bg-primary hover:text-white transition-colors">10:30 AM</button>
+<button class="py-2 text-sm border-2 border-primary bg-primary-fixed/20 rounded font-bold">11:45 AM</button>
+<button class="py-2 text-sm border border-outline-variant rounded hover:bg-primary hover:text-white transition-colors">02:15 PM</button>
+<button class="py-2 text-sm border border-outline-variant rounded hover:bg-primary hover:text-white transition-colors">03:45 PM</button>
+<button class="py-2 text-sm bg-surface-muted text-outline-variant rounded cursor-not-allowed">05:00 PM</button>
+</div>
+</div>
+</section>
+<!-- Booking Summary Card -->
+<div class="bg-primary p-6 rounded-xl text-on-primary shadow-xl">
+<h3 class="font-headline-md text-headline-md mb-4">Summary</h3>
+<div class="space-y-3 mb-6 pb-6 border-b border-primary-container">
+<div class="flex justify-between text-sm">
+<span class="opacity-80">Treatment</span>
+<span class="font-bold">Standard Physio</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="opacity-80">Therapist</span>
+<span class="font-bold">Dr. Sarah Jenkins</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="opacity-80">Schedule</span>
+<span class="font-bold">Oct 13, 11:45 AM</span>
+</div>
+</div>
+<div class="flex justify-between items-center mb-6">
+<span class="font-headline-md">Total Price</span>
+<span class="font-headline-md">$85.00</span>
+</div>
+<button class="w-full bg-clinical-white text-primary py-4 rounded-lg font-button-text hover:bg-surface-bright active:scale-95 transition-all shadow-lg flex items-center justify-center gap-2">
+                        Proceed to Contact Details
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-muted dark:bg-on-background w-full">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter px-section-padding-desktop py-12 max-w-container-max mx-auto">
+<div class="space-y-4">
+<div class="font-headline-md text-headline-md font-bold text-primary">PhysioCare</div>
+<p class="text-on-surface-variant font-body-md text-body-md leading-relaxed">
+                    Providing professional physiotherapy and rehabilitation services to help you return to your best self.
+                </p>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-bold text-primary">Quick Links</h4>
+<div class="flex flex-col gap-2">
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary underline decoration-2 underline-offset-4 transition-all" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary underline decoration-2 underline-offset-4 transition-all" href="#">Terms of Service</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary underline decoration-2 underline-offset-4 transition-all" href="#">Location</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary underline decoration-2 underline-offset-4 transition-all" href="#">Contact Us</a>
+</div>
+</div>
+<div class="space-y-4">
+<h4 class="font-bold text-primary">Support</h4>
+<p class="text-on-surface-variant text-sm">Questions about your booking? Call our support line.</p>
+<div class="flex items-center gap-2 text-secondary font-bold">
+<span class="material-symbols-outlined">phone</span>
+                    +1 (555) 012-3456
+                </div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-section-padding-desktop py-6 border-t border-outline-variant/30 text-center text-xs text-on-surface-variant opacity-80">
+            © 2024 PhysioCare. All rights reserved. Professional Physiotherapy &amp; Rehabilitation.
+        </div>
+</footer>
+<!-- Mobile Navigation Shell (Suppressed on Booking focus but for compliance) -->
+<div class="md:hidden fixed bottom-0 left-0 w-full bg-clinical-white shadow-[0_-4px_10px_rgba(0,0,0,0.05)] grid grid-cols-4 py-2 px-4 z-[60]">
+<div class="flex flex-col items-center gap-1 text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
+<span class="text-[10px] font-bold">Booking</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-on-surface-variant opacity-60">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px]">Home</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-on-surface-variant opacity-60">
+<span class="material-symbols-outlined">history</span>
+<span class="text-[10px]">History</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-on-surface-variant opacity-60">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px]">Profile</span>
+</div>
+</div>
+<script>
+        // Simple interactive pain scale update
+        const range = document.querySelector('input[type="range"]');
+        if(range) {
+            range.addEventListener('input', (e) => {
+                // Potential for dynamic UI update here
+            });
+        }
+
+        // Handle button active states
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.classList.add('scale-95');
+                setTimeout(() => btn.classList.remove('scale-95'), 150);
+            });
+        });
+    </script>
+</body></html>

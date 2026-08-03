@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Booking Berhasil - PhysioCare</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:wght@100..900&family=Manrope:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#d5e3fc",
+                    "on-tertiary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "primary-fixed": "#b9eaff",
+                    "clinical-white": "#FFFFFF",
+                    "on-secondary-fixed": "#001f25",
+                    "surface-container-low": "#eff4ff",
+                    "on-secondary-fixed-variant": "#004e5a",
+                    "inverse-primary": "#81d1f0",
+                    "surface-dim": "#ccdbf3",
+                    "surface-container-highest": "#d5e3fc",
+                    "on-background": "#0d1c2e",
+                    "outline": "#6f787d",
+                    "primary-container": "#0e7490",
+                    "surface-container-high": "#dce9ff",
+                    "background": "#f8f9ff",
+                    "tertiary-fixed": "#e0e3e5",
+                    "on-tertiary-fixed": "#191c1e",
+                    "secondary-container": "#3fe1fd",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed": "#a2eeff",
+                    "inverse-surface": "#233144",
+                    "success-green": "#10B981",
+                    "on-primary-fixed-variant": "#004d62",
+                    "secondary": "#006877",
+                    "on-error": "#ffffff",
+                    "on-surface": "#0d1c2e",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-bright": "#f8f9ff",
+                    "outline-variant": "#bec8cd",
+                    "on-primary-container": "#d3f1ff",
+                    "surface-container": "#e6eeff",
+                    "tertiary-container": "#686b6d",
+                    "surface-muted": "#F1F5F9",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed-variant": "#444749",
+                    "on-tertiary-container": "#eaecee",
+                    "warning-amber": "#F59E0B",
+                    "primary-fixed-dim": "#81d1f0",
+                    "on-surface-variant": "#3f484c",
+                    "on-error-container": "#93000a",
+                    "on-secondary-container": "#00616f",
+                    "on-secondary": "#ffffff",
+                    "surface-tint": "#006781",
+                    "tertiary-fixed-dim": "#c4c7c9",
+                    "emergency-red": "#EF4444",
+                    "on-primary-fixed": "#001f29",
+                    "primary": "#005a71",
+                    "surface": "#f8f9ff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "secondary-fixed-dim": "#2fd9f4",
+                    "tertiary": "#505355"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-md": "1rem",
+                    "section-padding-desktop": "5rem",
+                    "stack-lg": "2rem",
+                    "gutter": "1.5rem",
+                    "container-max": "1200px",
+                    "stack-sm": "0.5rem",
+                    "section-padding-mobile": "2.5rem"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Manrope"],
+                    "body-lg": ["Inter"],
+                    "button-text": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-sm": ["JetBrains Mono"],
+                    "headline-lg-mobile": ["Manrope"],
+                    "headline-md": ["Manrope"]
+            },
+            "fontSize": {
+                    "headline-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "button-text": ["16px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["30px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        
+        @keyframes subtle-float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .float-animation {
+            animation: subtle-float 4s ease-in-out infinite;
+        }
+
+        .success-bg-gradient {
+            background: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.05) 0%, transparent 70%);
+        }
+        
+        .confetti-canvas {
+            pointer-events: none;
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .clinical-shadow {
+            box-shadow: 0 20px 40px -15px rgba(14, 116, 144, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-md shadow-sm">
+<div class="flex justify-between items-center max-w-container-max mx-auto px-gutter py-4">
+<div class="text-headline-md font-headline-md font-bold text-primary">PhysioCare</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Home</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Services</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Our Team</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Articles</a>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-button-text text-button-text hover:shadow-lg transition-all active:scale-95">Book Now</button>
+</nav>
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<main class="relative min-h-[calc(100vh-80px)] flex flex-col items-center justify-center py-section-padding-desktop px-gutter overflow-hidden">
+<!-- Background decorative elements -->
+<div class="absolute inset-0 success-bg-gradient z-0"></div>
+<div class="absolute top-20 -left-20 w-64 h-64 bg-secondary-fixed/10 rounded-full blur-3xl"></div>
+<div class="absolute bottom-20 -right-20 w-96 h-96 bg-primary-fixed/10 rounded-full blur-3xl"></div>
+<!-- Success Message Content -->
+<div class="relative z-10 w-full max-w-2xl text-center">
+<!-- Notification Sent Banner (Auto-dismiss simulation) -->
+<div class="mb-8 inline-flex items-center gap-2 bg-success-green/10 border border-success-green/20 text-success-green px-4 py-2 rounded-full float-animation" id="notif-banner">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span class="font-label-sm text-label-sm">Notifikasi Terkirim</span>
+</div>
+<!-- Main Celebration Icon -->
+<div class="mb-6 flex justify-center">
+<div class="w-24 h-24 md:w-32 md:h-32 bg-clinical-white rounded-full flex items-center justify-center clinical-shadow border-4 border-success-green/20">
+<span class="material-symbols-outlined text-success-green text-[48px] md:text-[64px]" style="font-variation-settings: 'wght' 600;">check</span>
+</div>
+</div>
+<!-- Success Text -->
+<h1 class="font-headline-lg text-headline-lg md:text-headline-lg text-primary mb-4">Booking Berhasil!</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg mx-auto mb-10">
+                Data Anda telah berhasil ditambahkan ke sistem. Jadwal telah dikirimkan ke <span class="font-bold text-primary">WhatsApp</span> dan <span class="font-bold text-primary">Email</span> Anda.
+            </p>
+<!-- Booking Summary Card (Bento Style) -->
+<div class="bg-clinical-white rounded-xl p-6 md:p-8 clinical-shadow border border-surface-variant/30 text-left mb-10">
+<div class="flex items-center justify-between mb-6 pb-4 border-b border-surface-muted">
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Reference Number</span>
+<span class="text-body-md font-bold font-label-sm text-primary">PC-8842-X</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="space-y-1">
+<p class="text-label-sm font-label-sm text-outline">Service</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">flip_camera_ios</span>
+<p class="text-body-md font-semibold text-on-background">Physiotherapy Session</p>
+</div>
+</div>
+<div class="space-y-1">
+<p class="text-label-sm font-label-sm text-outline">Date</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">calendar_today</span>
+<p class="text-body-md font-semibold text-on-background">Tuesday, 24 Oct 2024</p>
+</div>
+</div>
+<div class="space-y-1">
+<p class="text-label-sm font-label-sm text-outline">Time</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">schedule</span>
+<p class="text-body-md font-semibold text-on-background">09:00 - 10:00 AM</p>
+</div>
+</div>
+</div>
+<div class="mt-6 p-4 bg-surface-container-low rounded-lg flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[20px]">info</span>
+<p class="text-label-sm font-label-sm text-on-secondary-fixed-variant">Mohon tiba 10 menit sebelum jadwal Anda untuk proses administrasi awal.</p>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-xl font-button-text text-button-text flex items-center justify-center gap-2 hover:bg-primary-container transition-all clinical-shadow group">
+                    Lihat di Portal Pasien
+                    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<button class="border-2 border-primary text-primary px-8 py-4 rounded-xl font-button-text text-button-text hover:bg-primary/5 transition-all">
+                    Kembali ke Beranda
+                </button>
+</div>
+</div>
+<!-- Supportive Image - Human Connection -->
+<div class="mt-16 w-full max-w-4xl opacity-80 pointer-events-none">
+<div class="h-64 rounded-2xl overflow-hidden shadow-2xl" data-alt="A professional physiotherapy session in a modern, bright clinical setting. A smiling female therapist in a white coat is shaking hands with a middle-aged male patient in a welcoming gestures. The lighting is soft and warm, reflecting a serene and trustworthy healthcare environment with minimalist blue accents." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBGHICv8USLStzLILWpkK-n1cMBIetcwO5A5mZm_krjqp08Qus9kgJXFiI7Phi9m2euwr1D3gwVsfAzpJ2p4xRhOfK8MhbyfEodx6mghtIBRuVUHCqy1r9d37SYKwTBiDKrw209TPYOqdS5S_bFnUfUA3NEuvwvuMt7pntq9qN6TObUH5B6C5gqP6Vc0GCMxNn53WQsGAow_sOXEfUh4NBiHI-XLbHy0GDWpXGQwrA-z2deoWPjy1QRuw')"></div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-on-primary-fixed w-full">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-stack-lg max-w-container-max mx-auto px-gutter py-section-padding-desktop">
+<div class="space-y-4">
+<div class="text-headline-md font-headline-md font-bold text-primary-fixed">PhysioCare</div>
+<p class="text-surface-variant/80 text-body-md">Memberikan pelayanan fisioterapi terbaik dengan sentuhan empati dan teknologi terkini untuk pemulihan optimal Anda.</p>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="text-primary-fixed font-bold text-body-lg">Quick Links</h4>
+<div class="grid grid-cols-2 gap-2">
+<a class="text-surface-variant/80 hover:text-primary-fixed hover:underline decoration-primary-fixed transition-colors font-label-sm" href="#">Home</a>
+<a class="text-surface-variant/80 hover:text-primary-fixed hover:underline decoration-primary-fixed transition-colors font-label-sm" href="#">Services</a>
+<a class="text-surface-variant/80 hover:text-primary-fixed hover:underline decoration-primary-fixed transition-colors font-label-sm" href="#">Our Team</a>
+<a class="text-surface-variant/80 hover:text-primary-fixed hover:underline decoration-primary-fixed transition-colors font-label-sm" href="#">Articles</a>
+<a class="text-surface-variant/80 hover:text-primary-fixed hover:underline decoration-primary-fixed transition-colors font-label-sm" href="#">Contact Us</a>
+<a class="text-surface-variant/80 hover:text-primary-fixed hover:underline decoration-primary-fixed transition-colors font-label-sm" href="#">Privacy Policy</a>
+</div>
+</div>
+<div class="space-y-4">
+<h4 class="text-primary-fixed font-bold text-body-lg">Newsletter</h4>
+<p class="text-surface-variant/80 text-label-sm">Dapatkan tips kesehatan dan info layanan terbaru kami.</p>
+<div class="flex gap-2">
+<input class="bg-surface-variant/10 border border-surface-variant/20 rounded-lg px-4 py-2 text-white w-full focus:outline-none focus:ring-2 focus:ring-primary-fixed" placeholder="Email Anda" type="email"/>
+<button class="bg-primary-fixed text-on-primary-fixed px-4 py-2 rounded-lg font-bold">Kirim</button>
+</div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-gutter py-6 border-t border-surface-variant/10 text-center">
+<p class="text-surface-variant/60 text-label-sm">© 2024 PhysioCare. All rights reserved.</p>
+</div>
+</footer>
+<script>
+        // Micro-interaction for the notification banner
+        setTimeout(() => {
+            const banner = document.getElementById('notif-banner');
+            if(banner) {
+                banner.style.transition = 'all 1s ease';
+                banner.style.opacity = '0.5';
+            }
+        }, 5000);
+
+        // Optional: Client-side confetti effect for "Success"
+        function triggerConfetti() {
+            // Simple visual feedback instead of heavy library
+            console.log("Success animation triggered");
+        }
+        window.onload = triggerConfetti;
+    </script>
+</body></html>

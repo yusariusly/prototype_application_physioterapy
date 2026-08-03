@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hilda AI Assistant | PhysioCare</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#d5e3fc",
+                        "surface-muted": "#F1F5F9",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-secondary-fixed": "#001f25",
+                        "primary-fixed": "#b9eaff",
+                        "outline-variant": "#bec8cd",
+                        "on-secondary": "#ffffff",
+                        "warning-amber": "#F59E0B",
+                        "secondary": "#006877",
+                        "on-tertiary-container": "#eaecee",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#e0e3e5",
+                        "on-primary-container": "#d3f1ff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#006781",
+                        "secondary-container": "#3fe1fd",
+                        "inverse-surface": "#233144",
+                        "on-tertiary-fixed": "#191c1e",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#686b6d",
+                        "inverse-primary": "#81d1f0",
+                        "surface-container-low": "#eff4ff",
+                        "primary": "#005a71",
+                        "on-primary-fixed-variant": "#004d62",
+                        "secondary-fixed": "#a2eeff",
+                        "surface-container-highest": "#d5e3fc",
+                        "emergency-red": "#EF4444",
+                        "surface-container-high": "#dce9ff",
+                        "on-error": "#ffffff",
+                        "tertiary": "#505355",
+                        "primary-container": "#0e7490",
+                        "tertiary-fixed-dim": "#c4c7c9",
+                        "primary-fixed-dim": "#81d1f0",
+                        "surface": "#f8f9ff",
+                        "background": "#f8f9ff",
+                        "on-tertiary-fixed-variant": "#444749",
+                        "on-secondary-container": "#00616f",
+                        "on-background": "#0d1c2e",
+                        "surface-bright": "#f8f9ff",
+                        "success-green": "#10B981",
+                        "clinical-white": "#FFFFFF",
+                        "on-surface": "#0d1c2e",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#004e5a",
+                        "on-primary-fixed": "#001f29",
+                        "surface-container": "#e6eeff",
+                        "secondary-fixed-dim": "#2fd9f4",
+                        "surface-dim": "#ccdbf3",
+                        "on-surface-variant": "#3f484c",
+                        "outline": "#6f787d",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "0.5rem",
+                        "section-padding-mobile": "2.5rem",
+                        "stack-md": "1rem",
+                        "gutter": "1.5rem",
+                        "container-max": "1200px",
+                        "stack-lg": "2rem",
+                        "section-padding-desktop": "5rem"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Manrope"],
+                        "headline-lg": ["Manrope"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "body-md": ["Inter"],
+                        "button-text": ["Inter"],
+                        "label-sm": ["JetBrains Mono"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["30px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "button-text": ["16px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .chat-bubble-hilda {
+            border-bottom-left-radius: 4px;
+        }
+        .chat-bubble-user {
+            border-bottom-right-radius: 4px;
+        }
+        .body-map-pin {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.5; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="sticky top-0 w-full bg-clinical-white dark:bg-on-background shadow-sm dark:shadow-none z-50">
+<nav class="flex justify-between items-center px-section-padding-desktop py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl">medical_services</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed tracking-tight">PhysioCare</h1>
+</div>
+<div class="hidden md:flex items-center gap-8 font-body-md text-body-md">
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors duration-200" href="#">Home</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors duration-200" href="#">Services</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors duration-200" href="#">Our Team</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors duration-200" href="#">Articles</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-button-text active:scale-95 transition-transform">
+                Book Now
+            </button>
+</nav>
+</header>
+<main class="flex-grow flex flex-col lg:flex-row max-w-container-max mx-auto w-full px-4 md:px-section-padding-desktop py-8 gap-gutter overflow-hidden h-[calc(100vh-80px)]">
+<!-- Left Column: Chat Interface -->
+<section class="flex-1 flex flex-col bg-clinical-white rounded-xl shadow-sm overflow-hidden border border-surface-variant">
+<!-- Header/Status -->
+<div class="p-4 bg-surface-container flex items-center justify-between border-b border-surface-variant">
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold">H</div>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-success-green rounded-full border-2 border-clinical-white"></div>
+</div>
+<div>
+<h2 class="font-headline-md text-[18px] leading-tight">Hilda</h2>
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase">AI Triage Assistant</p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-label-sm font-label-sm text-primary mb-1">Assessment Progress</span>
+<div class="w-32 h-2 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary transition-all duration-500 w-[20%]" id="progress-bar"></div>
+</div>
+</div>
+</div>
+<!-- Chat Area -->
+<div class="flex-1 overflow-y-auto p-6 space-y-6 scroll-smooth" id="chat-messages">
+<!-- Hilda Welcome -->
+<div class="flex flex-col items-start max-w-[85%] animate-fade-in">
+<div class="bg-surface-muted text-on-surface p-4 rounded-2xl chat-bubble-hilda shadow-sm">
+<p class="font-body-md">Hello! I'm Hilda, your AI physiotherapy assistant. I'm here to help triage your symptoms and guide you toward the right care.</p>
+<p class="mt-2 text-on-surface-variant text-sm italic">Note: I provide symptom triaging, not a formal medical diagnosis. In case of extreme pain or emergency, please seek immediate medical attention.</p>
+</div>
+<span class="text-[10px] text-outline mt-1 ml-2">Just now</span>
+</div>
+<!-- Hilda Question 1 -->
+<div class="flex flex-col items-start max-w-[85%]">
+<div class="bg-surface-muted text-on-surface p-4 rounded-2xl chat-bubble-hilda shadow-sm">
+<p class="font-body-md">To get started, please describe where you're feeling discomfort and how long it has been bothering you.</p>
+</div>
+</div>
+<!-- User Example (Static for UI) -->
+<!-- <div class="flex flex-col items-end ml-auto max-w-[85%]">
+                    <div class="bg-primary text-on-primary p-4 rounded-2xl chat-bubble-user shadow-md">
+                        <p class="font-body-md">I have a sharp pain in my lower back since yesterday morning after lifting some heavy boxes.</p>
+                    </div>
+                    <span class="text-[10px] text-outline mt-1 mr-2">10:04 AM</span>
+                </div> -->
+</div>
+<!-- Input Area -->
+<div class="p-4 bg-surface-bright border-t border-surface-variant">
+<div class="relative">
+<textarea class="w-full bg-clinical-white border border-outline-variant rounded-xl px-4 py-3 pr-16 focus:ring-2 focus:ring-secondary focus:border-secondary outline-none transition-all resize-none min-h-[60px]" id="user-input" placeholder="Type your symptoms here..." rows="2"></textarea>
+<button class="absolute right-2 bottom-2 p-2 bg-primary text-on-primary rounded-lg hover:bg-primary-container transition-colors active:scale-95" id="send-btn">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+<div class="flex gap-2 mt-3 overflow-x-auto pb-1 no-scrollbar">
+<button class="whitespace-nowrap px-3 py-1 bg-surface-muted hover:bg-surface-variant rounded-full text-sm transition-colors border border-outline-variant">Lower back pain</button>
+<button class="whitespace-nowrap px-3 py-1 bg-surface-muted hover:bg-surface-variant rounded-full text-sm transition-colors border border-outline-variant">Shoulder stiffness</button>
+<button class="whitespace-nowrap px-3 py-1 bg-surface-muted hover:bg-surface-variant rounded-full text-sm transition-colors border border-outline-variant">Ankle sprain</button>
+</div>
+</div>
+</section>
+<!-- Right Column: Body Map & Red Flags -->
+<aside class="w-full lg:w-[400px] flex flex-col gap-gutter">
+<!-- Body Map Tool -->
+<div class="bg-clinical-white rounded-xl shadow-sm border border-surface-variant overflow-hidden">
+<div class="p-4 bg-surface-container border-b border-surface-variant">
+<h3 class="font-headline-md text-primary flex items-center gap-2">
+<span class="material-symbols-outlined">accessibility_new</span>
+                        Body Map
+                    </h3>
+<p class="text-sm text-on-surface-variant">Click where it hurts to pinpoint location</p>
+</div>
+<div class="p-6 flex justify-center bg-surface-muted/50 relative">
+<!-- SVG Body Map Mock -->
+<div class="w-48 h-80 relative">
+<div class="w-full h-full bg-cover bg-center rounded-lg" data-alt="A clean, medical-grade 3D anatomical diagram of a human body figure from the front and back view, designed in a minimalist clinical style with a soft blue and white color palette. The background is subtle and professional. The image is intended for a healthcare user interface for a physical therapy application." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAmm-Aup5irlxN26bPCBU4IcsPdcoqalCVwJDP4-BcdqRf5DQyXf24qD8q0xqdzMZT1yuBo5JqTo_DWcufOB6gq7TlqO5cgwP9Rp63ovG-C1EA8yQU54oFYJ7CTZJujX4iWZtDr_b-3vjdvbzJD-NnxRWZoZZCak-MKMG6aSIN8lvYxns1lR6wzOIDhPFwVTD4bN257GKrksT1fWCMtDXvrz1Y86PueRHBRZDxZ0erLCRkC64bQI5qqDg')"></div>
+<!-- Interactive Pins (Simulated) -->
+<div class="absolute top-[55%] left-[45%] w-4 h-4 bg-error rounded-full body-map-pin cursor-pointer shadow-lg border-2 border-clinical-white"></div>
+</div>
+</div>
+<div class="p-4 flex flex-wrap gap-2 justify-center">
+<span class="px-3 py-1 bg-surface-variant rounded-full text-xs font-bold text-on-surface-variant">FRONT</span>
+<span class="px-3 py-1 bg-clinical-white border border-outline-variant rounded-full text-xs font-bold text-outline">BACK</span>
+</div>
+</div>
+<!-- Red Flag Alert (Hidden by default, shown for severe symptoms) -->
+<div class="bg-error-container text-on-error-container p-5 rounded-xl border-l-4 border-error hidden animate-pulse" id="alert-box">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-error text-3xl">emergency_home</span>
+<div>
+<h4 class="font-bold text-lg mb-1">Critical Symptom Detected</h4>
+<p class="text-sm mb-4">Based on your description of "sharp chest pain" and "numbness," please seek immediate emergency care.</p>
+<button class="w-full bg-emergency-red text-clinical-white font-bold py-3 rounded-lg flex items-center justify-center gap-2 shadow-lg active:scale-95 transition-transform">
+<span class="material-symbols-outlined">call</span>
+                            CALL EMERGENCY SERVICES
+                        </button>
+</div>
+</div>
+</div>
+<!-- Next Steps / Escalation -->
+<div class="bg-clinical-white rounded-xl shadow-sm border border-surface-variant p-5 flex flex-col gap-4">
+<h3 class="font-headline-md text-primary">Need more help?</h3>
+<p class="text-sm text-on-surface-variant">If you'd rather speak with a specialist now, we can bridge the gap.</p>
+<div class="flex flex-col gap-2">
+<button class="w-full py-3 bg-secondary text-on-primary rounded-lg font-button-text hover:brightness-110 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">video_call</span>
+                        Talk to a Therapist
+                    </button>
+<button class="w-full py-3 bg-clinical-white border-2 border-primary text-primary rounded-lg font-button-text hover:bg-surface-low transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">event_available</span>
+                        Book Clinic Visit
+                    </button>
+</div>
+<div class="mt-2 flex items-center gap-2 text-xs text-outline justify-center">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+                    STR Verified Therapists Available
+                </div>
+</div>
+</aside>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-muted dark:bg-on-background w-full">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter px-section-padding-desktop py-12 max-w-container-max mx-auto">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-2xl">medical_services</span>
+<h3 class="font-headline-md text-headline-md font-bold text-primary">PhysioCare</h3>
+</div>
+<p class="text-on-surface-variant font-body-md max-w-xs">© 2024 PhysioCare. All rights reserved. Professional Physiotherapy &amp; Rehabilitation.</p>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-bold text-primary dark:text-primary-fixed uppercase text-sm tracking-widest">Resources</h4>
+<div class="flex flex-col gap-2 font-body-md text-body-md">
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary underline decoration-2 underline-offset-4 transition-opacity" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary underline decoration-2 underline-offset-4 transition-opacity" href="#">Terms of Service</a>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-bold text-primary dark:text-primary-fixed uppercase text-sm tracking-widest">Contact</h4>
+<div class="flex flex-col gap-2 font-body-md text-body-md">
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary underline decoration-2 underline-offset-4 transition-opacity" href="#">Location</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary underline decoration-2 underline-offset-4 transition-opacity" href="#">Contact Us</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        const input = document.getElementById('user-input');
+        const sendBtn = document.getElementById('send-btn');
+        const chatMessages = document.getElementById('chat-messages');
+        const progressBar = document.getElementById('progress-bar');
+        const alertBox = document.getElementById('alert-box');
+
+        let step = 1;
+
+        function addMessage(text, isUser = false) {
+            const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            const bubbleClass = isUser ? 'bg-primary text-on-primary chat-bubble-user' : 'bg-surface-muted text-on-surface chat-bubble-hilda';
+            const alignment = isUser ? 'items-end ml-auto' : 'items-start';
+            const margin = isUser ? 'mr-2' : 'ml-2';
+
+            const messageHtml = `
+                <div class="flex flex-col ${alignment} max-w-[85%] animate-fade-in">
+                    <div class="${bubbleClass} p-4 rounded-2xl shadow-sm">
+                        <p class="font-body-md">${text}</p>
+                    </div>
+                    <span class="text-[10px] text-outline mt-1 ${margin}">${time}</span>
+                </div>
+            `;
+            chatMessages.insertAdjacentHTML('beforeend', messageHtml);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function triggerHilda(userInput) {
+            step++;
+            const progress = (step / 5) * 100;
+            progressBar.style.width = `${progress}%`;
+
+            setTimeout(() => {
+                if (userInput.toLowerCase().includes('chest') || userInput.toLowerCase().includes('numb')) {
+                    addMessage("I've noticed you mentioned symptoms that might require urgent attention. Please look at the emergency guidelines on the right.");
+                    alertBox.classList.remove('hidden');
+                } else if (step === 2) {
+                    addMessage("I understand. On a scale of 1 to 10, how intense is this pain right now?");
+                } else if (step === 3) {
+                    addMessage("Does the pain radiate to any other areas, or is it concentrated in that one spot?");
+                } else {
+                    addMessage("Thank you for sharing that. I'm analyzing your inputs. Would you like to schedule a quick 10-minute video call with a specialist to discuss this further?");
+                }
+            }, 1000);
+        }
+
+        sendBtn.addEventListener('click', () => {
+            const text = input.value.trim();
+            if (text) {
+                addMessage(text, true);
+                input.value = '';
+                triggerHilda(text);
+            }
+        });
+
+        input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendBtn.click();
+            }
+        });
+
+        // Add some CSS animation for the chat fade-in
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            .animate-fade-in {
+                animation: fadeIn 0.4s ease-out forwards;
+            }
+            .no-scrollbar::-webkit-scrollbar {
+                display: none;
+            }
+            .no-scrollbar {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body></html>

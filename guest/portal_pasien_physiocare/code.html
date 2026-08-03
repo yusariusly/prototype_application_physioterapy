@@ -1,0 +1,488 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>PhysioCare | Patient Portal Dashboard</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;family=Manrope:wght@100..900&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#d5e3fc",
+                    "surface-muted": "#F1F5F9",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-secondary-fixed": "#001f25",
+                    "primary-fixed": "#b9eaff",
+                    "outline-variant": "#bec8cd",
+                    "on-secondary": "#ffffff",
+                    "warning-amber": "#F59E0B",
+                    "secondary": "#006877",
+                    "on-tertiary-container": "#eaecee",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed": "#e0e3e5",
+                    "on-primary-container": "#d3f1ff",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-tint": "#006781",
+                    "secondary-container": "#3fe1fd",
+                    "inverse-surface": "#233144",
+                    "on-tertiary-fixed": "#191c1e",
+                    "error": "#ba1a1a",
+                    "tertiary-container": "#686b6d",
+                    "inverse-primary": "#81d1f0",
+                    "surface-container-low": "#eff4ff",
+                    "primary": "#005a71",
+                    "on-primary-fixed-variant": "#004d62",
+                    "secondary-fixed": "#a2eeff",
+                    "surface-container-highest": "#d5e3fc",
+                    "emergency-red": "#EF4444",
+                    "surface-container-high": "#dce9ff",
+                    "on-error": "#ffffff",
+                    "tertiary": "#505355",
+                    "primary-container": "#0e7490",
+                    "tertiary-fixed-dim": "#c4c7c9",
+                    "primary-fixed-dim": "#81d1f0",
+                    "surface": "#f8f9ff",
+                    "background": "#f8f9ff",
+                    "on-tertiary-fixed-variant": "#444749",
+                    "on-secondary-container": "#00616f",
+                    "on-background": "#0d1c2e",
+                    "surface-bright": "#f8f9ff",
+                    "success-green": "#10B981",
+                    "clinical-white": "#FFFFFF",
+                    "on-surface": "#0d1c2e",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed-variant": "#004e5a",
+                    "on-primary-fixed": "#001f29",
+                    "surface-container": "#e6eeff",
+                    "secondary-fixed-dim": "#2fd9f4",
+                    "surface-dim": "#ccdbf3",
+                    "on-surface-variant": "#3f484c",
+                    "outline": "#6f787d",
+                    "on-tertiary": "#ffffff",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-sm": "0.5rem",
+                    "section-padding-mobile": "2.5rem",
+                    "stack-md": "1rem",
+                    "gutter": "1.5rem",
+                    "container-max": "1200px",
+                    "stack-lg": "2rem",
+                    "section-padding-desktop": "5rem"
+            },
+            "fontFamily": {
+                    "headline-md": ["Manrope"],
+                    "headline-lg": ["Manrope"],
+                    "headline-lg-mobile": ["Manrope"],
+                    "body-md": ["Inter"],
+                    "button-text": ["Inter"],
+                    "label-sm": ["JetBrains Mono"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["30px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "button-text": ["16px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .soft-shadow {
+            box-shadow: 0 20px 25px -5px rgba(14, 116, 144, 0.05), 0 8px 10px -6px rgba(14, 116, 144, 0.05);
+        }
+        .bento-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .bento-card:hover {
+            transform: translateY(-4px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-secondary-container">
+<!-- TopNavBar -->
+<nav class="bg-clinical-white dark:bg-on-background sticky top-0 w-full shadow-sm dark:shadow-none z-50">
+<div class="flex justify-between items-center px-section-padding-desktop py-4 max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">
+                PhysioCare
+            </div>
+<div class="hidden md:flex items-center gap-stack-lg font-body-md text-body-md">
+<a class="text-secondary font-bold border-b-2 border-secondary pb-1 hover:text-secondary transition-colors duration-200" href="#">Home</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors duration-200" href="#">Services</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors duration-200" href="#">Our Team</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors duration-200" href="#">Articles</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-primary text-on-primary px-6 py-3 rounded-lg font-button-text text-button-text active:scale-95 transition-transform">
+                    Book Now
+                </button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a mature male patient with a friendly expression, set in a clean and bright indoor environment with soft medical-blue lighting. The photo is high-fidelity, reflecting a premium healthcare setting with high-key lighting and natural skin tones, ensuring a sense of trust and personal care in a corporate medical context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDX0K9hHS3ZiTlL0q2ff0SL2pXnzlH1g8DFODGm7FW9gPoPsAdHY_B8mtdWjNXI8kUJO7AunFVeAnLwOscBLfIgdPEbn3D_lCH1uDzP4u07O-fdCMkVIU-k0OtLTU639Y2cyb5EA-wltMEZsvVlVsXLN2pB6gM6iMYI__gI6txP-ipOdtaCLDdLBOD4tsk98uKlyX7SBfV2_l5LofEI4U1kgw4BKrV-CPVh97aPqb5uXcs5Z337_aQ78Q">
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-container-max mx-auto px-4 md:px-section-padding-desktop py-12">
+<!-- Dashboard Header -->
+<header class="mb-10">
+<h1 class="font-headline-lg text-headline-lg mb-2">Welcome back, James.</h1>
+<p class="text-on-surface-variant font-body-lg text-body-lg">Here is your recovery overview for today.</p>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Column 1: Profile & Progress (4/12) -->
+<div class="md:col-span-4 space-y-gutter">
+<!-- Profile Summary Card -->
+<section class="bg-clinical-white p-6 rounded-xl soft-shadow bento-card">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-16 h-16 rounded-full overflow-hidden border-4 border-surface-container">
+<img class="w-full h-full object-cover" data-alt="Close up portrait of a middle-aged male patient smiling gently, wearing casual professional attire, soft natural sunlight streaming through a large window. The background is a blurred, high-end physiotherapy clinic with clean white walls and subtle medical equipment accents. The image uses a calming blue and white palette consistent with medical branding." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAJysqxSGiD_XGee9Pprut9gia7Z37LUisxLhFGn3xRJpj9rNZ7laX297nrI4lzpV33N6DvLk5WoYqg6sjFDRNGj8-zqZ05ZhgblsHpw-kcNfO_NGAb-UEtAWRReDGWxIGEdnFIO3axl4fqsqO7dmdK76MG_Zoro9sFycLkI8FhHJ1cAeAPlWY7G3DzV4NKr7B6u1dfjjbfPJTzVmoiTOntvobsgvTw214RYPIG0naoMCz12RVL46YKQ">
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md">James Miller</h2>
+<p class="text-on-surface-variant font-label-sm text-label-sm">PATIENT ID: PC-8842</p>
+</div>
+</div>
+<div class="space-y-4 border-t border-surface-muted pt-4">
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Active Treatment</span>
+<span class="font-bold text-primary">Lower Back Rehab</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Next Session</span>
+<span class="font-bold">Oct 24, 10:00 AM</span>
+</div>
+<div class="mt-4">
+<div class="flex justify-between mb-2">
+<span class="text-on-surface-variant text-sm">Recovery Progress</span>
+<span class="text-primary font-bold text-sm">65%</span>
+</div>
+<div class="w-full bg-surface-muted h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 65%"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Quick Actions Card -->
+<section class="bg-primary p-6 rounded-xl soft-shadow text-on-primary">
+<h3 class="font-headline-md text-headline-md mb-4">Quick Actions</h3>
+<div class="grid grid-cols-1 gap-3">
+<button class="w-full flex items-center justify-between bg-clinical-white/10 hover:bg-clinical-white/20 p-4 rounded-lg transition-colors text-left group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined">calendar_add_on</span>
+<span class="font-button-text text-button-text">Book New Session</span>
+</div>
+<span class="material-symbols-outlined transition-transform group-hover:translate-x-1">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between bg-secondary-container text-on-secondary-container hover:bg-secondary-fixed p-4 rounded-lg transition-colors text-left group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined">videocam</span>
+<span class="font-button-text text-button-text">Start Teleconsultation</span>
+</div>
+<span class="material-symbols-outlined transition-transform group-hover:translate-x-1">chevron_right</span>
+</button>
+</div>
+</section>
+</div>
+<!-- Column 2: Appointment & Program (8/12) -->
+<div class="md:col-span-8 space-y-gutter">
+<!-- Next Appointment Countdown Card -->
+<section class="bg-surface-container-high rounded-xl overflow-hidden relative soft-shadow">
+<div class="absolute right-0 top-0 h-full w-1/3 opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[160px] leading-none absolute top-1/2 -translate-y-1/2 right-4">alarm_on</span>
+</div>
+<div class="p-8 relative z-10">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div>
+<span class="bg-secondary text-on-secondary px-3 py-1 rounded-full text-label-sm font-label-sm uppercase tracking-wider mb-3 inline-block">Confirmed</span>
+<h2 class="font-headline-md text-headline-md mb-1">Next Session with Dr. Sarah Chen</h2>
+<p class="text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                                    Downtown Medical Plaza, Suite 402
+                                </p>
+</div>
+<div class="bg-clinical-white/80 backdrop-blur-sm p-4 rounded-xl border border-clinical-white flex gap-4 text-center">
+<div>
+<div class="text-headline-md font-bold text-primary">02</div>
+<div class="text-label-sm uppercase">Days</div>
+</div>
+<div class="w-px h-full bg-outline-variant/30"></div>
+<div>
+<div class="text-headline-md font-bold text-primary">14</div>
+<div class="text-label-sm uppercase">Hrs</div>
+</div>
+<div class="w-px h-full bg-outline-variant/30"></div>
+<div>
+<div class="text-headline-md font-bold text-primary">28</div>
+<div class="text-label-sm uppercase">Min</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Home Exercise Program Section -->
+<section class="bg-clinical-white p-8 rounded-xl soft-shadow">
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-headline-md text-headline-md flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">fitness_center</span>
+                            Home Exercise Program
+                        </h2>
+<a class="text-secondary font-button-text text-button-text flex items-center gap-1 hover:underline" href="#">
+                            View Full Program <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Exercise Card 1 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-video rounded-lg overflow-hidden mb-3">
+<img class="w-full h-full object-cover transition-transform group-hover:scale-105" data-alt="A clean, minimalist high-fidelity video thumbnail of a physical therapist demonstrating a pelvic tilt exercise on a yoga mat in a brightly lit studio. The color palette consists of soft clinical whites and medical blues. A translucent 'play' icon is centered in the frame, indicating interactive content for a home exercise program." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9NK1aepgxtRQ_CpgfTE6KspxuuPfv6TvtefDVigAqyRN15uaMHmLCei4LNF9wnXE9I8gUWbCKANNx0cO9QACJXwwQn6NY8uknzjPzP6cUEiDTMZt9MqKdAF0zXkTxLuMTVwdC409x60cKCY3c_pAcm7sv7mTwj1rB738YByXctGwdy9F6nDrxbBiKq2FMG6xvIkEDQmibXQrzEFHasAgZ3I8JSIv5Rbb_z6uCCJXMAxGG3U2z2sAFTA">
+<div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="bg-clinical-white/90 p-2 rounded-full">
+<span class="material-symbols-outlined text-primary text-3xl">play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-2 left-2">
+<span class="bg-primary/80 backdrop-blur-md text-on-primary text-[10px] px-2 py-0.5 rounded uppercase font-bold">10 MINS</span>
+</div>
+</div>
+<h4 class="font-bold text-on-surface mb-1 group-hover:text-primary transition-colors">Pelvic Tilts (Core Stability)</h4>
+<div class="flex items-center justify-between text-label-sm font-label-sm">
+<span class="text-on-surface-variant">3 sets × 15 reps</span>
+<span class="text-success-green flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">check_circle</span> Completed
+                                </span>
+</div>
+</div>
+<!-- Exercise Card 2 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-video rounded-lg overflow-hidden mb-3">
+<img class="w-full h-full object-cover transition-transform group-hover:scale-105" data-alt="A clear, professional instructional video frame of a person performing a cat-cow stretch. The setting is a serene, modern wellness room with light oak flooring and soft ambient lighting. The visual style is crisp and corporate-medical, emphasizing accessibility and safety for patients following a home therapy routine." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNxZCj39mXUuhNEoqd5VVUbwNe3Jb4mGf7AsippuUBDczL_ppjapcZrcJXP4oI01t1rZxMiQuU_SeEw_bIrP0j4FY0doMxYxhuC8G1O7DZYsYSDU2xotx0r0P8OcGmhamC0wKoMbpRfvhiq4OMY3HbKlDlJUWdfN4vq0l74QM_zskKRfOByz-N1RJcwiaO5eJllMA4zw0HxW6jHRgGuJJIeraLDMg0w6UyZC9hYRTUQXLJJ9aQcdhfgw">
+<div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="bg-clinical-white/90 p-2 rounded-full">
+<span class="material-symbols-outlined text-primary text-3xl">play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-2 left-2">
+<span class="bg-primary/80 backdrop-blur-md text-on-primary text-[10px] px-2 py-0.5 rounded uppercase font-bold">5 MINS</span>
+</div>
+</div>
+<h4 class="font-bold text-on-surface mb-1 group-hover:text-primary transition-colors">Cat-Cow Stretch</h4>
+<div class="flex items-center justify-between text-label-sm font-label-sm">
+<span class="text-on-surface-variant">2 sets × 10 reps</span>
+<span class="text-warning-amber flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">schedule</span> Pending
+                                </span>
+</div>
+</div>
+<!-- Exercise Card 3 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-video rounded-lg overflow-hidden mb-3">
+<img class="w-full h-full object-cover transition-transform group-hover:scale-105" data-alt="Close up video thumbnail showing professional resistance band exercises for glute activation. The lighting is bright and even, highlighting the correct technique against a neutral clinic-style background. The scene is calming and educational, designed for a professional patient portal user interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCB3MqUwlec3MgpYxR_GcidtdSEbDhDHnd5jTE-h_LMnkeiClhArpGveizsOpl4MT6LDNYo75zruqFQS18-MIfOvSXQJZkN8oPkrJWCEbPkeikJ2U7c7uW3Ttek-MEzWFvSanztiStLd1G9eqJRurzIhQmRWiMvsx9gDNjUqTloAXDwryi2qk4A3wHsl03AMSfnKJOqbihbA3ahtqZHu61KNrKUBAn5JhEcTwiKbRYmXVsBk5CY9_CXA">
+<div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="bg-clinical-white/90 p-2 rounded-full">
+<span class="material-symbols-outlined text-primary text-3xl">play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-2 left-2">
+<span class="bg-primary/80 backdrop-blur-md text-on-primary text-[10px] px-2 py-0.5 rounded uppercase font-bold">12 MINS</span>
+</div>
+</div>
+<h4 class="font-bold text-on-surface mb-1 group-hover:text-primary transition-colors">Glute Bridges</h4>
+<div class="flex items-center justify-between text-label-sm font-label-sm">
+<span class="text-on-surface-variant">3 sets × 12 reps</span>
+<span class="text-warning-amber flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">schedule</span> Pending
+                                </span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Full Width Section: Therapy History -->
+<div class="md:col-span-12">
+<section class="bg-clinical-white p-8 rounded-xl soft-shadow overflow-hidden">
+<div class="flex items-center justify-between mb-8">
+<h2 class="font-headline-md text-headline-md flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">history</span>
+                            My Therapy History
+                        </h2>
+<div class="flex gap-2">
+<button class="bg-surface-muted px-4 py-2 rounded-lg text-sm font-medium hover:bg-surface-variant transition-colors">Filter by Date</button>
+<button class="bg-surface-muted px-4 py-2 rounded-lg text-sm font-medium hover:bg-surface-variant transition-colors">Download All Notes</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="border-b border-surface-muted text-on-surface-variant text-label-sm font-label-sm uppercase tracking-wider">
+<th class="pb-4 px-2">Date</th>
+<th class="pb-4 px-2">Therapist</th>
+<th class="pb-4 px-2">Session Type</th>
+<th class="pb-4 px-2">Notes &amp; Assessment</th>
+<th class="pb-4 px-2 text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-muted">
+<!-- History Row 1 -->
+<tr class="hover:bg-surface-muted/50 transition-colors">
+<td class="py-5 px-2">
+<div class="font-bold">Oct 14, 2024</div>
+<div class="text-xs text-on-surface-variant">10:00 AM</div>
+</td>
+<td class="py-5 px-2">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-secondary font-bold text-xs">SC</div>
+<span>Dr. Sarah Chen</span>
+</div>
+</td>
+<td class="py-5 px-2">
+<span class="bg-surface-variant text-primary text-xs px-2 py-1 rounded font-medium">Manual Therapy</span>
+</td>
+<td class="py-5 px-2">
+<p class="text-sm text-on-surface-variant line-clamp-1 max-w-md">Significant improvement in ROM. Patient reports less morning stiffness in L4-L5 region...</p>
+</td>
+<td class="py-5 px-2 text-right">
+<button class="text-primary hover:text-secondary font-button-text text-button-text">View Full Note</button>
+</td>
+</tr>
+<!-- History Row 2 -->
+<tr class="hover:bg-surface-muted/50 transition-colors">
+<td class="py-5 px-2">
+<div class="font-bold">Oct 07, 2024</div>
+<div class="text-xs text-on-surface-variant">11:30 AM</div>
+</td>
+<td class="py-5 px-2">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-secondary font-bold text-xs">SC</div>
+<span>Dr. Sarah Chen</span>
+</div>
+</td>
+<td class="py-5 px-2">
+<span class="bg-surface-variant text-primary text-xs px-2 py-1 rounded font-medium">Initial Assessment</span>
+</td>
+<td class="py-5 px-2">
+<p class="text-sm text-on-surface-variant line-clamp-1 max-w-md">Chronic low back pain, localized to lower lumbar. Prescribed 8-week corrective program...</p>
+</td>
+<td class="py-5 px-2 text-right">
+<button class="text-primary hover:text-secondary font-button-text text-button-text">View Full Note</button>
+</td>
+</tr>
+<!-- History Row 3 -->
+<tr class="hover:bg-surface-muted/50 transition-colors">
+<td class="py-5 px-2">
+<div class="font-bold">Sep 30, 2024</div>
+<div class="text-xs text-on-surface-variant">02:00 PM</div>
+</td>
+<td class="py-5 px-2">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary font-bold text-xs">MK</div>
+<span>Mark Kaplan</span>
+</div>
+</td>
+<td class="py-5 px-2">
+<span class="bg-surface-variant text-primary text-xs px-2 py-1 rounded font-medium">Tele-Assessment</span>
+</td>
+<td class="py-5 px-2">
+<p class="text-sm text-on-surface-variant line-clamp-1 max-w-md">Remote review of movement patterns. Suggested ergonomic adjustments for work desk...</p>
+</td>
+<td class="py-5 px-2 text-right">
+<button class="text-primary hover:text-secondary font-button-text text-button-text">View Full Note</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-6 text-center">
+<button class="text-on-surface-variant font-medium hover:text-primary transition-colors flex items-center gap-2 mx-auto">
+                            Show More History <span class="material-symbols-outlined">expand_more</span>
+</button>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-muted dark:bg-on-background w-full mt-20">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter px-section-padding-desktop py-12 max-w-container-max mx-auto">
+<div class="flex flex-col gap-4">
+<div class="font-headline-md text-headline-md font-bold text-primary">PhysioCare</div>
+<p class="text-on-surface-variant font-body-md text-body-md">Empowering movement and enhancing lives through professional physiotherapy and personalized care programs.</p>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-2">
+<h4 class="font-bold text-primary mb-2">Quick Links</h4>
+<a class="text-on-surface-variant hover:text-secondary underline decoration-2 underline-offset-4 transition-opacity" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-secondary underline decoration-2 underline-offset-4 transition-opacity" href="#">Terms of Service</a>
+</div>
+<div class="flex flex-col gap-2">
+<h4 class="font-bold text-primary mb-2">Connect</h4>
+<a class="text-on-surface-variant hover:text-secondary underline decoration-2 underline-offset-4 transition-opacity" href="#">Location</a>
+<a class="text-on-surface-variant hover:text-secondary underline decoration-2 underline-offset-4 transition-opacity" href="#">Contact Us</a>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-bold text-primary">Newsletter</h4>
+<p class="text-on-surface-variant text-sm">Stay updated with recovery tips and health insights.</p>
+<div class="flex gap-2">
+<input class="bg-clinical-white border border-outline px-4 py-2 rounded-lg flex-grow" placeholder="Email address" type="email">
+<button class="bg-primary text-on-primary p-2 rounded-lg"><span class="material-symbols-outlined">send</span></button>
+</div>
+</div>
+</div>
+<div class="border-t border-outline-variant/30 py-6 text-center px-section-padding-desktop max-w-container-max mx-auto text-on-surface-variant font-body-md text-body-md">
+            © 2024 PhysioCare. All rights reserved. Professional Physiotherapy &amp; Rehabilitation.
+        </div>
+</footer>
+<!-- Bottom Navigation Shell for Mobile -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 bg-clinical-white shadow-[0_-4px_10px_rgba(0,0,0,0.05)] flex justify-around py-3 px-2 z-[60]">
+<a class="flex flex-col items-center gap-1 text-secondary font-bold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-[10px]">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="text-[10px]">Bookings</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="text-[10px]">Education</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px]">Profile</span>
+</a>
+</div>
+<!-- Micro-interaction Script -->
+<script>
+        document.querySelectorAll('.bento-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-4px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body></html>

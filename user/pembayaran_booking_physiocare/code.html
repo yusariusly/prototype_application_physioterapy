@@ -1,0 +1,362 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Payment - PhysioCare</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;family=Manrope:wght@100..900&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#d5e3fc",
+                    "on-tertiary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "primary-fixed": "#b9eaff",
+                    "clinical-white": "#FFFFFF",
+                    "on-secondary-fixed": "#001f25",
+                    "surface-container-low": "#eff4ff",
+                    "on-secondary-fixed-variant": "#004e5a",
+                    "inverse-primary": "#81d1f0",
+                    "surface-dim": "#ccdbf3",
+                    "surface-container-highest": "#d5e3fc",
+                    "on-background": "#0d1c2e",
+                    "outline": "#6f787d",
+                    "primary-container": "#0e7490",
+                    "surface-container-high": "#dce9ff",
+                    "background": "#f8f9ff",
+                    "tertiary-fixed": "#e0e3e5",
+                    "on-tertiary-fixed": "#191c1e",
+                    "secondary-container": "#3fe1fd",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed": "#a2eeff",
+                    "inverse-surface": "#233144",
+                    "success-green": "#10B981",
+                    "on-primary-fixed-variant": "#004d62",
+                    "secondary": "#006877",
+                    "on-error": "#ffffff",
+                    "on-surface": "#0d1c2e",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-bright": "#f8f9ff",
+                    "outline-variant": "#bec8cd",
+                    "on-primary-container": "#d3f1ff",
+                    "surface-container": "#e6eeff",
+                    "tertiary-container": "#686b6d",
+                    "surface-muted": "#F1F5F9",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed-variant": "#444749",
+                    "on-tertiary-container": "#eaecee",
+                    "warning-amber": "#F59E0B",
+                    "primary-fixed-dim": "#81d1f0",
+                    "on-surface-variant": "#3f484c",
+                    "on-error-container": "#93000a",
+                    "on-secondary-container": "#00616f",
+                    "on-secondary": "#ffffff",
+                    "surface-tint": "#006781",
+                    "tertiary-fixed-dim": "#c4c7c9",
+                    "emergency-red": "#EF4444",
+                    "on-primary-fixed": "#001f29",
+                    "primary": "#005a71",
+                    "surface": "#f8f9ff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "secondary-fixed-dim": "#2fd9f4",
+                    "tertiary": "#505355"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-md": "1rem",
+                    "section-padding-desktop": "5rem",
+                    "stack-lg": "2rem",
+                    "gutter": "1.5rem",
+                    "container-max": "1200px",
+                    "stack-sm": "0.5rem",
+                    "section-padding-mobile": "2.5rem"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Manrope"],
+                    "body-lg": ["Inter"],
+                    "button-text": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-sm": ["JetBrains Mono"],
+                    "headline-lg-mobile": ["Manrope"],
+                    "headline-md": ["Manrope"]
+            },
+            "fontSize": {
+                    "headline-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "button-text": ["16px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["30px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-mesh-gradient {
+            background: radial-gradient(at 0% 0%, rgba(129, 209, 240, 0.1) 0px, transparent 50%),
+                        radial-gradient(at 100% 100%, rgba(0, 104, 119, 0.05) 0px, transparent 50%);
+        }
+        .custom-shadow {
+            box-shadow: 0 20px 40px -15px rgba(14, 116, 144, 0.05);
+        }
+        .payment-card-active {
+            border-color: #0e7490 !important;
+            background-color: #eff4ff !important;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-md shadow-sm">
+<div class="flex justify-between items-center max-w-container-max mx-auto px-gutter py-4">
+<div class="text-headline-md font-headline-md font-bold text-primary">PhysioCare</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-on-surface-variant hover:text-primary transition-colors text-body-md font-body-md" href="#">Home</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-body-md font-body-md" href="#">Services</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-body-md font-body-md" href="#">Our Team</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-body-md font-body-md" href="#">Articles</a>
+</nav>
+<button class="bg-primary hover:bg-primary-container text-on-primary px-6 py-2 rounded-full font-button-text text-button-text transition-all active:scale-95">Book Now</button>
+</div>
+</header>
+<main class="min-h-screen bg-mesh-gradient py-12 px-gutter">
+<div class="max-w-4xl mx-auto">
+<!-- Step Progress Indicator -->
+<div class="flex items-center justify-center mb-12">
+<div class="flex items-center w-full max-w-2xl relative">
+<!-- Step 1: Schedule -->
+<div class="flex flex-col items-center z-10">
+<div class="w-10 h-10 rounded-full bg-success-green text-white flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface">Schedule</span>
+</div>
+<div class="flex-1 h-[2px] bg-success-green -mt-6"></div>
+<!-- Step 2: Assessment -->
+<div class="flex flex-col items-center z-10">
+<div class="w-10 h-10 rounded-full bg-success-green text-white flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface">Assessment</span>
+</div>
+<div class="flex-1 h-[2px] bg-primary -mt-6"></div>
+<!-- Step 3: Payment -->
+<div class="flex flex-col items-center z-10">
+<div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center mb-2 ring-4 ring-primary-fixed">
+<span class="text-body-md font-bold">3</span>
+</div>
+<span class="text-label-sm font-label-sm text-primary font-bold">Payment</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left Column: Payment Methods -->
+<div class="lg:col-span-2 space-y-6">
+<section class="bg-clinical-white p-8 rounded-xl custom-shadow border border-outline-variant/20">
+<h1 class="text-headline-md font-headline-md text-on-surface mb-6">Select Payment Method</h1>
+<div class="space-y-4" id="payment-methods">
+<!-- QRIS Option -->
+<div class="payment-option cursor-pointer group p-5 border-2 border-outline-variant/30 rounded-xl flex items-center justify-between transition-all hover:border-primary/50 payment-card-active" onclick="selectPayment(this)">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 0;">qr_code_2</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<p class="text-body-md font-bold text-on-surface">QRIS</p>
+<span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded-full uppercase tracking-wider">Recommended</span>
+</div>
+<p class="text-body-md text-on-surface-variant">Instant confirmation using GoPay, OVO, Dana</p>
+</div>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-primary flex items-center justify-center">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+</div>
+</div>
+<!-- Bank Transfer -->
+<div class="payment-option cursor-pointer group p-5 border-2 border-outline-variant/30 rounded-xl flex items-center justify-between transition-all hover:border-primary/50" onclick="selectPayment(this)">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 0;">account_balance</span>
+</div>
+<div>
+<p class="text-body-md font-bold text-on-surface">Bank Transfer</p>
+<p class="text-body-md text-on-surface-variant">Manual verification (up to 30 mins)</p>
+</div>
+</div>
+<div class="radio-circle w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center">
+<div class="dot w-3 h-3 rounded-full bg-primary hidden"></div>
+</div>
+</div>
+<!-- Credit Card -->
+<div class="payment-option cursor-pointer group p-5 border-2 border-outline-variant/30 rounded-xl flex items-center justify-between transition-all hover:border-primary/50" onclick="selectPayment(this)">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 0;">credit_card</span>
+</div>
+<div>
+<p class="text-body-md font-bold text-on-surface">Credit / Debit Card</p>
+<p class="text-body-md text-on-surface-variant">Visa, Mastercard, or JCB</p>
+</div>
+</div>
+<div class="radio-circle w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center">
+<div class="dot w-3 h-3 rounded-full bg-primary hidden"></div>
+</div>
+</div>
+</div>
+</section>
+<div class="flex justify-between items-center px-4">
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-on-surface transition-colors font-button-text" onclick="history.back()">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+<span>Back to Assessment</span>
+</button>
+</div>
+</div>
+<!-- Right Column: Price Breakdown -->
+<div class="lg:col-span-1">
+<aside class="sticky top-28 space-y-6">
+<section class="bg-clinical-white p-6 rounded-xl custom-shadow border border-outline-variant/20 overflow-hidden relative">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -mr-16 -mt-16"></div>
+<h2 class="text-headline-md font-headline-md text-on-surface mb-6">Order Summary</h2>
+<div class="space-y-4 mb-8">
+<div class="flex justify-between text-body-md text-on-surface-variant">
+<span>Physiotherapy Session</span>
+<span class="font-medium text-on-surface">Rp250.000</span>
+</div>
+<div class="flex justify-between text-body-md text-on-surface-variant">
+<span>Service Admin Fee</span>
+<span class="font-medium text-on-surface">Rp5.000</span>
+</div>
+<div class="pt-4 border-t border-outline-variant/20 flex justify-between items-center">
+<span class="text-body-lg font-bold text-on-surface">Total Amount</span>
+<span class="text-headline-md font-headline-md text-primary">Rp255.000</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-lg mb-8 flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">info</span>
+<p class="text-[13px] text-on-surface-variant leading-relaxed">
+                                    By clicking 'Pay Now', you agree to our Terms of Service and Cancellation Policy.
+                                </p>
+</div>
+<button class="w-full py-4 bg-primary hover:bg-primary-container text-on-primary rounded-xl font-button-text text-button-text shadow-lg shadow-primary/20 transition-all hover:-translate-y-0.5 active:scale-95 flex items-center justify-center gap-2" id="pay-now-btn">
+<span>Pay Now</span>
+<span class="material-symbols-outlined text-[20px]">lock</span>
+</button>
+</section>
+<!-- Therapist Brief Info -->
+<div class="bg-clinical-white p-6 rounded-xl custom-shadow border border-outline-variant/20 flex items-center gap-4">
+<img class="w-14 h-14 rounded-full object-cover border-2 border-surface-variant" data-alt="A professional headshot of a friendly female physiotherapist in a clean clinical setting, wearing a medical uniform, smiling warmly at the camera. The background is softly blurred with medical equipment visible. Corporate medical aesthetic with soft lighting and calming blue tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7ImdWzzkk6olvr9eJaYvUV_OXpjKUFXlf7JtwkD1qzWuN8MZ4-FoXI7WcRbgKDtrTYI0j2c7lbDALAXUb_pfXlM3Xcbg7CnzE6tzWde0YRC8Gp72TidJ5WcN_l4ygXVJlbB0Kq5bLCSlpmNlLvbhghCyv38d8Ht1pXUJPr43GeZyFL22016-AzzoTEBhCEYDfmVytqAG1dHOrDoxTWrmSjxi3CmHAXAODt08ulj9b_Mp4mUdmu1eTig">
+<div>
+<p class="text-body-md font-bold text-on-surface">Sarah Mitchell, PT</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Sports Injury Specialist</p>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-warning-amber text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-sm font-label-sm text-on-surface">4.9 (124 reviews)</span>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Component -->
+<footer class="bg-on-primary-fixed py-16">
+<div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="space-y-6">
+<div class="text-headline-md font-headline-md font-bold text-primary-fixed">PhysioCare</div>
+<p class="text-body-md text-surface-variant/80 max-w-sm">
+                    Empowering your recovery journey with professional clinical care and personalized treatment plans for every stage of life.
+                </p>
+</div>
+<div class="space-y-4">
+<h3 class="text-primary-fixed font-bold text-body-lg">Quick Links</h3>
+<nav class="grid grid-cols-2 gap-2">
+<a class="text-surface-variant/80 hover:text-primary-fixed hover:underline transition-colors text-label-sm" href="#">Home</a>
+<a class="text-surface-variant/80 hover:text-primary-fixed hover:underline transition-colors text-label-sm" href="#">Services</a>
+<a class="text-surface-variant/80 hover:text-primary-fixed hover:underline transition-colors text-label-sm" href="#">Our Team</a>
+<a class="text-surface-variant/80 hover:text-primary-fixed hover:underline transition-colors text-label-sm" href="#">Articles</a>
+<a class="text-surface-variant/80 hover:text-primary-fixed hover:underline transition-colors text-label-sm" href="#">Contact Us</a>
+<a class="text-surface-variant/80 hover:text-primary-fixed hover:underline transition-colors text-label-sm" href="#">Privacy Policy</a>
+</nav>
+</div>
+<div class="space-y-4">
+<h3 class="text-primary-fixed font-bold text-body-lg">Support</h3>
+<p class="text-label-sm text-surface-variant/80">
+                    Questions? Reach our care team 24/7 via the help center or our emergency triage hotline.
+                </p>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center text-primary-fixed">
+<span class="material-symbols-outlined">call</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center text-primary-fixed">
+<span class="material-symbols-outlined">mail</span>
+</div>
+</div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-gutter mt-16 pt-8 border-t border-surface-variant/20 text-center text-label-sm text-surface-variant/60">
+            © 2024 PhysioCare. All rights reserved.
+        </div>
+</footer>
+<script>
+        function selectPayment(element) {
+            // Remove active classes from all options
+            document.querySelectorAll('.payment-option').forEach(opt => {
+                opt.classList.remove('payment-card-active');
+                const radio = opt.querySelector('.radio-circle');
+                if (radio) {
+                    radio.classList.remove('border-primary');
+                    radio.classList.add('border-outline-variant');
+                }
+                const dot = opt.querySelector('.dot');
+                if (dot) dot.classList.add('hidden');
+            });
+
+            // Add active class to selected option
+            element.classList.add('payment-card-active');
+            const radio = element.querySelector('.radio-circle');
+            if (radio) {
+                radio.classList.add('border-primary');
+                radio.classList.remove('border-outline-variant');
+            }
+            const dot = element.querySelector('.dot');
+            if (dot) dot.classList.remove('hidden');
+        }
+
+        // Add visual micro-interaction to pay button
+        const payBtn = document.getElementById('pay-now-btn');
+        payBtn.addEventListener('click', function() {
+            this.innerHTML = `
+                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Processing...
+            `;
+            this.disabled = true;
+            this.classList.add('opacity-80', 'cursor-not-allowed');
+            
+            setTimeout(() => {
+                alert('Payment redirected to gateway. In a live app, this would initiate the QRIS/Gateway flow.');
+                this.innerHTML = '<span>Pay Now</span><span class="material-symbols-outlined text-[20px]">lock</span>';
+                this.disabled = false;
+                this.classList.remove('opacity-80', 'cursor-not-allowed');
+            }, 2000);
+        });
+    </script>
+</body></html>
