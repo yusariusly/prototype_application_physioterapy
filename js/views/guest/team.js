@@ -8,52 +8,86 @@ const GuestTeamView = {
      */
     async render() {
         const therapists = await TherapistModel.all();
-        const cards = therapists.map(t => TherapistCard.render(t, 'public')).join('');
 
         return `
         ${NavbarGuest.render('team')}
         <main class="min-h-screen bg-background">
-            <!-- Hero -->
-            <section class="relative py-20 px-6 bg-surface-container-low overflow-hidden">
-                <div class="absolute inset-0 opacity-10 pointer-events-none">
-                    <div class="absolute top-0 left-0 w-96 h-96 bg-primary-container rounded-full blur-3xl -ml-48 -mt-48"></div>
+            <!-- Premium Hero -->
+            <section class="relative pt-32 pb-20 px-6 bg-surface-container-lowest overflow-hidden">
+                <!-- Abstract Background Elements -->
+                <div class="absolute inset-0 w-full h-full pointer-events-none">
+                    <div class="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-primary/10 rounded-full blur-[100px] mix-blend-multiply animate-pulse" style="animation-duration: 9s;"></div>
+                    <div class="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[120px] mix-blend-multiply animate-pulse" style="animation-duration: 11s; animation-delay: 1.5s;"></div>
                 </div>
-                <div class="max-w-container-max mx-auto text-center relative z-10">
-                    <span class="inline-block px-4 py-1.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant font-label-sm text-label-sm mb-6">
+                
+                <div class="max-w-container-max mx-auto text-center relative z-10 flex flex-col items-center">
+                    <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-secondary/10 border border-secondary/20 text-secondary font-bold text-sm mb-8 backdrop-blur-sm shadow-sm">
+                        <span class="material-symbols-outlined text-[16px]">verified</span>
                         STR VERIFIED THERAPISTS
-                    </span>
-                    <h1 class="font-headline-lg text-headline-lg mb-6">Meet Our Expert Team</h1>
-                    <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                    </div>
+                    <h1 class="font-headline-lg text-5xl md:text-7xl mb-6 font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-on-surface via-primary to-secondary leading-tight pb-2">
+                        Meet Our Expert Team
+                    </h1>
+                    <p class="font-body-lg text-xl text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
                         Every therapist at PhysioCare is certified with STR and rigorously vetted. We bring together specialists from multiple disciplines to ensure you receive the best care.
                     </p>
                 </div>
             </section>
             <!-- Team Grid -->
             <section class="py-20 px-6 max-w-container-max mx-auto">
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    ${cards}
+                <div class="flex flex-wrap justify-center gap-8">
+                    ${therapists.map(t => `
+                        <div class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.4rem)] max-w-md">
+                            ${TherapistCard.render(t, 'public')}
+                        </div>
+                    `).join('')}
                 </div>
             </section>
-            <!-- Why Work With Us -->
-            <section class="py-20 px-6 bg-primary text-on-primary">
-                <div class="max-w-container-max mx-auto text-center">
-                    <h2 class="font-headline-lg text-headline-lg mb-6">Why Patients Trust Our Therapists?</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-                        <div class="flex flex-col items-center gap-3">
-                            <span class="material-symbols-outlined text-[48px]">verified</span>
-                            <h3 class="font-headline-md text-headline-md">100% STR Certified</h3>
-                            <p class="text-primary-fixed opacity-90">All therapists are registered and licensed professionals.</p>
+            <!-- Premium Features / Trust Section -->
+            <section class="relative py-32 px-6 overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-br from-primary via-primary to-secondary z-0"></div>
+                <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 mix-blend-overlay pointer-events-none z-0"></div>
+                
+                <div class="max-w-container-max mx-auto relative z-10">
+                    <div class="text-center mb-16">
+                        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Why Patients Trust Our Therapists</h2>
+                        <p class="text-xl text-white/80 max-w-2xl mx-auto">We maintain the highest clinical standards so you can focus purely on your recovery journey.</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Feature 1 -->
+                        <div class="bg-white/10 backdrop-blur-xl border border-white/20 p-10 rounded-[2rem] text-center hover:bg-white/15 hover:-translate-y-2 transition-all duration-300">
+                            <div class="w-20 h-20 mx-auto bg-white/20 rounded-2xl flex items-center justify-center mb-8 shadow-inner rotate-3">
+                                <span class="material-symbols-outlined text-5xl text-white">verified</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-4">100% STR Certified</h3>
+                            <p class="text-white/80 leading-relaxed">All therapists are registered and licensed professionals with active STR credentials.</p>
                         </div>
-                        <div class="flex flex-col items-center gap-3">
-                            <span class="material-symbols-outlined text-[48px]">monitoring</span>
-                            <h3 class="font-headline-md text-headline-md">Data-Driven</h3>
-                            <p class="text-primary-fixed opacity-90">Evidence-based treatment plans for measurable results.</p>
+                        
+                        <!-- Feature 2 -->
+                        <div class="bg-white/10 backdrop-blur-xl border border-white/20 p-10 rounded-[2rem] text-center hover:bg-white/15 hover:-translate-y-2 transition-all duration-300">
+                            <div class="w-20 h-20 mx-auto bg-white/20 rounded-2xl flex items-center justify-center mb-8 shadow-inner -rotate-3">
+                                <span class="material-symbols-outlined text-5xl text-white">monitoring</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-4">Data-Driven Approach</h3>
+                            <p class="text-white/80 leading-relaxed">We utilize evidence-based treatment plans and regular metrics to ensure measurable results.</p>
                         </div>
-                        <div class="flex flex-col items-center gap-3">
-                            <span class="material-symbols-outlined text-[48px]">favorite</span>
-                            <h3 class="font-headline-md text-headline-md">Compassionate Care</h3>
-                            <p class="text-primary-fixed opacity-90">We combine clinical expertise with genuine empathy.</p>
+                        
+                        <!-- Feature 3 -->
+                        <div class="bg-white/10 backdrop-blur-xl border border-white/20 p-10 rounded-[2rem] text-center hover:bg-white/15 hover:-translate-y-2 transition-all duration-300">
+                            <div class="w-20 h-20 mx-auto bg-white/20 rounded-2xl flex items-center justify-center mb-8 shadow-inner rotate-3">
+                                <span class="material-symbols-outlined text-5xl text-white">favorite</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-4">Compassionate Care</h3>
+                            <p class="text-white/80 leading-relaxed">We combine world-class clinical expertise with genuine empathy and personalized attention.</p>
                         </div>
+                    </div>
+                    
+                    <div class="mt-16 text-center">
+                        <a href="#/booking" class="inline-flex items-center justify-center gap-3 bg-white text-primary px-10 py-5 rounded-2xl font-bold text-lg shadow-[0_10px_30px_rgba(0,0,0,0.15)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.25)] hover:scale-105 transition-all group">
+                            Book a Consultation
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                        </a>
                     </div>
                 </div>
             </section>

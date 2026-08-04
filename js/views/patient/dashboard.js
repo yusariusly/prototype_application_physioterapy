@@ -42,23 +42,23 @@ const PatientDashboardView = {
         ];
 
         const exerciseCards = exercises.map(e => `
-            <div class="group cursor-pointer">
-                <div class="relative aspect-video rounded-lg overflow-hidden mb-3 bg-surface-container-low flex items-center justify-center">
-                    <span class="material-symbols-outlined text-[56px] text-primary" style="font-variation-settings: 'FILL' 1;">fitness_center</span>
-                    <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                        <div class="bg-clinical-white/90 p-2 rounded-full">
-                            <span class="material-symbols-outlined text-primary text-3xl">play_arrow</span>
+            <div class="group cursor-pointer bg-clinical-white rounded-3xl p-4 shadow-sm border border-outline-variant/30 hover:shadow-lg hover:border-primary/20 transition-all duration-300">
+                <div class="relative aspect-video rounded-2xl overflow-hidden mb-4 bg-surface-container-low flex items-center justify-center group-hover:scale-[1.02] transition-transform">
+                    <span class="material-symbols-outlined text-[64px] text-primary/30" style="font-variation-settings: 'FILL' 1;">fitness_center</span>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg transform scale-50 group-hover:scale-100 transition-transform duration-300">
+                            <span class="material-symbols-outlined text-primary text-3xl ml-1">play_arrow</span>
                         </div>
                     </div>
-                    <div class="absolute bottom-2 left-2">
-                        <span class="bg-primary/80 backdrop-blur-md text-on-primary text-[10px] px-2 py-0.5 rounded uppercase font-bold">${e.mins}</span>
+                    <div class="absolute top-3 right-3">
+                        <span class="bg-black/40 backdrop-blur-md text-white text-[10px] px-2.5 py-1 rounded-lg uppercase font-bold tracking-wider">${e.mins}</span>
                     </div>
                 </div>
-                <h4 class="font-bold text-on-surface mb-1 group-hover:text-primary transition-colors">${e.title}</h4>
-                <div class="flex items-center justify-between text-label-sm font-label-sm">
-                    <span class="text-on-surface-variant">${e.sets}</span>
-                    <span class="${e.statusColor} flex items-center gap-1">
-                        <span class="material-symbols-outlined text-sm">${e.statusIcon}</span> ${e.status}
+                <h4 class="font-bold text-on-surface mb-2 group-hover:text-primary transition-colors text-lg">${e.title}</h4>
+                <div class="flex items-center justify-between text-sm">
+                    <span class="text-on-surface-variant font-medium">${e.sets}</span>
+                    <span class="${e.statusColor} flex items-center gap-1.5 font-bold bg-${e.statusColor.replace('text-', '')}/10 px-2.5 py-1 rounded-full text-xs">
+                        <span class="material-symbols-outlined text-[14px]">${e.statusIcon}</span> ${e.status}
                     </span>
                 </div>
             </div>
@@ -90,122 +90,165 @@ const PatientDashboardView = {
 
         return `
         ${NavbarPatient.render('dashboard', name)}
-        <main class="max-w-container-max mx-auto px-gutter py-stack-lg space-y-stack-lg">
+        <main class="max-w-container-max mx-auto px-6 py-12 space-y-12">
             <!-- Personalized Hero & Snapshot -->
-            <section class="grid grid-cols-1 lg:grid-cols-12 gap-stack-lg">
-                <div class="lg:col-span-8 flex flex-col justify-center bg-primary-container text-on-primary-container p-stack-lg rounded-xl shadow-lg relative overflow-hidden group">
-                    <div class="absolute -right-16 -top-16 w-64 h-64 bg-secondary-container opacity-20 rounded-full blur-3xl transition-transform group-hover:scale-110 duration-700"></div>
-                    <h1 class="font-headline-lg text-headline-lg mb-stack-sm">Selamat datang kembali, ${name}</h1>
-                    <p class="font-body-lg text-body-lg opacity-90 mb-stack-lg">Your recovery is our priority. You're doing great on your journey to full mobility.</p>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-stack-md">
-                        <div class="bg-clinical-white/10 backdrop-blur-sm p-stack-md rounded-lg border border-clinical-white/20 relative">
-                            <span class="font-label-sm text-label-sm uppercase tracking-widest opacity-70 block mb-1">Next Session</span>
-                            <div class="flex items-center gap-2 mb-3">
-                                <span class="material-symbols-outlined text-secondary-fixed">calendar_today</span>
-                                <span class="font-headline-md text-headline-md">${upcoming ? upcoming.date + ', ' + upcoming.time : 'Belum ada'}</span>
+            <section class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Welcome Card -->
+                <div class="lg:col-span-8 relative overflow-hidden bg-surface-container-lowest rounded-[2rem] p-10 shadow-sm border border-outline-variant/30 flex flex-col justify-center group">
+                    <div class="absolute inset-0 w-full h-full pointer-events-none z-0">
+                        <div class="absolute -right-20 -top-20 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[80px] mix-blend-multiply animate-pulse" style="animation-duration: 8s;"></div>
+                        <div class="absolute -left-20 -bottom-20 w-[300px] h-[300px] bg-secondary/10 rounded-full blur-[60px] mix-blend-multiply animate-pulse" style="animation-duration: 10s; animation-delay: 2s;"></div>
+                    </div>
+                    
+                    <div class="relative z-10">
+                        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-on-surface mb-3 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Selamat datang kembali, ${name}</h1>
+                        <p class="text-lg text-on-surface-variant mb-10 max-w-xl leading-relaxed">Your recovery is our priority. You're doing great on your journey to full mobility.</p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <!-- Next Session -->
+                            <div class="bg-white/50 backdrop-blur-md p-6 rounded-3xl border border-outline-variant/50 relative shadow-sm hover:shadow-md transition-shadow">
+                                <span class="text-xs font-bold uppercase tracking-widest text-outline-variant block mb-2">Next Session</span>
+                                <div class="flex items-center gap-3 mb-4">
+                                    <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                                        <span class="material-symbols-outlined">calendar_month</span>
+                                    </div>
+                                    <span class="text-xl font-bold text-on-surface">${upcoming ? upcoming.date + ', ' + upcoming.time : 'Belum ada'}</span>
+                                </div>
+                                ${upcoming ? `<a href="#/patient/update-booking?id=${upcoming.id}" class="inline-flex items-center gap-1.5 text-xs font-bold bg-white border border-outline-variant/50 text-on-surface hover:text-primary hover:border-primary/50 px-4 py-2 rounded-xl transition-all shadow-sm"><span class="material-symbols-outlined text-[16px]">edit_calendar</span> Reschedule</a>` : ''}
                             </div>
-                            ${upcoming ? `<a href="#/patient/update-booking?id=${upcoming.id}" class="text-sm bg-white/20 hover:bg-white/30 text-white px-3 py-1.5 rounded-lg backdrop-blur-sm transition-colors absolute top-4 right-4 flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">edit_calendar</span> Reschedule</a>` : ''}
-                        </div>
-                        <div class="bg-clinical-white/10 backdrop-blur-sm p-stack-md rounded-lg border border-clinical-white/20">
-                            <div class="flex justify-between items-end mb-2">
-                                <span class="font-label-sm text-label-sm uppercase tracking-widest opacity-70">Recovery Progress</span>
-                                <span class="font-headline-md text-headline-md">${user ? user.recoveryProgress : 65}%</span>
-                            </div>
-                            <div class="w-full bg-clinical-white/20 h-2.5 rounded-full overflow-hidden">
-                                <div class="bg-secondary-container h-full rounded-full progress-bar-fill" style="width: ${user ? user.recoveryProgress : 65}%"></div>
+                            
+                            <!-- Recovery Progress -->
+                            <div class="bg-white/50 backdrop-blur-md p-6 rounded-3xl border border-outline-variant/50 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-center">
+                                <div class="flex justify-between items-end mb-3">
+                                    <span class="text-xs font-bold uppercase tracking-widest text-outline-variant">Recovery Progress</span>
+                                    <span class="text-3xl font-extrabold text-secondary">${user ? user.recoveryProgress : 65}%</span>
+                                </div>
+                                <div class="w-full bg-outline-variant/30 h-3 rounded-full overflow-hidden">
+                                    <div class="bg-gradient-to-r from-primary to-secondary h-full rounded-full progress-bar-fill relative">
+                                        <div class="absolute inset-0 bg-white/20 animate-pulse"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <!-- Active Treatment Card -->
-                <div class="lg:col-span-4 flex flex-col bg-clinical-white p-stack-lg rounded-xl border border-outline-variant shadow-[0_20px_20px_-5px_rgba(14,116,144,0.05)]">
-                    <span class="font-label-sm text-label-sm text-secondary mb-stack-sm flex items-center gap-1">
-                        <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
-                        ACTIVE TREATMENT
-                    </span>
-                    <h2 class="font-headline-md text-headline-md text-on-surface mb-stack-md">${user ? user.activeTreatment : 'Lower Back Rehab'}</h2>
-                    <div class="space-y-stack-md flex-grow">
-                        <div class="flex items-center gap-stack-md p-stack-sm bg-surface-muted rounded-lg">
-                            <div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
-                                <span class="material-symbols-outlined">exercise</span>
+                <div class="lg:col-span-4 bg-gradient-to-br from-primary to-primary-container p-8 rounded-[2rem] text-white shadow-lg relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 mix-blend-overlay pointer-events-none"></div>
+                    <div class="relative z-10 flex flex-col h-full">
+                        <span class="text-xs font-bold uppercase tracking-widest text-white/70 mb-2 flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-[14px]">star</span>
+                            Active Treatment
+                        </span>
+                        <h2 class="text-3xl font-bold mb-8 leading-tight">${user ? user.activeTreatment : 'Lower Back Rehab'}</h2>
+                        
+                        <div class="space-y-4 flex-grow">
+                            <div class="flex items-center gap-4 p-4 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 hover:bg-white/20 transition-colors">
+                                <div class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-white">exercise</span>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-white text-sm">Daily Routine</p>
+                                    <p class="text-xs text-white/80">4 exercises remaining today</p>
+                                </div>
                             </div>
-                            <div>
-                                <p class="font-button-text text-button-text">Daily Routine</p>
-                                <p class="text-sm text-on-surface-variant">4 exercises remaining today</p>
+                            <div class="flex items-center gap-4 p-4 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 hover:bg-white/20 transition-colors">
+                                <div class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-white">medical_information</span>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-white text-sm">Therapist</p>
+                                    <p class="text-xs text-white/80">${user ? user.therapist : 'Dr. Sarah Mitchell, PT'}</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="flex items-center gap-stack-md p-stack-sm bg-surface-muted rounded-lg">
-                            <div class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-on-secondary">
-                                <span class="material-symbols-outlined">person_pin</span>
-                            </div>
-                            <div>
-                                <p class="font-button-text text-button-text">Therapist</p>
-                                <p class="text-sm text-on-surface-variant">${user ? user.therapist : 'Dr. Sarah Mitchell, PT'}</p>
-                            </div>
-                        </div>
+                        
+                        <a href="#/patient/medical-records" class="w-full mt-8 py-4 bg-white text-primary rounded-xl font-bold text-center hover:shadow-[0_10px_20px_rgba(255,255,255,0.2)] hover:scale-[1.02] active:scale-95 transition-all">
+                            View Full Plan
+                        </a>
                     </div>
-                    <a href="#/patient/medical-records" class="w-full mt-stack-lg py-3 bg-secondary text-on-secondary rounded-lg font-button-text text-button-text hover:shadow-md transition-all text-center">View Full Plan</a>
                 </div>
             </section>
             <!-- Quick Actions Bento -->
-            <section class="grid grid-cols-2 md:grid-cols-4 gap-stack-md">
-                <a href="#/booking" class="flex flex-col items-center justify-center p-stack-lg bg-clinical-white border border-outline-variant rounded-xl hover:border-primary hover:bg-surface-container-low transition-all group">
-                    <span class="material-symbols-outlined text-4xl text-primary mb-stack-sm transition-transform group-hover:scale-110">add_circle</span>
-                    <span class="font-button-text text-button-text text-center">Book New Session</span>
+            <section class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <a href="#/booking" class="group relative overflow-hidden bg-clinical-white rounded-[1.5rem] p-6 shadow-sm border border-outline-variant/40 hover:shadow-[0_15px_30px_-10px_rgba(14,116,144,0.15)] hover:border-primary/30 transition-all duration-300 transform hover:-translate-y-1 flex flex-col items-center justify-center text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <span class="material-symbols-outlined text-[32px]">add_circle</span>
+                    </div>
+                    <span class="font-bold text-on-surface group-hover:text-primary transition-colors text-sm">Book New Session</span>
                 </a>
-                <a href="#/patient/teleconsultation${upcoming ? '?id=' + upcoming.id : ''}" class="flex flex-col items-center justify-center p-stack-lg bg-clinical-white border border-outline-variant rounded-xl hover:border-primary hover:bg-surface-container-low transition-all group">
-                    <span class="material-symbols-outlined text-4xl text-primary mb-stack-sm transition-transform group-hover:scale-110">videocam</span>
-                    <span class="font-button-text text-button-text text-center">Start Teleconsultation</span>
+                <a href="#/patient/teleconsultation${upcoming ? '?id=' + upcoming.id : ''}" class="group relative overflow-hidden bg-clinical-white rounded-[1.5rem] p-6 shadow-sm border border-outline-variant/40 hover:shadow-[0_15px_30px_-10px_rgba(14,116,144,0.15)] hover:border-primary/30 transition-all duration-300 transform hover:-translate-y-1 flex flex-col items-center justify-center text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <span class="material-symbols-outlined text-[32px]">videocam</span>
+                    </div>
+                    <span class="font-bold text-on-surface group-hover:text-primary transition-colors text-sm">Teleconsultation</span>
                 </a>
-                <a href="#/articles" class="flex flex-col items-center justify-center p-stack-lg bg-clinical-white border border-outline-variant rounded-xl hover:border-primary hover:bg-surface-container-low transition-all group">
-                    <span class="material-symbols-outlined text-4xl text-primary mb-stack-sm transition-transform group-hover:scale-110">checklist_rtl</span>
-                    <span class="font-button-text text-button-text text-center">Check Program</span>
+                <a href="#/articles" class="group relative overflow-hidden bg-clinical-white rounded-[1.5rem] p-6 shadow-sm border border-outline-variant/40 hover:shadow-[0_15px_30px_-10px_rgba(14,116,144,0.15)] hover:border-primary/30 transition-all duration-300 transform hover:-translate-y-1 flex flex-col items-center justify-center text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <span class="material-symbols-outlined text-[32px]">checklist_rtl</span>
+                    </div>
+                    <span class="font-bold text-on-surface group-hover:text-primary transition-colors text-sm">Check Program</span>
                 </a>
-                <a href="#/patient/medical-records" class="flex flex-col items-center justify-center p-stack-lg bg-clinical-white border border-outline-variant rounded-xl hover:border-primary hover:bg-surface-container-low transition-all group">
-                    <span class="material-symbols-outlined text-4xl text-primary mb-stack-sm transition-transform group-hover:scale-110">description</span>
-                    <span class="font-button-text text-button-text text-center">Medical Reports</span>
+                <a href="#/patient/medical-records" class="group relative overflow-hidden bg-clinical-white rounded-[1.5rem] p-6 shadow-sm border border-outline-variant/40 hover:shadow-[0_15px_30px_-10px_rgba(14,116,144,0.15)] hover:border-primary/30 transition-all duration-300 transform hover:-translate-y-1 flex flex-col items-center justify-center text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <span class="material-symbols-outlined text-[32px]">description</span>
+                    </div>
+                    <span class="font-bold text-on-surface group-hover:text-primary transition-colors text-sm">Medical Reports</span>
                 </a>
             </section>
             <!-- Home Exercise Program -->
-            <section class="bg-clinical-white p-8 rounded-xl soft-shadow">
-                <div class="flex items-center justify-between mb-6">
-                    <h2 class="font-headline-md text-headline-md flex items-center gap-2">
-                        <span class="material-symbols-outlined text-secondary">fitness_center</span>
-                        Home Exercise Program
-                    </h2>
-                    <a href="#/articles" class="text-secondary font-button-text text-button-text flex items-center gap-1 hover:underline">
-                        View Full Program <span class="material-symbols-outlined">arrow_forward</span>
+            <section class="bg-surface-container-lowest p-8 rounded-[2rem] shadow-sm border border-outline-variant/30">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4">
+                    <div>
+                        <h2 class="text-2xl font-bold flex items-center gap-3 mb-1">
+                            <span class="w-10 h-10 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center">
+                                <span class="material-symbols-outlined">fitness_center</span>
+                            </span>
+                            Home Exercise Program
+                        </h2>
+                        <p class="text-on-surface-variant text-sm ml-13">Stay consistent with your daily routines for faster recovery.</p>
+                    </div>
+                    <a href="#/articles" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-primary/10 text-primary font-bold rounded-xl hover:bg-primary hover:text-white transition-all group">
+                        View Full Program 
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
                     </a>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     ${exerciseCards}
                 </div>
             </section>
             <!-- Therapy History -->
-            <section class="bg-clinical-white p-8 rounded-xl soft-shadow overflow-hidden">
-                <div class="flex items-center justify-between mb-8">
-                    <h2 class="font-headline-md text-headline-md flex items-center gap-2">
-                        <span class="material-symbols-outlined text-secondary">history</span>
+            <section class="bg-surface-container-lowest p-8 rounded-[2rem] shadow-sm border border-outline-variant/30 overflow-hidden">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4">
+                    <h2 class="text-2xl font-bold flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center">
+                            <span class="material-symbols-outlined">history</span>
+                        </span>
                         My Therapy History
                     </h2>
-                    <div class="flex gap-2">
-                        <button class="bg-surface-muted px-4 py-2 rounded-lg text-sm font-medium hover:bg-surface-variant transition-colors">Filter by Date</button>
-                        <button class="bg-surface-muted px-4 py-2 rounded-lg text-sm font-medium hover:bg-surface-variant transition-colors">Download All Notes</button>
+                    <div class="flex gap-3">
+                        <button class="bg-white border border-outline-variant/50 px-4 py-2 rounded-xl text-sm font-bold text-on-surface hover:bg-surface-muted transition-colors flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[18px]">filter_list</span> Filter
+                        </button>
+                        <button class="bg-white border border-outline-variant/50 px-4 py-2 rounded-xl text-sm font-bold text-on-surface hover:bg-surface-muted transition-colors flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[18px]">download</span> Download All
+                        </button>
                     </div>
                 </div>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left">
+                <div class="overflow-x-auto bg-white rounded-2xl border border-outline-variant/30 p-2">
+                    <table class="w-full text-left border-collapse">
                         <thead>
-                            <tr class="border-b border-surface-muted text-on-surface-variant text-label-sm font-label-sm uppercase tracking-wider">
-                                <th class="pb-4 px-2">Date</th>
-                                <th class="pb-4 px-2">Therapist</th>
-                                <th class="pb-4 px-2">Session Type</th>
-                                <th class="pb-4 px-2">Notes &amp; Assessment</th>
-                                <th class="pb-4 px-2 text-right">Action</th>
+                            <tr class="border-b-2 border-surface-muted text-on-surface-variant text-xs font-bold uppercase tracking-widest bg-surface-container-lowest/50">
+                                <th class="py-4 px-4 rounded-tl-xl">Date</th>
+                                <th class="py-4 px-4">Therapist</th>
+                                <th class="py-4 px-4">Session Type</th>
+                                <th class="py-4 px-4">Notes &amp; Assessment</th>
+                                <th class="py-4 px-4 text-right rounded-tr-xl">Action</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-surface-muted">
-                            ${historyRows || `<tr><td colspan="5" class="py-8 text-center text-on-surface-variant">Belum ada riwayat terapi</td></tr>`}
+                            ${historyRows || `<tr><td colspan="5" class="py-12 text-center text-on-surface-variant italic">Belum ada riwayat terapi</td></tr>`}
                         </tbody>
                     </table>
                 </div>

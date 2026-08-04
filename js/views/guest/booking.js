@@ -260,10 +260,10 @@ const GuestBookingView = {
                             <span class="font-headline-md">Total Price</span>
                             <span class="font-headline-md" id="summary-price">${Service.formatPrice(85000)}</span>
                         </div>
-                        <a href="#/patient/assessment" id="proceed-btn" class="w-full bg-clinical-white text-primary py-4 rounded-lg font-button-text hover:bg-surface-bright active:scale-95 transition-all shadow-lg flex items-center justify-center gap-2">
+                        <button id="proceed-btn" class="w-full bg-clinical-white text-primary py-4 rounded-lg font-button-text hover:bg-surface-bright active:scale-95 transition-all shadow-lg flex items-center justify-center gap-2">
                             Proceed to Contact Details
                             <span class="material-symbols-outlined">arrow_forward</span>
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -377,6 +377,26 @@ const GuestBookingView = {
                     summaryCreditRow.classList.add('hidden');
                 }
                 self.updateSummary();
+            });
+        }
+
+        // Auth Guard for Proceed Button
+        const proceedBtn = document.getElementById('proceed-btn');
+        if (proceedBtn) {
+            proceedBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Cek status login
+                const user = User.getCurrentUser();
+                
+                if (!user) {
+                    alert('Anda harus login terlebih dahulu untuk melanjutkan proses booking.');
+                    // Redirect ke halaman login, bisa menyimpan rute ini untuk redirect kembali
+                    window.location.hash = '#/login';
+                } else {
+                    // Jika sudah login, lanjut ke form asessment / detail kontak
+                    window.location.hash = '#/patient/assessment';
+                }
             });
         }
     },
