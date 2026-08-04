@@ -35,34 +35,41 @@ const GuestServiceDetailView = {
         return `
         ${NavbarGuest.render('services')}
         <main class="min-h-screen bg-background">
-            <!-- Hero -->
-            <section class="relative py-20 px-6 bg-surface-container-low overflow-hidden">
-                <div class="absolute inset-0 opacity-10 pointer-events-none">
-                    <div class="absolute top-0 left-0 w-96 h-96 bg-primary-container rounded-full blur-3xl -ml-48 -mt-48"></div>
+            <!-- Premium Hero -->
+            <section class="relative pt-32 pb-24 px-6 bg-surface-container-lowest overflow-hidden">
+                <!-- Abstract Background Elements -->
+                <div class="absolute inset-0 w-full h-full pointer-events-none">
+                    <div class="absolute top-0 left-[-10%] w-[600px] h-[600px] bg-primary/10 rounded-full blur-[100px] mix-blend-multiply animate-pulse" style="animation-duration: 10s;"></div>
+                    <div class="absolute bottom-0 right-[-10%] w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[120px] mix-blend-multiply animate-pulse" style="animation-duration: 8s; animation-delay: 1s;"></div>
                 </div>
-                <div class="max-w-container-max mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                
+                <div class="max-w-container-max mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div>
-                        <a href="#/services" class="inline-flex items-center gap-2 text-secondary font-bold mb-6 hover:underline">
-                            <span class="material-symbols-outlined">arrow_back</span> Back to Services
+                        <a href="#/services" class="inline-flex items-center gap-2 text-secondary font-bold mb-8 hover:text-primary transition-colors group">
+                            <span class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">arrow_back</span> Back to Services
                         </a>
-                        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant font-label-sm text-label-sm mb-6">
-                            <span class="material-symbols-outlined text-[16px]">${service.icon}</span>
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary font-bold text-sm mb-6 backdrop-blur-sm">
+                            <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">${service.icon}</span>
                             ${service.duration}
-                        </span>
-                        <h1 class="font-headline-lg text-headline-lg mb-6">${service.name}</h1>
-                        <p class="font-body-lg text-body-lg text-on-surface-variant mb-8">${service.description}</p>
-                        <div class="flex items-center gap-6">
+                        </div>
+                        <h1 class="font-headline-lg text-5xl lg:text-6xl mb-6 font-extrabold tracking-tight text-on-surface">${service.name}</h1>
+                        <p class="font-body-lg text-xl text-on-surface-variant mb-10 leading-relaxed">${service.description}</p>
+                        
+                        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-8 bg-white/50 backdrop-blur-md p-6 rounded-3xl border border-outline-variant/30 shadow-sm inline-flex">
                             <div>
-                                <p class="font-label-sm text-label-sm text-outline mb-1">Starting from</p>
-                                <p class="font-headline-lg text-headline-lg text-primary font-bold">${price}</p>
+                                <p class="text-[11px] font-bold uppercase tracking-wider text-outline-variant mb-1">Starting from</p>
+                                <p class="text-4xl text-primary font-extrabold">${price}</p>
                             </div>
-                            <a href="#/booking" class="bg-primary text-on-primary px-8 py-4 rounded-xl font-button-text text-button-text hover:bg-primary-container shadow-lg transition-all">
+                            <div class="hidden sm:block w-px h-12 bg-outline-variant/30"></div>
+                            <a href="#/booking" class="bg-primary text-white px-8 py-4 rounded-2xl font-bold shadow-[0_10px_30px_rgba(14,116,144,0.2)] hover:shadow-[0_15px_40px_rgba(14,116,144,0.3)] hover:scale-105 hover:-translate-y-1 transition-all flex items-center justify-center gap-2 group/btn">
                                 Book This Service
+                                <span class="material-symbols-outlined group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
                             </a>
                         </div>
                     </div>
-                    <div class="relative rounded-3xl overflow-hidden shadow-2xl border-[8px] border-clinical-white h-[400px]">
-                        <img class="w-full h-full object-cover" data-alt="${service.name}" src="${service.image}" alt="${service.name}">
+                    <div class="relative rounded-[2rem] overflow-hidden shadow-2xl border-[10px] border-white h-[500px] transform hover:scale-[1.02] transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10 pointer-events-none"></div>
+                        <img class="w-full h-full object-cover relative z-0" data-alt="${service.name}" src="${service.image}" alt="${service.name}">
                     </div>
                 </div>
             </section>
