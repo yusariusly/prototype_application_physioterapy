@@ -7,8 +7,8 @@ const AdminDashboardView = {
      * Render the admin dashboard page
      */
     async render() {
-        return `
-        <body class="font-body-md text-body-md overflow-hidden bg-background text-on-surface">
+return `
+        <div class="font-body-md text-body-md overflow-hidden bg-background text-on-surface">
         ${SidebarAdmin.render('dashboard')}
         <!-- Main Content Area -->
         <main class="ml-64 flex-1 h-screen overflow-y-auto custom-scrollbar bg-background">
@@ -304,8 +304,8 @@ const AdminDashboardView = {
                     <a class="hover:text-primary transition-colors" href="#">Compliance Center</a>
                 </div>
             </footer>
-        </main>
-        </body>
+</main>
+        </div>
         `;
     },
 

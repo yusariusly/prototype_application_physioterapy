@@ -6,9 +6,9 @@ const RegisterView = {
     /**
      * Render the register page
      */
-    async render() {
+async render() {
         return `
-        <body class="min-h-screen flex items-stretch overflow-hidden">
+        <div class="min-h-screen flex items-stretch overflow-hidden">
         <section class="hidden lg:flex lg:w-1/2 relative bg-primary-container overflow-hidden items-center justify-center p-section-padding-desktop">
             <div class="relative z-10 w-full max-w-lg text-white">
                 <div class="mb-12">
@@ -119,8 +119,8 @@ const RegisterView = {
                     </div>
                 </div>
             </div>
-        </main>
-        </body>
+</main>
+        </div>
         `;
     },
 

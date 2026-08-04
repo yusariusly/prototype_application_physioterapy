@@ -10,12 +10,12 @@ const AdminTherapistsView = {
         const therapists = await TherapistModel.all();
 
         const therapistCards = therapists.map((t, idx) => {
-            const statusMap = {
+const statusMap = {
                 'available': '<span class="w-2 h-2 rounded-full bg-success-green animate-pulse"></span> Available',
-                'busy': '<span class="w-2 h-2 rounded-full bg-secondary"></span> In Session',
-                'off': '<span class="w-2 h-2 rounded-full bg-outline"></span> Off Duty'
+                'in-session': '<span class="w-2 h-2 rounded-full bg-secondary"></span> In Session',
+                'off-duty': '<span class="w-2 h-2 rounded-full bg-outline"></span> Off Duty'
             };
-            const statusClass = t.status === 'available' ? 'text-success-green' : t.status === 'busy' ? 'text-secondary' : 'text-outline';
+            const statusClass = t.status === 'available' ? 'text-success-green' : t.status === 'in-session' ? 'text-secondary' : 'text-outline';
             const avatarBg = ['bg-surface-muted', 'bg-surface-container-low', 'bg-primary-fixed/30'][idx % 3];
 
             return `
@@ -26,8 +26,8 @@ const AdminTherapistsView = {
                             <div class="w-20 h-20 rounded-2xl ${avatarBg} flex items-center justify-center text-primary">
                                 <span class="material-symbols-outlined text-[40px]">person</span>
                             </div>
-                            <div class="absolute -bottom-1 -right-1 w-6 h-6 ${t.status === 'available' ? 'bg-success-green' : t.status === 'busy' ? 'bg-secondary' : 'bg-outline'} border-2 border-clinical-white rounded-full flex items-center justify-center">
-                                <span class="material-symbols-outlined text-[14px] text-clinical-white" style="font-variation-settings: 'FILL' 1;">${t.status === 'available' ? 'check' : t.status === 'busy' ? 'timer' : 'close'}</span>
+<div class="absolute -bottom-1 -right-1 w-6 h-6 ${t.status === 'available' ? 'bg-success-green' : t.status === 'in-session' ? 'bg-secondary' : 'bg-outline'} border-2 border-clinical-white rounded-full flex items-center justify-center">
+                                <span class="material-symbols-outlined text-[14px] text-clinical-white" style="font-variation-settings: 'FILL' 1;">${t.status === 'available' ? 'check' : t.status === 'in-session' ? 'timer' : 'close'}</span>
                             </div>
                         </div>
                         <div>
@@ -85,7 +85,7 @@ const AdminTherapistsView = {
         }).join('');
 
         return `
-        <body class="font-body-md text-body-md bg-background text-on-surface">
+        <div class="font-body-md text-body-md bg-background text-on-surface">
         ${SidebarAdmin.render('therapists')}
         <main class="ml-64 min-h-screen">
             <!-- Top App Bar -->
@@ -142,7 +142,7 @@ const AdminTherapistsView = {
                         </div>
                         <div>
                             <p class="text-label-sm font-label-sm uppercase tracking-wider text-on-surface-variant">In Session</p>
-                            <p class="text-headline-md font-headline-md">${therapists.filter(t => t.status === 'busy').length}</p>
+<p class="text-headline-md font-headline-md">${therapists.filter(t => t.status === 'in-session').length}</p>
                         </div>
                     </div>
                     <div class="bg-clinical-white p-6 rounded-2xl shadow-clinical border border-outline-variant/30 flex items-center gap-4">
@@ -179,8 +179,8 @@ const AdminTherapistsView = {
                     </button>
                 </div>
             </div>
-        </main>
-        </body>
+</main>
+        </div>
         `;
     },
 

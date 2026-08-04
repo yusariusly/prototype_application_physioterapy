@@ -7,8 +7,8 @@ const LoginView = {
      * Render the login/sign-in page
      */
     async render() {
-        return `
-        <body class="min-h-screen flex items-stretch overflow-hidden">
+return `
+        <div class="min-h-screen flex items-stretch overflow-hidden">
         <!-- Split Screen: Left Side (Visual/Brand) -->
         <section class="hidden lg:flex lg:w-1/2 relative bg-primary-container overflow-hidden items-center justify-center p-section-padding-desktop">
             <div class="relative z-10 w-full max-w-lg text-white">
@@ -131,8 +131,8 @@ const LoginView = {
                     </div>
                 </div>
             </div>
-        </main>
-        </body>
+</main>
+        </div>
         `;
     },
 

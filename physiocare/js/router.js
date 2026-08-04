@@ -12,25 +12,23 @@ class Router {
         window.addEventListener('hashchange', () => this.resolve());
     }
 
-    /**
+/**
      * Register a route.
      * path patterns: "/", "/services", "/services/:slug"
      */
     add(path, handler) {
+        // Split into segments; param segments start with ":"
+        const segments = path.split('/').filter(Boolean);
         const paramNames = [];
-        const pattern = path.replace(/:[^/]+/g, (match) => {
-            paramNames.push(match.substring(1));
-            return '([^/]+)';
+        segments.forEach(seg => {
+            if (seg.startsWith(':')) {
+                paramNames.push(seg.substring(1));
+            }
         });
-        // Escape other special chars but keep the param regex groups
-        const safePattern = pattern.replace(/[.?*+^$[\]\\(){}|]/g, (c) => {
-            // Only escape if not part of our group wrapper
-            return '\\' + c;
-        }).replace(/\\\(\\\(\[\^\/\]\+\\\)\\\)/g, '([^/]+)');
 
         this.routes.push({
             path,
-            pattern: new RegExp('^' + safePattern + '$'),
+            segments,
             paramNames,
             handler
         });
@@ -66,13 +64,26 @@ class Router {
             normalized = normalized.slice(0, -1);
         }
 
+const pathSegments = normalized.split('/').filter(Boolean);
+
         for (const route of this.routes) {
-            const match = normalized.match(route.pattern);
-            if (match) {
-                const params = {};
-                route.paramNames.forEach((name, i) => {
-                    params[name] = decodeURIComponent(match[i + 1]);
-                });
+            // Length must match exactly
+            if (route.segments.length !== pathSegments.length) continue;
+
+            const params = {};
+            let matched = true;
+            for (let i = 0; i < route.segments.length; i++) {
+                const routeSeg = route.segments[i];
+                const urlSeg = pathSegments[i];
+                if (routeSeg.startsWith(':')) {
+                    params[routeSeg.substring(1)] = decodeURIComponent(urlSeg);
+                } else if (routeSeg !== urlSeg) {
+                    matched = false;
+                    break;
+                }
+            }
+
+            if (matched) {
                 this.currentRoute = route;
                 this.currentParams = { ...params, query };
                 if (this.onChange) {

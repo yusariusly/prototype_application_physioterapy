@@ -78,7 +78,20 @@ const PatientBookingSuccessView = {
                 </div>
             </div>
         </main>
-        ${Footer.render()}
+${Footer.render()}
         `;
+    },
+
+    /**
+     * Reset the guest booking state after a successful booking
+     * so the next booking starts fresh.
+     */
+    init() {
+        GuestBookingView.state = {
+            service: null,
+            therapist: null,
+            date: '13',
+            time: '11:45 AM'
+        };
     }
 };

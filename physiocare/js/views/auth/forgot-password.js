@@ -6,9 +6,9 @@ const ForgotPasswordView = {
     /**
      * Render the forgot password page
      */
-    async render() {
+async render() {
         return `
-        <body class="min-h-screen bg-background flex items-center justify-center px-6 py-12">
+        <div class="min-h-screen bg-background flex items-center justify-center px-6 py-12">
         <div class="w-full max-w-md">
             <a href="#/" class="flex items-center gap-3 mb-10 justify-center">
                 <span class="material-symbols-outlined text-primary text-[40px]" style="font-variation-settings: 'FILL' 1;">medical_services</span>
@@ -51,8 +51,8 @@ const ForgotPasswordView = {
             <p class="mt-8 text-center text-sm text-on-surface-variant">
                 Butuh bantuan? <a class="text-primary hover:underline" href="#/contact">Hubungi kami</a>
             </p>
+</div>
         </div>
-        </body>
         `;
     },
 

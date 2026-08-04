@@ -7,6 +7,25 @@ class PatientRecord extends Model {
         super('data/appointments.json');
     }
 
+/**
+     * Get medical records for a patient (mapped for the records view)
+     */
+    async forPatient(patientId) {
+        await this.load();
+        return this.collection
+            .filter(a => a.patientId === patientId)
+            .map(a => ({
+                id: a.id,
+                title: a.service || 'Sesi Terapi',
+                date: a.date,
+                type: a.assessment && a.assessment.sessionType ? a.assessment.sessionType : 'Terapi',
+                summary: a.assessment && a.assessment.notes
+                    ? a.assessment.notes
+                    : 'Belum ada catatan asesmen untuk sesi ini.',
+                status: a.status
+            }));
+    }
+
     /**
      * Get medical history for a patient grouped by sessions
      */

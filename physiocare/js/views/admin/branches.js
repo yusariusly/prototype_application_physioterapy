@@ -54,8 +54,8 @@ const AdminBranchesView = {
             </div>
         `).join('');
 
-        return `
-        <body class="font-body-md text-body-md bg-background text-on-surface">
+return `
+        <div class="font-body-md text-body-md bg-background text-on-surface">
         ${SidebarAdmin.render('branches')}
         <main class="ml-64 min-h-screen">
             <header class="sticky top-0 z-40 h-16 px-8 bg-clinical-white border-b border-outline-variant flex justify-between items-center shadow-sm">
@@ -94,8 +94,8 @@ const AdminBranchesView = {
                     ${branchCards}
                 </div>
             </div>
-        </main>
-        </body>
+</main>
+        </div>
         `;
     },
 

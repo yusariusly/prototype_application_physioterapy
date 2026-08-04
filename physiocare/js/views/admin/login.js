@@ -6,9 +6,9 @@ const AdminLoginView = {
     /**
      * Render the admin login page
      */
-    async render() {
+async render() {
         return `
-        <body class="min-h-screen bg-background flex items-center justify-center px-6 py-12">
+        <div class="min-h-screen bg-background flex items-center justify-center px-6 py-12">
         <div class="w-full max-w-md">
             <a href="#/" class="flex items-center gap-3 mb-10 justify-center">
                 <div class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center text-clinical-white shadow-lg">
@@ -66,8 +66,8 @@ const AdminLoginView = {
             <p class="mt-8 text-center text-sm text-on-surface-variant">
                 <a class="text-primary hover:underline" href="#/">← Kembali ke Website</a>
             </p>
+</div>
         </div>
-        </body>
         `;
     },
 

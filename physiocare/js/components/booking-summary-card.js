@@ -8,9 +8,9 @@ const BookingSummaryCard = {
      * @param {object} data - { service, therapist, date, time, price }
      */
     render(data = {}) {
-        const service = data.service || { name: 'Standard Physiotherapy', shortDescription: '60-minute initial consult' };
+const service = data.service || { name: 'Standard Physiotherapy', shortDescription: '60-minute initial consult' };
         const therapist = data.therapist || { name: 'Dr. Sarah Mitchell', image: null, strVerified: true };
-        const price = data.price != null ? Service.formatPrice(data.price) : Service.formatPrice(Service ? 85000 : 0);
+        const price = data.price != null ? Service.formatPrice(data.price) : 'Mulai dari Rp199.000';
 
         return `
         <div class="bg-clinical-white rounded-xl shadow-[0_20px_40px_rgba(14,116,144,0.05)] border border-surface-muted overflow-hidden sticky top-24">

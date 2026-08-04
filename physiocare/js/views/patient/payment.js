@@ -112,27 +112,32 @@ const PatientPaymentView = {
         const payBtn = document.getElementById('pay-now');
         if (!payBtn) return;
 
-        payBtn.addEventListener('click', async () => {
+payBtn.addEventListener('click', async () => {
             const user = User.getCurrentUser();
             const booking = GuestBookingView.state;
 
-            // Create appointment
-            const appointment = {
-                id: 'APT-' + Date.now(),
+            // Read the selected payment method (default to QRIS)
+            const selectedPayment = document.querySelector('input[name="payment"]:checked');
+            const paymentMethod = selectedPayment ? selectedPayment.value : 'qris';
+
+            // Create appointment via the model (which maps fields correctly)
+            await AppointmentModel.create({
                 patientId: user ? user.patientId : 'PC-8842',
                 patientName: user ? user.name : 'James Miller',
                 serviceId: booking.service ? booking.service.id : 'standard-physiotherapy',
                 serviceName: booking.service ? booking.service.name : 'Standard Physiotherapy',
                 therapistId: booking.therapist ? booking.therapist.id : 'therapist-1',
-                therapist: booking.therapist ? booking.therapist.name : 'Dr. Sarah Mitchell',
+                therapistName: booking.therapist ? booking.therapist.name : 'Dr. Sarah Mitchell',
                 date: `Oct ${booking.date || '24'}, 2024`,
                 time: booking.time || '11:45 AM',
+                location: 'Downtown Medical Plaza, Suite 402',
                 price: booking.service ? booking.service.price : 85000,
-                status: 'confirmed',
-                paymentMethod: 'QRIS'
-            };
+                paymentMethod
+            });
 
-            await AppointmentModel.create(appointment);
+            // Reset booking state so a new booking starts clean
+            GuestBookingView.state = { service: null, therapist: null, date: '13', time: '11:45 AM' };
+
             router.navigate('/patient/booking-success');
         });
     }

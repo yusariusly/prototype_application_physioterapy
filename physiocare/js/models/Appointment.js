@@ -31,10 +31,10 @@ class Appointment extends Model {
         return this.collection.filter(a => a.status === 'completed');
     }
 
-    /**
+/**
      * Create a new appointment
      */
-    async create({ patientId, patientName, serviceId, serviceName, therapistId, therapistName, date, time, location, price, currency = 'IDR' }) {
+    async create({ patientId, patientName, serviceId, serviceName, therapistId, therapistName, date, time, location, price, currency = 'IDR', paymentMethod = 'qris' }) {
         const appointment = await this.insert({
             patientId,
             patientName,
@@ -48,6 +48,7 @@ class Appointment extends Model {
             status: 'confirmed',
             price,
             currency,
+            paymentMethod,
             assessment: null
         });
         return appointment;
