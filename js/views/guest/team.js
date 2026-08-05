@@ -22,14 +22,14 @@ const GuestTeamView = {
                 
                 <div class="max-w-container-max mx-auto text-center relative z-10 flex flex-col items-center">
                     <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-secondary/10 border border-secondary/20 text-secondary font-bold text-sm mb-8 backdrop-blur-sm shadow-sm">
-                        <span class="material-symbols-outlined text-[16px]">verified</span>
-                        STR VERIFIED THERAPISTS
+<span class="material-symbols-outlined text-[16px]">verified</span>
+                        ${t('team.badge')}
                     </div>
                     <h1 class="font-headline-lg text-5xl md:text-7xl mb-6 font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-on-surface via-primary to-secondary leading-tight pb-2">
-                        Meet Our Expert Team
+                        ${t('team.title')}
                     </h1>
                     <p class="font-body-lg text-xl text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
-                        Every therapist at PhysioCare is certified with STR and rigorously vetted. We bring together specialists from multiple disciplines to ensure you receive the best care.
+                        ${t('team.sub')}
                     </p>
                 </div>
             </section>
@@ -49,9 +49,9 @@ const GuestTeamView = {
                 <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 mix-blend-overlay pointer-events-none z-0"></div>
                 
                 <div class="max-w-container-max mx-auto relative z-10">
-                    <div class="text-center mb-16">
-                        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Why Patients Trust Our Therapists</h2>
-                        <p class="text-xl text-white/80 max-w-2xl mx-auto">We maintain the highest clinical standards so you can focus purely on your recovery journey.</p>
+<div class="text-center mb-16">
+                        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">${t('team.trustTitle')}</h2>
+                        <p class="text-xl text-white/80 max-w-2xl mx-auto">${t('team.trustSub')}</p>
                     </div>
                     
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -60,8 +60,8 @@ const GuestTeamView = {
                             <div class="w-20 h-20 mx-auto bg-white/20 rounded-2xl flex items-center justify-center mb-8 shadow-inner rotate-3">
                                 <span class="material-symbols-outlined text-5xl text-white">verified</span>
                             </div>
-                            <h3 class="text-2xl font-bold text-white mb-4">100% STR Certified</h3>
-                            <p class="text-white/80 leading-relaxed">All therapists are registered and licensed professionals with active STR credentials.</p>
+                            <h3 class="text-2xl font-bold text-white mb-4">${t('team.feat1Title')}</h3>
+                            <p class="text-white/80 leading-relaxed">${t('team.feat1Desc')}</p>
                         </div>
                         
                         <!-- Feature 2 -->
@@ -69,8 +69,8 @@ const GuestTeamView = {
                             <div class="w-20 h-20 mx-auto bg-white/20 rounded-2xl flex items-center justify-center mb-8 shadow-inner -rotate-3">
                                 <span class="material-symbols-outlined text-5xl text-white">monitoring</span>
                             </div>
-                            <h3 class="text-2xl font-bold text-white mb-4">Data-Driven Approach</h3>
-                            <p class="text-white/80 leading-relaxed">We utilize evidence-based treatment plans and regular metrics to ensure measurable results.</p>
+                            <h3 class="text-2xl font-bold text-white mb-4">${t('team.feat2Title')}</h3>
+                            <p class="text-white/80 leading-relaxed">${t('team.feat2Desc')}</p>
                         </div>
                         
                         <!-- Feature 3 -->
@@ -78,14 +78,14 @@ const GuestTeamView = {
                             <div class="w-20 h-20 mx-auto bg-white/20 rounded-2xl flex items-center justify-center mb-8 shadow-inner rotate-3">
                                 <span class="material-symbols-outlined text-5xl text-white">favorite</span>
                             </div>
-                            <h3 class="text-2xl font-bold text-white mb-4">Compassionate Care</h3>
-                            <p class="text-white/80 leading-relaxed">We combine world-class clinical expertise with genuine empathy and personalized attention.</p>
+                            <h3 class="text-2xl font-bold text-white mb-4">${t('team.feat3Title')}</h3>
+                            <p class="text-white/80 leading-relaxed">${t('team.feat3Desc')}</p>
                         </div>
                     </div>
                     
                     <div class="mt-16 text-center">
                         <a href="#/booking" class="inline-flex items-center justify-center gap-3 bg-white text-primary px-10 py-5 rounded-2xl font-bold text-lg shadow-[0_10px_30px_rgba(0,0,0,0.15)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.25)] hover:scale-105 transition-all group">
-                            Book a Consultation
+                            ${t('team.bookConsultation')}
                             <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
                         </a>
                     </div>

@@ -12,7 +12,7 @@ const Footer = {
                         <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">medical_services</span>
                         <span class="font-headline-md text-headline-md font-bold text-primary">PhysioCare</span>
                     </div>
-                    <p class="text-on-surface-variant font-body-md pr-8">Providing professional physiotherapy and rehabilitation services with a patient-centric approach since 2015.</p>
+<p class="text-on-surface-variant font-body-md pr-8">${t('footer.about')}</p>
                     <div class="flex gap-4">
                         <a class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all" href="#" aria-label="Social">
                             <span class="material-symbols-outlined text-[20px]">public</span>
@@ -23,16 +23,16 @@ const Footer = {
                     </div>
                 </div>
                 <div class="space-y-6">
-                    <div class="font-bold text-on-background uppercase tracking-wider font-label-sm">Quick Links</div>
+                    <div class="font-bold text-on-background uppercase tracking-wider font-label-sm">${t('footer.quickLinks')}</div>
                     <div class="flex flex-col gap-3">
-                        <a class="text-on-surface-variant font-body-md hover:text-secondary underline decoration-2 underline-offset-4 transition-opacity" href="#/services">Services</a>
-                        <a class="text-on-surface-variant font-body-md hover:text-secondary underline decoration-2 underline-offset-4 transition-opacity" href="#/team">Our Team</a>
-                        <a class="text-on-surface-variant font-body-md hover:text-secondary underline decoration-2 underline-offset-4 transition-opacity" href="#/contact">Contact Us</a>
-                        <a class="text-on-surface-variant font-body-md hover:text-secondary underline decoration-2 underline-offset-4 transition-opacity" href="#/booking">Book Appointment</a>
+                        <a class="text-on-surface-variant font-body-md hover:text-secondary underline decoration-2 underline-offset-4 transition-opacity" href="#/services">${t('nav.services')}</a>
+                        <a class="text-on-surface-variant font-body-md hover:text-secondary underline decoration-2 underline-offset-4 transition-opacity" href="#/team">${t('nav.team')}</a>
+                        <a class="text-on-surface-variant font-body-md hover:text-secondary underline decoration-2 underline-offset-4 transition-opacity" href="#/contact">${t('footer.contactUs')}</a>
+                        <a class="text-on-surface-variant font-body-md hover:text-secondary underline decoration-2 underline-offset-4 transition-opacity" href="#/booking">${t('footer.bookAppointment')}</a>
                     </div>
                 </div>
                 <div class="space-y-6">
-                    <div class="font-bold text-on-background uppercase tracking-wider font-label-sm">Our Clinic</div>
+                    <div class="font-bold text-on-background uppercase tracking-wider font-label-sm">${t('footer.ourClinic')}</div>
                     <div class="space-y-4">
                         <div class="flex gap-3">
                             <span class="material-symbols-outlined text-primary">location_on</span>
@@ -43,14 +43,14 @@ const Footer = {
                         <div class="flex gap-3">
                             <span class="material-symbols-outlined text-primary">schedule</span>
                             <div class="text-on-surface-variant font-body-md">
-                                Mon - Sat: 08:00 - 20:00<br>Sunday: By Appointment Only
+                                ${t('footer.monSat')}<br>${t('footer.sunday')}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="max-w-container-max mx-auto px-6 md:px-section-padding-desktop py-8 border-t border-outline-variant/30 text-center text-on-surface-variant font-body-md">
-                © 2024 PhysioCare. All rights reserved. Professional Physiotherapy &amp; Rehabilitation.
+                ${t('footer.rights')}
             </div>
         </footer>`;
     }

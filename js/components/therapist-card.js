@@ -17,19 +17,19 @@ const TherapistCard = {
     },
 
     adminStatusBadge(status) {
-        const map = {
-            'available': `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-success-green/10 text-success-green border border-success-green/20">Available</span>`,
-            'in-session': `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-warning-amber/10 text-warning-amber border border-warning-amber/20">In Session</span>`,
-            'off-duty': `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-outline/10 text-on-surface-variant border border-outline/20">Off Duty</span>`
+const map = {
+            'available': `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-success-green/10 text-success-green border border-success-green/20">${t('therapist.available')}</span>`,
+            'in-session': `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-warning-amber/10 text-warning-amber border border-warning-amber/20">${t('therapist.inSession')}</span>`,
+            'off-duty': `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-outline/10 text-on-surface-variant border border-outline/20">${t('therapist.offDuty')}</span>`
         };
         return map[status] || '';
     },
 
     adminStatusDot(status) {
-        const map = {
-            'available': { color: 'bg-success-green', label: 'Available', icon: 'check', iconColor: 'text-clinical-white' },
-            'in-session': { color: 'bg-secondary', label: 'In Session (24m left)', icon: 'timer', iconColor: 'text-clinical-white' },
-            'off-duty': { color: 'bg-outline', label: 'Off Duty', icon: 'close', iconColor: 'text-clinical-white' }
+const map = {
+            'available': { color: 'bg-success-green', label: t('therapist.available'), icon: 'check', iconColor: 'text-clinical-white' },
+            'in-session': { color: 'bg-secondary', label: t('therapist.inSessionLeft'), icon: 'timer', iconColor: 'text-clinical-white' },
+            'off-duty': { color: 'bg-outline', label: t('therapist.offDuty'), icon: 'close', iconColor: 'text-clinical-white' }
         };
         const s = map[status] || map['off-duty'];
         return `
@@ -72,7 +72,7 @@ const TherapistCard = {
                         <span class="material-symbols-outlined text-[16px] text-primary">psychology</span> 
                         ${therapist.specialization}
                     </div>
-                    <p class="text-on-surface-variant text-sm leading-relaxed">${therapist.experience} years of clinical experience delivering evidence-based therapy protocols.</p>
+<p class="text-on-surface-variant text-sm leading-relaxed">${therapist.experience} ${t('therapist.yearsExperience')}</p>
                 </div>
                 
                 <div class="mt-auto pt-6 border-t border-outline-variant/30 flex items-center justify-between">
@@ -80,7 +80,7 @@ const TherapistCard = {
                         <div class="flex items-center gap-0.5 mb-1">
                             ${ratingStars}
                         </div>
-                        <span class="text-xs font-bold text-on-surface-variant">${therapist.rating} (${therapist.reviews} reviews)</span>
+                        <span class="text-xs font-bold text-on-surface-variant">${therapist.rating} (${therapist.reviews} ${t('therapist.reviews')})</span>
                     </div>
                     <a href="#/booking" class="w-12 h-12 flex items-center justify-center rounded-2xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white hover:scale-105 transition-all duration-300">
                         <span class="material-symbols-outlined">calendar_month</span>
@@ -127,26 +127,26 @@ const TherapistCard = {
                 </button>
             </div>
             <div class="space-y-4 mb-6">
-                <div class="flex items-center justify-between">
-                    <span class="text-label-sm font-label-sm text-on-surface-variant">Current Status</span>
+<div class="flex items-center justify-between">
+                    <span class="text-label-sm font-label-sm text-on-surface-variant">${t('therapist.currentStatus')}</span>
                     ${this.adminStatusDot(therapist.status)}
                 </div>
                 ${isOffDuty ? `
                 <div class="p-4 bg-surface-muted rounded-2xl border border-outline-variant/30 italic">
                     <p class="text-label-sm font-bold text-on-surface-variant uppercase mb-3 flex items-center gap-2">
                         <span class="material-symbols-outlined text-sm">event</span>
-                        Next Availability
+                        ${t('therapist.nextAvailability')}
                     </p>
-                    <p class="text-sm text-on-surface-variant">${therapist.nextAvailability || 'Not available today'}</p>
+                    <p class="text-sm text-on-surface-variant">${therapist.nextAvailability || t('therapist.notAvailableToday')}</p>
                 </div>
                 ` : `
                 <div class="p-4 bg-surface-muted rounded-2xl border border-outline-variant/30">
                     <p class="text-label-sm font-bold text-on-surface-variant uppercase mb-3 flex items-center gap-2">
                         <span class="material-symbols-outlined text-sm">schedule</span>
-                        Upcoming Appointments
+                        ${t('therapist.upcomingAppointments')}
                     </p>
                     <div class="space-y-3">
-                        ${scheduleItems || '<p class="text-sm text-on-surface-variant">No upcoming appointments</p>'}
+                        ${scheduleItems || `<p class="text-sm text-on-surface-variant">${t('therapist.noUpcoming')}</p>`}
                     </div>
                 </div>
                 `}
@@ -154,11 +154,11 @@ const TherapistCard = {
             <div class="mt-auto grid grid-cols-2 gap-3">
                 <button class="bg-surface-muted text-on-surface-variant hover:bg-surface-container-high px-4 py-3 rounded-xl font-button-text text-button-text transition-colors flex items-center justify-center gap-2">
                     <span class="material-symbols-outlined text-lg">calendar_today</span>
-                    Schedule
+                    ${t('therapist.schedule')}
                 </button>
                 <button class="bg-primary text-on-primary hover:opacity-90 px-4 py-3 rounded-xl font-button-text text-button-text transition-all flex items-center justify-center gap-2">
                     <span class="material-symbols-outlined text-lg">edit</span>
-                    Edit Profile
+                    ${t('therapist.editProfile')}
                 </button>
             </div>
         </div>`;

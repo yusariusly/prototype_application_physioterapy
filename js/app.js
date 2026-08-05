@@ -27,11 +27,11 @@ async function MountView(view, params = {}) {
     // Clear previous content
     app.innerHTML = '';
 
-    // Optional loading state
+// Optional loading state
     app.innerHTML = `
         <div class="min-h-[60vh] flex flex-col items-center justify-center bg-background text-on-background">
             <div class="w-12 h-12 border-4 border-primary-fixed border-t-primary rounded-full animate-spin mb-4"></div>
-            <p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Memuat...</p>
+            <p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">${t('app.loading')}</p>
         </div>
     `;
 
@@ -55,11 +55,11 @@ async function MountView(view, params = {}) {
         console.error('Failed to render view:', err);
         app.innerHTML = `
             <div class="min-h-[60vh] flex flex-col items-center justify-center bg-background text-on-background px-6 text-center">
-                <span class="material-symbols-outlined text-[64px] text-error mb-4">error</span>
-                <h1 class="font-headline-md text-headline-md text-on-surface mb-2">Terjadi Kesalahan</h1>
-                <p class="text-on-surface-variant max-w-md mb-6">Maaf, halaman tidak dapat dimuat. Silakan coba lagi.</p>
+<span class="material-symbols-outlined text-[64px] text-error mb-4">error</span>
+                <h1 class="font-headline-md text-headline-md text-on-surface mb-2">${t('app.error')}</h1>
+                <p class="text-on-surface-variant max-w-md mb-6">${t('app.errorDesc')}</p>
                 <a href="#/" class="bg-primary text-on-primary px-8 py-4 rounded-xl font-button-text text-button-text hover:bg-primary-container transition-all shadow-lg">
-                    Kembali ke Beranda
+                    ${t('app.backHome')}
                 </a>
             </div>
         `;
@@ -104,6 +104,9 @@ function registerRoutes() {
 
 // ---------- Bootstrap ----------
 document.addEventListener('DOMContentLoaded', () => {
+    if (typeof I18n !== 'undefined') {
+        I18n.init();
+    }
     registerRoutes();
     router.resolve();
     if (typeof WhatsAppFab !== 'undefined') {

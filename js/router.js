@@ -104,12 +104,12 @@ const pathSegments = normalized.split('/').filter(Boolean);
     handleNotFound(path) {
         const app = document.getElementById('app');
         if (app) {
-            app.innerHTML = `
+app.innerHTML = `
                 <div class="min-h-screen flex flex-col items-center justify-center bg-background text-on-background px-6 text-center">
                     <span class="material-symbols-outlined text-[80px] text-primary mb-6">travel_explore</span>
-                    <h1 class="font-headline-lg text-headline-lg text-primary mb-4">Halaman Tidak Ditemukan</h1>
-                    <p class="text-on-surface-variant max-w-md mb-8">Halaman <span class="font-bold text-primary">${path}</span> tidak tersedia. Silakan kembali ke beranda.</p>
-                    <a href="#/" class="bg-primary text-on-primary px-8 py-4 rounded-xl font-button-text text-button-text hover:bg-primary-container transition-all shadow-lg">Kembali ke Beranda</a>
+                    <h1 class="font-headline-lg text-headline-lg text-primary mb-4">${t('app.pageNotFound')}</h1>
+                    <p class="text-on-surface-variant max-w-md mb-8">${t('app.pageNotFoundDesc', { path })}</p>
+                    <a href="#/" class="bg-primary text-on-primary px-8 py-4 rounded-xl font-button-text text-button-text hover:bg-primary-container transition-all shadow-lg">${t('app.backHome')}</a>
                 </div>
             `;
         }

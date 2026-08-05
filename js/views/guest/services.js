@@ -72,15 +72,15 @@ const GuestServicesView = {
                 </div>
                 
                 <div class="max-w-container-max mx-auto text-center relative z-10 flex flex-col items-center">
-                    <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-primary/5 border border-primary/20 text-primary font-bold text-sm mb-8 backdrop-blur-sm shadow-sm">
+<div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-primary/5 border border-primary/20 text-primary font-bold text-sm mb-8 backdrop-blur-sm shadow-sm">
                         <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-                        OUR SPECIALIZATIONS
+                        ${t('services.badge')}
                     </div>
                     <h1 class="font-headline-lg text-5xl md:text-7xl mb-6 font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-on-surface via-primary to-secondary leading-tight pb-2">
-                        Expert Rehabilitation<br/>Tailored to You
+                        ${t('services.title1')}<br/>${t('services.title2')}
                     </h1>
                     <p class="font-body-lg text-xl text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
-                        From elite athletes to recovery for the elderly, our certified specialists provide evidence-based treatments designed to restore mobility and enhance quality of life.
+                        ${t('services.sub')}
                     </p>
                 </div>
             </section>
@@ -100,17 +100,17 @@ const GuestServicesView = {
                     <!-- Decorative element -->
                     <div class="absolute -top-24 -right-24 w-64 h-64 bg-white/20 rounded-full blur-3xl pointer-events-none"></div>
                     
-                    <div class="max-w-2xl relative z-10">
-                        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">Ready to start your recovery journey?</h2>
-                        <p class="text-xl text-white/80 leading-relaxed">Schedule an initial assessment with one of our STR Verified therapists today and get a personalized treatment plan.</p>
+<div class="max-w-2xl relative z-10">
+                        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">${t('services.ctaTitle')}</h2>
+                        <p class="text-xl text-white/80 leading-relaxed">${t('services.ctaDesc')}</p>
                     </div>
                     <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto relative z-10">
                         <a href="#/booking" class="bg-white text-primary px-10 py-5 rounded-2xl font-bold text-lg shadow-[0_10px_30px_rgba(0,0,0,0.15)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.25)] hover:scale-105 transition-all text-center flex items-center justify-center gap-2 group">
-                            Book Appointment
+                            ${t('services.bookAppointment')}
                             <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
                         </a>
                         <a href="#/contact" class="bg-transparent border-2 border-white/50 text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-white/10 transition-all text-center">
-                            Contact Clinic
+                            ${t('services.contactClinic')}
                         </a>
                     </div>
                 </div>
@@ -118,7 +118,7 @@ const GuestServicesView = {
             <!-- Insurance Partners -->
             <section class="py-12 border-b border-outline-variant bg-clinical-white">
                 <div class="max-w-container-max mx-auto px-6 text-center">
-                    <p class="font-label-sm text-label-sm text-outline mb-8">WE ACCEPT ALL MAJOR INSURANCE PROVIDERS</p>
+<p class="font-label-sm text-label-sm text-outline mb-8">${t('services.insurance')}</p>
                     <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all">
                         <div class="flex items-center gap-2">
                             <span class="material-symbols-outlined text-3xl">verified_user</span>

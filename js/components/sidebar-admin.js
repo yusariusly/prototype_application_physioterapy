@@ -3,13 +3,13 @@
    ============================================ */
 
 const SidebarAdmin = {
-    render(active = '') {
+render(active = '') {
         const items = [
-            { key: 'dashboard', label: 'Dashboard', icon: 'dashboard', href: '#/admin/dashboard' },
-            { key: 'therapists', label: 'Therapists', icon: 'groups', href: '#/admin/therapists' },
-            { key: 'patients', label: 'Patient Records', icon: 'medical_information', href: '#/admin/patients' },
-            { key: 'branches', label: 'Branch Management', icon: 'account_tree', href: '#/admin/branches' },
-            { key: 'settings', label: 'Settings', icon: 'settings', href: '#/admin/dashboard' }
+            { key: 'dashboard', label: t('admin.dashboard'), icon: 'dashboard', href: '#/admin/dashboard' },
+            { key: 'therapists', label: t('admin.therapists'), icon: 'groups', href: '#/admin/therapists' },
+            { key: 'patients', label: t('admin.patientRecords'), icon: 'medical_information', href: '#/admin/patients' },
+            { key: 'branches', label: t('admin.branchManagement'), icon: 'account_tree', href: '#/admin/branches' },
+            { key: 'settings', label: t('admin.settings'), icon: 'settings', href: '#/admin/dashboard' }
         ];
 
         const navItems = items.map(item => {
@@ -30,8 +30,8 @@ const SidebarAdmin = {
                     <span class="material-symbols-outlined" data-icon="medical_services">medical_services</span>
                 </div>
                 <div>
-                    <h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary leading-tight">PhysioAdmin Pro</h1>
-                    <p class="font-label-sm text-label-sm text-on-surface-variant">City Central Branch</p>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary leading-tight">PhysioAdmin Pro</h1>
+                    <p class="font-label-sm text-label-sm text-on-surface-variant">${t('admin.cityCentralBranch')}</p>
                 </div>
             </div>
             <nav class="flex-1 space-y-1">
@@ -40,15 +40,15 @@ const SidebarAdmin = {
             <div class="mt-auto border-t border-outline-variant pt-4 space-y-1">
                 <a href="#/booking" class="w-full mb-4 bg-primary text-clinical-white py-3 rounded-lg font-button-text text-button-text flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
                     <span class="material-symbols-outlined" data-icon="add">add</span>
-                    New Appointment
+                    ${t('admin.newAppointment')}
                 </a>
                 <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-surface-variant font-button-text text-button-text hover:bg-surface-container-high transition-colors" href="#/contact">
                     <span class="material-symbols-outlined" data-icon="help">help</span>
-                    <span>Support</span>
+                    <span>${t('admin.support')}</span>
                 </a>
                 <a id="admin-logout" class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-surface-variant font-button-text text-button-text hover:bg-surface-container-high transition-colors text-emergency-red cursor-pointer" href="#/admin/login">
                     <span class="material-symbols-outlined" data-icon="logout">logout</span>
-                    <span>Logout</span>
+                    <span>${t('admin.logout')}</span>
                 </a>
             </div>
         </aside>`;

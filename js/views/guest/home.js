@@ -35,23 +35,23 @@ const GuestHomeView = {
             </div>
             <div class="relative z-10 max-w-container-max mx-auto px-6 md:px-section-padding-desktop grid grid-cols-1 lg:grid-cols-2 gap-gutter items-center">
                 <div class="space-y-stack-lg">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-primary-fixed text-on-primary-fixed-variant rounded-full font-label-sm text-label-sm uppercase tracking-widest">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-primary-fixed text-on-primary-fixed-variant rounded-full font-label-sm text-label-sm uppercase tracking-widest">
                         <span class="material-symbols-outlined text-[14px]">verified</span>
-                        Professional Rehabilitation
+                        ${t('home.badge')}
                     </div>
                     <h1 class="font-headline-lg text-headline-lg lg:text-[64px] lg:leading-[72px] text-on-background tracking-tight">
-                        Pulih <span class="text-primary italic">Bersama</span> Kami
+                        ${t('home.heroTitle1')} <span class="text-primary italic">${t('home.heroTitle2')}</span> Kami
                     </h1>
                     <p class="font-body-lg text-body-lg text-on-surface-variant max-w-[540px]">
-                        Empowering your journey to recovery through personalized physiotherapy, evidence-based treatments, and compassionate clinical care.
+                        ${t('home.heroSub')}
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 pt-4">
                         <a href="#/booking" class="bg-primary text-on-primary px-8 py-4 rounded-xl font-button-text text-button-text flex items-center justify-center gap-2 hover:bg-primary-container shadow-lg transition-all active:scale-[0.98]">
-                            Book Appointment
+                            ${t('home.bookAppointment')}
                             <span class="material-symbols-outlined">calendar_today</span>
                         </a>
                         <a href="#/services" class="border-2 border-primary text-primary px-8 py-4 rounded-xl font-button-text text-button-text flex items-center justify-center gap-2 hover:bg-primary-fixed/20 transition-all">
-                            View Services
+                            ${t('home.viewServices')}
                         </a>
                     </div>
                     <div class="flex items-center gap-6 pt-8">
@@ -61,7 +61,7 @@ const GuestHomeView = {
                             <div class="w-10 h-10 rounded-full border-2 border-clinical-white bg-slate-200 overflow-hidden"></div>
                         </div>
                         <div class="text-on-surface-variant font-label-sm">
-                            <span class="font-bold text-primary">500+</span> Patients recovered this month
+                            <span class="font-bold text-primary">500+</span> ${t('home.patientsRecovered')}
                         </div>
                     </div>
                 </div>
@@ -74,9 +74,9 @@ const GuestHomeView = {
                                 <div class="p-2 bg-success-green/20 rounded-lg">
                                     <span class="material-symbols-outlined text-success-green" style="font-variation-settings: 'FILL' 1;">check_circle</span>
                                 </div>
-                                <span class="font-bold text-primary">STR Verified</span>
+<span class="font-bold text-primary">${t('home.strVerified')}</span>
                             </div>
-                            <p class="text-[14px] text-on-surface-variant leading-tight">All our therapists are certified and professionally licensed.</p>
+                            <p class="text-[14px] text-on-surface-variant leading-tight">${t('home.certified')}</p>
                         </div>
                     </div>
                 </div>
@@ -85,9 +85,9 @@ const GuestHomeView = {
         <!-- Why Choose Us - Bento Grid -->
         <section class="py-24 bg-clinical-white">
             <div class="max-w-container-max mx-auto px-6 md:px-section-padding-desktop">
-                <div class="text-center mb-16 space-y-4">
-                    <span class="font-label-sm text-secondary uppercase tracking-widest">Core Values</span>
-                    <h2 class="font-headline-lg text-headline-lg text-on-background">Why Choose Us</h2>
+<div class="text-center mb-16 space-y-4">
+                    <span class="font-label-sm text-secondary uppercase tracking-widest">${t('home.coreValues')}</span>
+                    <h2 class="font-headline-lg text-headline-lg text-on-background">${t('home.whyChoose')}</h2>
                     <div class="w-20 h-1.5 bg-secondary mx-auto rounded-full"></div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -95,22 +95,22 @@ const GuestHomeView = {
                         <div class="w-16 h-16 rounded-2xl bg-primary group-hover:bg-primary-container flex items-center justify-center mb-6 transition-colors">
                             <span class="material-symbols-outlined text-on-primary text-[32px]">clinical_notes</span>
                         </div>
-                        <h3 class="font-headline-md text-headline-md mb-4 text-on-background group-hover:text-on-primary">Evidence-Based</h3>
-                        <p class="text-on-surface-variant group-hover:text-primary-fixed font-body-md">Our treatments are strictly guided by the latest clinical research and international health protocols.</p>
+                        <h3 class="font-headline-md text-headline-md mb-4 text-on-background group-hover:text-on-primary">${t('home.evidenceBased')}</h3>
+                        <p class="text-on-surface-variant group-hover:text-primary-fixed font-body-md">${t('home.evidenceBasedDesc')}</p>
                     </div>
                     <div class="group p-8 rounded-3xl bg-surface-muted hover:bg-primary transition-all duration-500 cursor-default">
                         <div class="w-16 h-16 rounded-2xl bg-primary group-hover:bg-primary-container flex items-center justify-center mb-6 transition-colors">
                             <span class="material-symbols-outlined text-on-primary text-[32px]">psychology</span>
                         </div>
-                        <h3 class="font-headline-md text-headline-md mb-4 text-on-background group-hover:text-on-primary">Patient-First</h3>
-                        <p class="text-on-surface-variant group-hover:text-primary-fixed font-body-md">Every patient receives a unique care plan tailored to their lifestyle, age, and specific recovery goals.</p>
+                        <h3 class="font-headline-md text-headline-md mb-4 text-on-background group-hover:text-on-primary">${t('home.patientFirst')}</h3>
+                        <p class="text-on-surface-variant group-hover:text-primary-fixed font-body-md">${t('home.patientFirstDesc')}</p>
                     </div>
                     <div class="group p-8 rounded-3xl bg-surface-muted hover:bg-primary transition-all duration-500 cursor-default">
                         <div class="w-16 h-16 rounded-2xl bg-primary group-hover:bg-primary-container flex items-center justify-center mb-6 transition-colors">
                             <span class="material-symbols-outlined text-on-primary text-[32px]">ecg</span>
                         </div>
-                        <h3 class="font-headline-md text-headline-md mb-4 text-on-background group-hover:text-on-primary">Advanced Tech</h3>
-                        <p class="text-on-surface-variant group-hover:text-primary-fixed font-body-md">We utilize state-of-the-art diagnostic and therapeutic equipment for faster and safer recovery.</p>
+                        <h3 class="font-headline-md text-headline-md mb-4 text-on-background group-hover:text-on-primary">${t('home.advancedTech')}</h3>
+                        <p class="text-on-surface-variant group-hover:text-primary-fixed font-body-md">${t('home.advancedTechDesc')}</p>
                     </div>
                 </div>
             </div>
@@ -119,12 +119,12 @@ const GuestHomeView = {
         <section class="py-24 bg-surface-bright relative">
             <div class="max-w-container-max mx-auto px-6 md:px-section-padding-desktop">
                 <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
-                    <div class="space-y-4">
-                        <span class="font-label-sm text-secondary uppercase tracking-widest">Clinical Excellence</span>
-                        <h2 class="font-headline-lg text-headline-lg text-on-background">Our Specialized Expertise</h2>
+<div class="space-y-4">
+                        <span class="font-label-sm text-secondary uppercase tracking-widest">${t('home.clinicalExcellence')}</span>
+                        <h2 class="font-headline-lg text-headline-lg text-on-background">${t('home.specializedExpertise')}</h2>
                     </div>
                     <a class="text-primary font-bold flex items-center gap-2 group" href="#/services">
-                        Explore All Services
+                        ${t('home.exploreAllServices')}
                         <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
                     </a>
                 </div>
@@ -137,31 +137,31 @@ const GuestHomeView = {
         <section class="py-24 bg-clinical-white overflow-hidden">
             <div class="max-w-container-max mx-auto px-6 md:px-section-padding-desktop">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                    <div class="space-y-stack-lg">
-                        <span class="font-label-sm text-secondary uppercase tracking-widest">Patient Voices</span>
-                        <h2 class="font-headline-lg text-headline-lg text-on-background">Restoring Quality of Life</h2>
+<div class="space-y-stack-lg">
+                        <span class="font-label-sm text-secondary uppercase tracking-widest">${t('home.patientVoices')}</span>
+                        <h2 class="font-headline-lg text-headline-lg text-on-background">${t('home.restoringQuality')}</h2>
                         <div class="space-y-8">
                             <div class="flex gap-4 p-6 bg-surface-muted rounded-2xl relative">
                                 <span class="material-symbols-outlined absolute -top-4 -left-4 text-[48px] text-primary opacity-20">format_quote</span>
                                 <div class="flex-1">
-                                    <p class="font-body-md text-on-surface-variant italic mb-4">"After my sports injury, I thought I'd never run again. The team at PhysioCare designed a program that was challenging yet safe. Today, I'm back on the track."</p>
+                                    <p class="font-body-md text-on-surface-variant italic mb-4">${t('home.testimonial1')}</p>
                                     <div class="flex items-center gap-3">
                                         <div class="w-12 h-12 rounded-full bg-slate-300"></div>
                                         <div>
                                             <div class="font-bold text-on-background">David Kurniawan</div>
-                                            <div class="font-label-sm text-secondary">Marathon Runner</div>
+                                            <div class="font-label-sm text-secondary">${t('home.marathonRunner')}</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="flex gap-4 p-6 bg-primary-fixed/20 rounded-2xl relative">
                                 <div class="flex-1">
-                                    <p class="font-body-md text-on-surface-variant italic mb-4">"PhysioCare helped my father recover his mobility after his stroke. The patience and expertise shown by the therapists were truly exceptional."</p>
+                                    <p class="font-body-md text-on-surface-variant italic mb-4">${t('home.testimonial2')}</p>
                                     <div class="flex items-center gap-3">
                                         <div class="w-12 h-12 rounded-full bg-slate-300"></div>
                                         <div>
                                             <div class="font-bold text-on-background">Siti Aminah</div>
-                                            <div class="font-label-sm text-secondary">Family Caregiver</div>
+                                            <div class="font-label-sm text-secondary">${t('home.familyCaregiver')}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -169,28 +169,28 @@ const GuestHomeView = {
                         </div>
                     </div>
                     <div class="bg-surface-muted p-12 rounded-[40px] flex flex-col items-center justify-center text-center space-y-stack-lg">
-                        <div class="font-label-sm text-primary uppercase tracking-tighter">Recognized By</div>
+                        <div class="font-label-sm text-primary uppercase tracking-tighter">${t('home.recognizedBy')}</div>
                         <div class="grid grid-cols-2 gap-8 w-full opacity-60">
                             <div class="flex flex-col items-center gap-2">
                                 <span class="material-symbols-outlined text-[40px] text-primary">health_and_safety</span>
-                                <span class="font-bold text-on-surface">MOH Certified</span>
+                                <span class="font-bold text-on-surface">${t('home.mohCertified')}</span>
                             </div>
                             <div class="flex flex-col items-center gap-2">
                                 <span class="material-symbols-outlined text-[40px] text-primary">workspace_premium</span>
-                                <span class="font-bold text-on-surface">ISO 9001:2015</span>
+                                <span class="font-bold text-on-surface">${t('home.iso')}</span>
                             </div>
                             <div class="flex flex-col items-center gap-2">
                                 <span class="material-symbols-outlined text-[40px] text-primary">award_star</span>
-                                <span class="font-bold text-on-surface">Top Physio 2023</span>
+                                <span class="font-bold text-on-surface">${t('home.topPhysio')}</span>
                             </div>
                             <div class="flex flex-col items-center gap-2">
                                 <span class="material-symbols-outlined text-[40px] text-primary">verified_user</span>
-                                <span class="font-bold text-on-surface">KARS Accredited</span>
+                                <span class="font-bold text-on-surface">${t('home.kars')}</span>
                             </div>
                         </div>
                         <div class="pt-8 border-t border-outline-variant w-full">
                             <div class="font-headline-lg text-primary text-glow">98%</div>
-                            <div class="font-label-sm text-on-surface-variant">Patient Satisfaction Rate</div>
+                            <div class="font-label-sm text-on-surface-variant">${t('home.satisfactionRate')}</div>
                         </div>
                     </div>
                 </div>
@@ -199,14 +199,14 @@ const GuestHomeView = {
         <!-- CTA Section -->
         <section class="py-24 bg-primary text-on-primary">
             <div class="max-w-container-max mx-auto px-6 md:px-section-padding-desktop text-center">
-                <h2 class="font-headline-lg text-headline-lg mb-8 max-w-3xl mx-auto">Ready to start your journey back to full health?</h2>
-                <p class="font-body-lg text-primary-fixed mb-12 max-w-2xl mx-auto">Book your initial assessment today and receive a personalized recovery roadmap from our specialists.</p>
+                <h2 class="font-headline-lg text-headline-lg mb-8 max-w-3xl mx-auto">${t('home.ctaTitle')}</h2>
+                <p class="font-body-lg text-primary-fixed mb-12 max-w-2xl mx-auto">${t('home.ctaDesc')}</p>
                 <div class="flex flex-col sm:flex-row justify-center gap-6">
                     <a href="#/booking" class="bg-secondary-container text-on-secondary-container px-10 py-5 rounded-2xl font-button-text text-button-text hover:scale-105 transition-transform shadow-xl">
-                        Schedule Assessment
+                        ${t('home.scheduleAssessment')}
                     </a>
                     <a href="#/contact" class="bg-primary-container text-on-primary-container border border-primary-fixed/30 px-10 py-5 rounded-2xl font-button-text text-button-text hover:bg-on-primary-fixed-variant transition-colors">
-                        Contact Specialist
+                        ${t('home.contactSpecialist')}
                     </a>
                 </div>
             </div>
