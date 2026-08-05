@@ -19,18 +19,18 @@ return `
                         </div>
                         <span class="font-headline-md text-headline-md font-bold tracking-tight text-white">PhysioCare</span>
                     </div>
-                    <h1 class="font-headline-lg text-headline-lg mb-4 leading-tight">Your Journey to Recovery Starts Here.</h1>
-                    <p class="font-body-lg text-body-lg text-primary-fixed opacity-90">Access your personalized physical therapy plans, track your progress, and connect with world-class therapists in a single, secure environment.</p>
+                    <h1 class="font-headline-lg text-headline-lg mb-4 leading-tight">${t('login.title')}</h1>
+                    <p class="font-body-lg text-body-lg text-primary-fixed opacity-90">${t('login.sub')}</p>
                 </div>
                 <div class="bg-clinical-white/10 backdrop-blur-md rounded-xl p-stack-md border border-white/20 animate-subtle-float">
                     <div class="flex items-center gap-4 mb-3">
                         <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-fixed-dim bg-clinical-white/20"></div>
                         <div>
                             <p class="font-button-text text-button-text text-white">Dr. Marcus Chen</p>
-                            <p class="font-label-sm text-label-sm text-primary-fixed">Lead Physiotherapist</p>
+                            <p class="font-label-sm text-label-sm text-primary-fixed">${t('login.leadPhysio')}</p>
                         </div>
                     </div>
-                    <p class="italic font-body-md text-body-md text-primary-fixed">"We focus on your movement so you can focus on your life. Recovery is a marathon, and we're here for every step."</p>
+                    <p class="italic font-body-md text-body-md text-primary-fixed">${t('login.quote')}</p>
                 </div>
             </div>
             <div class="absolute bottom-0 right-0 w-64 h-64 bg-secondary-container/20 blur-[120px] rounded-full translate-x-1/2 translate-y-1/2"></div>
@@ -44,8 +44,8 @@ return `
                     <span class="font-headline-md text-headline-md font-bold text-primary">PhysioCare</span>
                 </div>
                 <div class="mb-10">
-                    <h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-md md:text-headline-md text-on-surface mb-2">Welcome Back</h2>
-                    <p class="font-body-md text-body-md text-on-surface-variant">Log in to manage your appointments and exercises.</p>
+                    <h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-md md:text-headline-md text-on-surface mb-2">${t('login.welcomeBack')}</h2>
+                    <p class="font-body-md text-body-md text-on-surface-variant">${t('login.welcomeSub')}</p>
                 </div>
                 <div id="login-error" class="hidden mb-6 p-4 bg-error-container border border-error/30 rounded-lg text-error flex items-center gap-2">
                     <span class="material-symbols-outlined">error</span>
@@ -53,7 +53,7 @@ return `
                 </div>
                 <form id="login-form" class="space-y-6">
                     <div class="space-y-2">
-                        <label class="block font-button-text text-button-text text-on-surface-variant" for="email">Email Address</label>
+                        <label class="block font-button-text text-button-text text-on-surface-variant" for="email">${t('login.email')}</label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <span class="material-symbols-outlined text-outline text-xl">mail</span>
@@ -63,8 +63,8 @@ return `
                     </div>
                     <div class="space-y-2">
                         <div class="flex justify-between items-center">
-                            <label class="block font-button-text text-button-text text-on-surface-variant" for="password">Password</label>
-                            <a class="font-label-sm text-label-sm text-primary hover:text-secondary transition-colors" href="#/forgot-password">Forgot Password?</a>
+                            <label class="block font-button-text text-button-text text-on-surface-variant" for="password">${t('login.password')}</label>
+                            <a class="font-label-sm text-label-sm text-primary hover:text-secondary transition-colors" href="#/forgot-password">${t('login.forgot')}</a>
                         </div>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -78,10 +78,10 @@ return `
                     </div>
                     <div class="flex items-center">
                         <input class="h-4 w-4 text-primary border-outline-variant rounded focus:ring-primary" id="remember-me" name="remember-me" type="checkbox">
-                        <label class="ml-2 block font-body-md text-body-md text-on-surface-variant" for="remember-me">Remember me for 30 days</label>
+                        <label class="ml-2 block font-body-md text-body-md text-on-surface-variant" for="remember-me">${t('login.remember')}</label>
                     </div>
                     <button class="w-full bg-primary hover:bg-on-primary-fixed-variant text-white font-button-text text-button-text py-4 px-6 rounded-lg shadow-md hover:shadow-lg transform active:scale-[0.98] transition-all flex items-center justify-center gap-2 group" type="submit">
-                        Sign In to Portal
+                        ${t('login.signIn')}
                         <span class="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">arrow_forward</span>
                     </button>
                 </form>
@@ -90,7 +90,7 @@ return `
                         <div class="w-full border-t border-outline-variant"></div>
                     </div>
                     <div class="relative flex justify-center text-label-sm font-label-sm uppercase">
-                        <span class="px-4 bg-clinical-white text-on-surface-variant">Or continue with</span>
+                        <span class="px-4 bg-clinical-white text-on-surface-variant">${t('login.orContinue')}</span>
                     </div>
                 </div>
                 <div class="mt-8 grid grid-cols-2 gap-4">
@@ -111,23 +111,23 @@ return `
                     </button>
                 </div>
                 <p class="mt-10 text-center font-body-md text-body-md text-on-surface-variant">
-                    New to PhysioCare?
-                    <a class="text-primary font-button-text hover:underline decoration-2 underline-offset-4" href="#/register">Create an account</a>
+                    ${t('login.newTo')}
+                    <a class="text-primary font-button-text hover:underline decoration-2 underline-offset-4" href="#/register">${t('login.createAccount')}</a>
                 </p>
                 <div class="flex flex-col items-center gap-4 border-t border-surface-muted mt-12 pt-10">
                     <div class="flex items-center gap-6">
                         <div class="flex items-center gap-1 text-on-surface-variant">
                             <span class="material-symbols-outlined text-sm">lock</span>
-                            <span class="font-label-sm text-label-sm">HIPAA Compliant</span>
+                            <span class="font-label-sm text-label-sm">${t('login.hipaa')}</span>
                         </div>
                         <div class="flex items-center gap-1 text-on-surface-variant">
                             <span class="material-symbols-outlined text-sm">verified_user</span>
-                            <span class="font-label-sm text-label-sm">Secure Data</span>
+                            <span class="font-label-sm text-label-sm">${t('login.secureData')}</span>
                         </div>
                     </div>
                     <div class="flex gap-4">
-                        <a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors" href="#">Privacy Policy</a>
-                        <a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors" href="#">Terms of Service</a>
+                        <a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors" href="#">${t('login.privacy')}</a>
+                        <a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors" href="#">${t('login.terms')}</a>
                     </div>
                 </div>
             </div>
@@ -175,7 +175,7 @@ return `
                 }
             } else {
                 errorBox.classList.remove('hidden');
-                errorMsg.textContent = 'Email atau password salah. Silakan coba lagi.';
+                errorMsg.textContent = t('login.error');
                 setTimeout(() => errorBox.classList.add('hidden'), 4000);
             }
         });

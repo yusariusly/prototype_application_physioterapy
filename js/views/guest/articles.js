@@ -7,13 +7,13 @@ const GuestArticlesView = {
      * Render the education articles page
      */
     async render() {
-const articles = [
-            { titleT: 'articles.a1Title', categoryT: 'articles.catEducation', date: "Oct 2024", mins: "8 min", excerptT: 'articles.a1Excerpt', icon: "spine" },
-            { titleT: 'articles.a2Title', categoryT: 'articles.catRehab', date: "Sep 2024", mins: "10 min", excerptT: 'articles.a2Excerpt', icon: "neurology" },
-            { titleT: 'articles.a3Title', categoryT: 'articles.catSports', date: "Sep 2024", mins: "6 min", excerptT: 'articles.a3Excerpt', icon: "sports_gymnastics" },
-            { titleT: 'articles.a4Title', categoryT: 'articles.catGeriatric', date: "Aug 2024", mins: "7 min", excerptT: 'articles.a4Excerpt', icon: "elderly" },
-            { titleT: 'articles.a5Title', categoryT: 'articles.catHealth', date: "Aug 2024", mins: "5 min", excerptT: 'articles.a5Excerpt', icon: "work" },
-            { titleT: 'articles.a6Title', categoryT: 'articles.catSports', date: "Jul 2024", mins: "12 min", excerptT: 'articles.a6Excerpt', icon: "fitness_center" }
+        const articles = [
+            { titleT: 'articles.a1Title', categoryT: 'articles.catEducation', monthIndex: 9, year: 2024, mins: "8 min", excerptT: 'articles.a1Excerpt', icon: "spine" },
+            { titleT: 'articles.a2Title', categoryT: 'articles.catRehab', monthIndex: 8, year: 2024, mins: "10 min", excerptT: 'articles.a2Excerpt', icon: "neurology" },
+            { titleT: 'articles.a3Title', categoryT: 'articles.catSports', monthIndex: 8, year: 2024, mins: "6 min", excerptT: 'articles.a3Excerpt', icon: "sports_gymnastics" },
+            { titleT: 'articles.a4Title', categoryT: 'articles.catGeriatric', monthIndex: 7, year: 2024, mins: "7 min", excerptT: 'articles.a4Excerpt', icon: "elderly" },
+            { titleT: 'articles.a5Title', categoryT: 'articles.catHealth', monthIndex: 7, year: 2024, mins: "5 min", excerptT: 'articles.a5Excerpt', icon: "work" },
+            { titleT: 'articles.a6Title', categoryT: 'articles.catSports', monthIndex: 6, year: 2024, mins: "12 min", excerptT: 'articles.a6Excerpt', icon: "fitness_center" }
         ];
 
         const cards = articles.map(a => `
@@ -25,7 +25,7 @@ const articles = [
                 <div class="p-6">
                     <div class="flex items-center gap-3 mb-3">
                         <span class="bg-secondary/10 text-secondary text-[11px] font-bold px-2 py-0.5 rounded-full">${t(a.categoryT)}</span>
-                        <span class="text-xs text-on-surface-variant">${a.date}</span>
+                        <span class="text-xs text-on-surface-variant">${I18n.formatMonthYear(a.monthIndex, a.year)}</span>
                         <span class="text-xs text-on-surface-variant flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span>${a.mins}</span>
                     </div>
                     <h3 class="font-headline-md text-headline-md mb-2 group-hover:text-primary transition-colors">${t(a.titleT)}</h3>

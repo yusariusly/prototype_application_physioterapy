@@ -40,7 +40,7 @@ const GuestHomeView = {
                         ${t('home.badge')}
                     </div>
                     <h1 class="font-headline-lg text-headline-lg lg:text-[64px] lg:leading-[72px] text-on-background tracking-tight">
-                        ${t('home.heroTitle1')} <span class="text-primary italic">${t('home.heroTitle2')}</span> Kami
+                        ${t('home.heroTitle')}
                     </h1>
                     <p class="font-body-lg text-body-lg text-on-surface-variant max-w-[540px]">
                         ${t('home.heroSub')}

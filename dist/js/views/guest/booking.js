@@ -34,19 +34,19 @@ const GuestBookingView = {
             </label>
         `).join('');
 
-        const therapistCards = therapists.map(t => `
+const therapistCards = therapists.map(th => `
             <label class="flex items-center gap-4 p-4 rounded-lg border border-outline-variant hover:bg-surface-muted cursor-pointer transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary-fixed/5">
-                <input class="peer sr-only" name="therapist" type="radio" value="${t.id}">
-                <img class="w-16 h-16 rounded-full object-cover border-2 border-clinical-white shadow-sm" data-alt="${t.name}" src="${t.image}" alt="${t.name}">
+                <input class="peer sr-only" name="therapist" type="radio" value="${th.id}">
+                <img class="w-16 h-16 rounded-full object-cover border-2 border-clinical-white shadow-sm" data-alt="${th.name}" src="${th.image}" alt="${th.name}">
                 <div class="flex-grow">
                     <div class="flex items-center gap-2">
-                        <h4 class="font-bold">${t.name}</h4>
-                        ${t.strVerified ? `<span class="bg-primary-fixed text-on-primary-fixed-variant text-[10px] px-2 py-0.5 rounded-full font-label-sm uppercase">STR Verified</span>` : ''}
+                        <h4 class="font-bold">${th.name}</h4>
+                        ${th.strVerified ? `<span class="bg-primary-fixed text-on-primary-fixed-variant text-[10px] px-2 py-0.5 rounded-full font-label-sm uppercase">${t('booking.strVerified')}</span>` : ''}
                     </div>
-                    <p class="text-sm text-on-surface-variant">${t.specialization} • ${t.experience} years exp.</p>
+                    <p class="text-sm text-on-surface-variant">${th.specialization} • ${t('booking.yearsExp', {years: th.experience})}</p>
                     <div class="flex items-center gap-1 text-warning-amber">
                         <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
-                        <span class="text-xs font-bold">${t.rating} (${t.reviews} reviews)</span>
+                        <span class="text-xs font-bold">${th.rating} (${th.reviews} ${t('booking.reviews')})</span>
                     </div>
                 </div>
                 <span class="material-symbols-outlined text-primary opacity-0 peer-checked:opacity-100">check_circle</span>
@@ -61,21 +61,21 @@ const GuestBookingView = {
                 <div class="flex items-center justify-between max-w-3xl mx-auto mb-4">
                     <div class="flex flex-col items-center gap-2">
                         <div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold">1</div>
-                        <span class="font-label-sm text-label-sm text-primary">Selection</span>
+                        <span class="font-label-sm text-label-sm text-primary">${t('booking.selection')}</span>
                     </div>
                     <div class="flex-grow h-[2px] bg-outline-variant mx-4 -mt-6"></div>
                     <div class="flex flex-col items-center gap-2 opacity-50">
                         <div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-bold">2</div>
-                        <span class="font-label-sm text-label-sm text-outline">Details</span>
+                        <span class="font-label-sm text-label-sm text-outline">${t('booking.details')}</span>
                     </div>
                     <div class="flex-grow h-[2px] bg-outline-variant mx-4 -mt-6"></div>
                     <div class="flex flex-col items-center gap-2 opacity-50">
                         <div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-bold">3</div>
-                        <span class="font-label-sm text-label-sm text-outline">Payment</span>
+                        <span class="font-label-sm text-label-sm text-outline">${t('booking.payment')}</span>
                     </div>
                 </div>
-                <h1 class="text-center font-headline-lg text-headline-lg mb-2">Book Your Appointment</h1>
-                <p class="text-center text-on-surface-variant font-body-lg text-body-lg">Select your treatment and therapist to begin your recovery journey.</p>
+                <h1 class="text-center font-headline-lg text-headline-lg mb-2">${t('booking.title')}</h1>
+                <p class="text-center text-on-surface-variant font-body-lg text-body-lg">${t('booking.sub')}</p>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
                 <!-- Left Column: Selection Flow -->
@@ -84,7 +84,7 @@ const GuestBookingView = {
                     <section class="bg-clinical-white p-8 rounded-xl shadow-sm">
                         <h2 class="font-headline-md text-headline-md mb-6 flex items-center gap-2">
                             <span class="material-symbols-outlined text-primary">medical_services</span>
-                            1. Select Service Type
+                            ${t('booking.selectService')}
                         </h2>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             ${serviceCards}
@@ -94,30 +94,30 @@ const GuestBookingView = {
                         <div class="mt-6 pt-6 border-t border-outline-variant">
                             <h3 class="font-bold text-on-surface mb-3 flex items-center gap-2">
                                 <span class="material-symbols-outlined text-primary">location_on</span>
-                                Location Preferences
+                                ${t('booking.locationPrefs')}
                             </h3>
                             <div class="flex gap-4">
                                 <label class="flex-1 cursor-pointer">
                                     <input type="radio" name="locationType" value="in-clinic" class="peer sr-only" checked>
                                     <div class="p-4 rounded-lg border border-outline-variant peer-checked:border-primary peer-checked:bg-primary-fixed/10 hover:bg-surface-muted transition-all text-center">
                                         <span class="material-symbols-outlined block mb-1">domain</span>
-                                        <span class="font-bold block">In-Clinic</span>
-                                        <span class="text-xs text-on-surface-variant">Standard Rate</span>
+                                        <span class="font-bold block">${t('booking.inClinic')}</span>
+                                        <span class="text-xs text-on-surface-variant">${t('booking.standardRate')}</span>
                                     </div>
                                 </label>
                                 <label class="flex-1 cursor-pointer">
                                     <input type="radio" name="locationType" value="home-visit" class="peer sr-only">
                                     <div class="p-4 rounded-lg border border-outline-variant peer-checked:border-primary peer-checked:bg-primary-fixed/10 hover:bg-surface-muted transition-all text-center">
                                         <span class="material-symbols-outlined block mb-1">home</span>
-                                        <span class="font-bold block">Home Visit</span>
-                                        <span class="text-xs text-on-surface-variant">+ Rp 50.000 (Transport)</span>
+                                        <span class="font-bold block">${t('booking.homeVisit')}</span>
+                                        <span class="text-xs text-on-surface-variant">${t('booking.transport')}</span>
                                     </div>
                                 </label>
                             </div>
                             <!-- Address Field for Home Visit (Hidden by default) -->
                             <div id="home-address-container" class="mt-4 hidden animate-fade-in">
-                                <label class="block font-label-sm text-label-sm mb-1 text-on-surface">Full Address (for Home Visit) <span class="text-error">*</span></label>
-                                <textarea id="home-address" class="w-full p-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary outline-none resize-none h-20" placeholder="Street name, building, apartment number..."></textarea>
+                                <label class="block font-label-sm text-label-sm mb-1 text-on-surface">${t('booking.fullAddress')} <span class="text-error">*</span></label>
+                                <textarea id="home-address" class="w-full p-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary outline-none resize-none h-20" placeholder="${t('booking.addressPlaceholder')}"></textarea>
                             </div>
                         </div>
                     </section>
@@ -125,7 +125,7 @@ const GuestBookingView = {
                     <section class="bg-clinical-white p-8 rounded-xl shadow-sm">
                         <h2 class="font-headline-md text-headline-md mb-6 flex items-center gap-2">
                             <span class="material-symbols-outlined text-primary">group</span>
-                            2. Choose a Professional
+                            ${t('booking.chooseProfessional')}
                         </h2>
                         <div class="flex flex-col gap-4">
                             ${therapistCards}
@@ -135,47 +135,47 @@ const GuestBookingView = {
                     <section class="bg-clinical-white p-8 rounded-xl shadow-sm">
                         <h2 class="font-headline-md text-headline-md mb-6 flex items-center gap-2">
                             <span class="material-symbols-outlined text-primary">assignment</span>
-                            3. Initial Assessment
+                            ${t('booking.initialAssessment')}
                         </h2>
                         <div class="space-y-6">
                             <div>
-                                <label class="block font-body-md font-bold mb-2 text-on-surface">Primary Pain Location</label>
+                                <label class="block font-body-md font-bold mb-2 text-on-surface">${t('booking.painLocation')}</label>
                                 <select id="pain-location" class="w-full p-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary focus:border-primary outline-none bg-clinical-white">
-                                    <option>Neck &amp; Upper Back</option>
-                                    <option>Lower Back</option>
-                                    <option>Shoulder (Left/Right)</option>
-                                    <option>Knee (Left/Right)</option>
-                                    <option>Ankle/Foot</option>
-                                    <option>Other</option>
+                                    <option>${t('booking.optionNeck')}</option>
+                                    <option>${t('booking.optionLowerBack')}</option>
+                                    <option>${t('booking.optionShoulder')}</option>
+                                    <option>${t('booking.optionKnee')}</option>
+                                    <option>${t('booking.optionAnkle')}</option>
+                                    <option>${t('booking.optionOther')}</option>
                                 </select>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
                                 <div>
-                                    <label class="block font-body-md font-bold mb-2 text-on-surface">Pain Duration</label>
+                                    <label class="block font-body-md font-bold mb-2 text-on-surface">${t('booking.painDuration')}</label>
                                     <div class="flex gap-2">
                                         <label class="flex-1">
                                             <input checked="" class="sr-only peer" name="duration" type="radio">
-                                            <div class="text-center py-2 border border-outline-variant rounded-lg peer-checked:bg-primary peer-checked:text-white cursor-pointer hover:bg-surface-muted transition-colors">Acute (< 1wk)</div>
+                                            <div class="text-center py-2 border border-outline-variant rounded-lg peer-checked:bg-primary peer-checked:text-white cursor-pointer hover:bg-surface-muted transition-colors">${t('booking.acute')}</div>
                                         </label>
                                         <label class="flex-1">
                                             <input class="sr-only peer" name="duration" type="radio">
-                                            <div class="text-center py-2 border border-outline-variant rounded-lg peer-checked:bg-primary peer-checked:text-white cursor-pointer hover:bg-surface-muted transition-colors">Chronic</div>
+                                            <div class="text-center py-2 border border-outline-variant rounded-lg peer-checked:bg-primary peer-checked:text-white cursor-pointer hover:bg-surface-muted transition-colors">${t('booking.chronic')}</div>
                                         </label>
                                     </div>
                                 </div>
                                 <div>
-                                    <label class="block font-body-md font-bold mb-2 text-on-surface">Pain Scale (1-10)</label>
+                                    <label class="block font-body-md font-bold mb-2 text-on-surface">${t('booking.painScale')}</label>
                                     <input class="w-full h-2 bg-surface-muted rounded-lg appearance-none cursor-pointer accent-primary" max="10" min="1" type="range" value="5">
                                     <div class="flex justify-between text-xs text-outline mt-1 font-label-sm">
-                                        <span>Mild</span>
-                                        <span>Moderate</span>
-                                        <span>Severe</span>
+                                        <span>${t('booking.mildpain')}</span>
+                                        <span>${t('booking.moderate')}</span>
+                                        <span>${t('booking.severe')}</span>
                                     </div>
                                 </div>
                             </div>
                             <div>
-                                <label class="block font-body-md font-bold mb-2 text-on-surface">Short Description of Injury/Pain</label>
-                                <textarea id="pain-description" class="w-full p-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary outline-none h-24 resize-none" placeholder="e.g., Sharp pain when reaching overhead for the last 3 days..."></textarea>
+                                <label class="block font-body-md font-bold mb-2 text-on-surface">${t('booking.injuryDesc')}</label>
+                                <textarea id="pain-description" class="w-full p-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary outline-none h-24 resize-none" placeholder="${t('booking.injuryPlaceholder')}"></textarea>
                             </div>
                         </div>
                     </section>
@@ -186,31 +186,31 @@ const GuestBookingView = {
                     <section class="bg-clinical-white p-6 rounded-xl shadow-sm">
                         <h2 class="font-headline-md text-headline-md mb-4 flex items-center gap-2">
                             <span class="material-symbols-outlined text-primary">calendar_month</span>
-                            4. Date &amp; Time
+                            ${t('booking.dateTime')}
                         </h2>
                         <div class="mb-6">
-                            <label class="block font-label-sm text-xs text-outline mb-2 uppercase">Select Date</label>
+                            <label class="block font-label-sm text-xs text-outline mb-2 uppercase">${t('booking.selectDate')}</label>
                             <div class="grid grid-cols-4 gap-2">
-                                <button class="flex flex-col items-center py-2 border border-outline-variant rounded-lg hover:border-primary transition-all date-btn">
-                                    <span class="text-[10px] text-outline font-label-sm">MON</span>
+<button class="flex flex-col items-center py-2 border border-outline-variant rounded-lg hover:border-primary transition-all date-btn">
+                                    <span class="text-[10px] text-outline font-label-sm">${t('booking.dayMon')}</span>
                                     <span class="font-bold">12</span>
                                 </button>
                                 <button class="flex flex-col items-center py-2 border-2 border-primary bg-primary-fixed/20 rounded-lg date-btn active">
-                                    <span class="text-[10px] text-primary font-bold font-label-sm">TUE</span>
+                                    <span class="text-[10px] text-primary font-bold font-label-sm">${t('booking.dayTue')}</span>
                                     <span class="font-bold">13</span>
                                 </button>
                                 <button class="flex flex-col items-center py-2 border border-outline-variant rounded-lg hover:border-primary transition-all date-btn">
-                                    <span class="text-[10px] text-outline font-label-sm">WED</span>
+                                    <span class="text-[10px] text-outline font-label-sm">${t('booking.dayWed')}</span>
                                     <span class="font-bold">14</span>
                                 </button>
                                 <button class="flex flex-col items-center py-2 border border-outline-variant rounded-lg hover:border-primary transition-all date-btn">
-                                    <span class="text-[10px] text-outline font-label-sm">THU</span>
+                                    <span class="text-[10px] text-outline font-label-sm">${t('booking.dayThu')}</span>
                                     <span class="font-bold">15</span>
                                 </button>
                             </div>
                         </div>
                         <div class="mb-6">
-                            <label class="block font-label-sm text-xs text-outline mb-2 uppercase">Available Slots</label>
+                            <label class="block font-label-sm text-xs text-outline mb-2 uppercase">${t('booking.availableSlots')}</label>
                             <div class="grid grid-cols-2 gap-2">
                                 <button class="py-2 text-sm border border-outline-variant rounded hover:bg-primary hover:text-white transition-colors time-slot">09:00 AM</button>
                                 <button class="py-2 text-sm border border-outline-variant rounded hover:bg-primary hover:text-white transition-colors time-slot">10:30 AM</button>
@@ -223,26 +223,26 @@ const GuestBookingView = {
                     </section>
                     <!-- Booking Summary Card -->
                     <div class="bg-primary p-6 rounded-xl text-on-primary shadow-xl">
-                        <h3 class="font-headline-md text-headline-md mb-4">Summary</h3>
+                        <h3 class="font-headline-md text-headline-md mb-4">${t('booking.summary')}</h3>
                         <div class="space-y-3 mb-6 pb-6 border-b border-primary-container text-sm">
                             <div class="flex justify-between">
-                                <span class="opacity-80">Treatment</span>
-                                <span class="font-bold" id="summary-service">Standard Physio</span>
+                                <span class="opacity-80">${t('booking.treatment')}</span>
+                                <span class="font-bold" id="summary-service">${t('booking.stdPhysio')}</span>
                             </div>
                             <div class="flex justify-between">
-                                <span class="opacity-80">Therapist</span>
+                                <span class="opacity-80">${t('booking.therapist')}</span>
                                 <span class="font-bold" id="summary-therapist">Dr. Sarah Jenkins</span>
                             </div>
                             <div class="flex justify-between">
-                                <span class="opacity-80">Schedule</span>
-                                <span class="font-bold" id="summary-schedule">Oct 13, 11:45 AM</span>
+                                <span class="opacity-80">${t('booking.schedule')}</span>
+                                <span class="font-bold" id="summary-schedule">${I18n.formatAppointmentSchedule(this.state.date, this.state.time)}</span>
                             </div>
                             <div class="flex justify-between">
-                                <span class="opacity-80">Location</span>
-                                <span class="font-bold" id="summary-location">In-Clinic</span>
+                                <span class="opacity-80">${t('booking.location')}</span>
+                                <span class="font-bold" id="summary-location">${t('booking.inClinic')}</span>
                             </div>
                             <div class="flex justify-between hidden text-success-green" id="summary-credit-row">
-                                <span class="opacity-90">Teleconsultation Credit</span>
+                                <span class="opacity-90">${t('booking.credit')}</span>
                                 <span class="font-bold">- Rp 49.000</span>
                             </div>
                         </div>
@@ -251,17 +251,17 @@ const GuestBookingView = {
                         <div class="mb-6 bg-primary-container text-on-primary-container p-3 rounded-lg flex items-start gap-3 border border-primary/20">
                             <input type="checkbox" id="use-credit-checkbox" class="mt-1 w-4 h-4 text-primary focus:ring-primary border-outline-variant rounded">
                             <label for="use-credit-checkbox" class="text-sm cursor-pointer">
-                                <span class="font-bold block">Redeem Teleconsultation Credit</span>
-                                <span class="opacity-80 text-xs">If you had a paid online consultation, apply 100% credit to this booking.</span>
+                                <span class="font-bold block">${t('booking.redeemCredit')}</span>
+                                <span class="opacity-80 text-xs">${t('booking.creditDesc')}</span>
                             </label>
                         </div>
                         
                         <div class="flex justify-between items-center mb-6">
-                            <span class="font-headline-md">Total Price</span>
+                            <span class="font-headline-md">${t('booking.totalPrice')}</span>
                             <span class="font-headline-md" id="summary-price">${Service.formatPrice(85000)}</span>
                         </div>
                         <button id="proceed-btn" class="w-full bg-clinical-white text-primary py-4 rounded-lg font-button-text hover:bg-surface-bright active:scale-95 transition-all shadow-lg flex items-center justify-center gap-2">
-                            Proceed to Contact Details
+                            ${t('booking.proceed')}
                             <span class="material-symbols-outlined">arrow_forward</span>
                         </button>
                     </div>
@@ -357,10 +357,10 @@ const GuestBookingView = {
                     self.state.locationType = radio.value;
                     if (radio.value === 'home-visit') {
                         homeAddressContainer.classList.remove('hidden');
-                        summaryLocation.textContent = 'Home Visit (+ Rp 50.000)';
+                        summaryLocation.textContent = t('booking.homeVisitSummary');
                     } else {
                         homeAddressContainer.classList.add('hidden');
-                        summaryLocation.textContent = 'In-Clinic';
+                        summaryLocation.textContent = t('booking.inClinic');
                     }
                     self.updateSummary();
                 }
@@ -390,7 +390,7 @@ const GuestBookingView = {
                 const user = User.getCurrentUser();
                 
                 if (!user) {
-                    alert('Anda harus login terlebih dahulu untuk melanjutkan proses booking.');
+                    alert(t('booking.loginReq'));
                     // Redirect ke halaman login, bisa menyimpan rute ini untuk redirect kembali
                     window.location.hash = '#/login';
                 } else {
@@ -406,7 +406,7 @@ const GuestBookingView = {
         const summaryPrice = document.getElementById('summary-price');
         
         if (summarySchedule) {
-            summarySchedule.textContent = `Oct ${this.state.date}, ${this.state.time}`;
+            summarySchedule.textContent = I18n.formatAppointmentSchedule(this.state.date, this.state.time);
         }
 
         if (this.state.service && summaryPrice) {

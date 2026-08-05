@@ -26,7 +26,7 @@ render(active = '') {
 
         // Language switcher
         const langBtn = `
-            <button onclick="I18n.toggleLang()" class="flex items-center gap-1 px-3 py-2 rounded-lg border border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary transition-all font-bold text-sm" title="Switch language">
+<button onclick="I18n.toggleLang()" class="flex items-center gap-1 px-3 py-2 rounded-lg border border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary transition-all font-bold text-sm" title="${t('nav.switchLang')}">
                 <span class="material-symbols-outlined text-[16px]">translate</span>
                 ${t('lang.switch')}
             </button>

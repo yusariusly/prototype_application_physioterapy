@@ -27,10 +27,10 @@ const PatientMedicalRecordsView = {
                 <p class="text-sm text-on-surface-variant mb-4">${r.summary}</p>
                 <div class="flex gap-2">
                     <button class="flex-1 py-2 border border-primary text-primary rounded-lg text-sm font-bold hover:bg-surface-muted transition-colors">
-                        View Document
+                        ${t('records.viewDocument')}
                     </button>
                     <button class="flex-1 py-2 border border-outline-variant text-on-surface-variant rounded-lg text-sm font-medium hover:bg-surface-muted transition-colors">
-                        Download PDF
+                        ${t('records.downloadPdf')}
                     </button>
                 </div>
             </div>
@@ -41,8 +41,8 @@ const PatientMedicalRecordsView = {
         <main class="max-w-container-max mx-auto px-gutter py-stack-lg">
             <!-- Page Header -->
             <header class="mb-10">
-                <h1 class="font-headline-lg text-headline-lg mb-2">Rekam Medis & Dokumen</h1>
-                <p class="text-on-surface-variant font-body-lg">Akses riwayat terapi, hasil asesmen, dan dokumen kesehatan Anda.</p>
+                <h1 class="font-headline-lg text-headline-lg mb-2">${t('records.title')}</h1>
+                <p class="text-on-surface-variant font-body-lg">${t('records.sub')}</p>
             </header>
             <!-- Stats -->
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
@@ -52,7 +52,7 @@ const PatientMedicalRecordsView = {
                     </div>
                     <div>
                         <p class="font-headline-md text-headline-md font-bold">${records.length}</p>
-                        <p class="text-sm text-on-surface-variant">Total Dokumen</p>
+                        <p class="text-sm text-on-surface-variant">${t('records.totalDocs')}</p>
                     </div>
                 </div>
                 <div class="bg-clinical-white p-6 rounded-xl border border-outline-variant/20 shadow-sm flex items-center gap-4">
@@ -61,7 +61,7 @@ const PatientMedicalRecordsView = {
                     </div>
                     <div>
                         <p class="font-headline-md text-headline-md font-bold">${records.filter(r => r.type === 'Terapi').length}</p>
-                        <p class="text-sm text-on-surface-variant">Riwayat Terapi</p>
+                        <p class="text-sm text-on-surface-variant">${t('records.therapyHistory')}</p>
                     </div>
                 </div>
                 <div class="bg-clinical-white p-6 rounded-xl border border-outline-variant/20 shadow-sm flex items-center gap-4">
@@ -70,7 +70,7 @@ const PatientMedicalRecordsView = {
                     </div>
                     <div>
                         <p class="font-headline-md text-headline-md font-bold">2</p>
-                        <p class="text-sm text-on-surface-variant">Dokumen Terunggah</p>
+                        <p class="text-sm text-on-surface-variant">${t('records.uploadedDocs')}</p>
                     </div>
                 </div>
             </div>

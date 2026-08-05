@@ -60,8 +60,8 @@ const GuestTeamView = {
                             <div class="w-20 h-20 mx-auto bg-white/20 rounded-2xl flex items-center justify-center mb-8 shadow-inner rotate-3">
                                 <span class="material-symbols-outlined text-5xl text-white">verified</span>
                             </div>
-                            <h3 class="text-2xl font-bold text-white mb-4">${t('team.feat1Title')}</h3>
-                            <p class="text-white/80 leading-relaxed">${t('team.feat1Desc')}</p>
+<h3 class="text-2xl font-bold text-white mb-4">${t('team.strCertified')}</h3>
+                            <p class="text-white/80 leading-relaxed">${t('team.strCertifiedDesc')}</p>
                         </div>
                         
                         <!-- Feature 2 -->
@@ -69,8 +69,8 @@ const GuestTeamView = {
                             <div class="w-20 h-20 mx-auto bg-white/20 rounded-2xl flex items-center justify-center mb-8 shadow-inner -rotate-3">
                                 <span class="material-symbols-outlined text-5xl text-white">monitoring</span>
                             </div>
-                            <h3 class="text-2xl font-bold text-white mb-4">${t('team.feat2Title')}</h3>
-                            <p class="text-white/80 leading-relaxed">${t('team.feat2Desc')}</p>
+<h3 class="text-2xl font-bold text-white mb-4">${t('team.dataDriven')}</h3>
+                            <p class="text-white/80 leading-relaxed">${t('team.dataDrivenDesc')}</p>
                         </div>
                         
                         <!-- Feature 3 -->
@@ -78,8 +78,8 @@ const GuestTeamView = {
                             <div class="w-20 h-20 mx-auto bg-white/20 rounded-2xl flex items-center justify-center mb-8 shadow-inner rotate-3">
                                 <span class="material-symbols-outlined text-5xl text-white">favorite</span>
                             </div>
-                            <h3 class="text-2xl font-bold text-white mb-4">${t('team.feat3Title')}</h3>
-                            <p class="text-white/80 leading-relaxed">${t('team.feat3Desc')}</p>
+<h3 class="text-2xl font-bold text-white mb-4">${t('team.compassionate')}</h3>
+                            <p class="text-white/80 leading-relaxed">${t('team.compassionateDesc')}</p>
                         </div>
                     </div>
                     

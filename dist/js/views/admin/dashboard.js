@@ -19,11 +19,11 @@ return `
                         <span class="absolute inset-y-0 left-3 flex items-center text-outline">
                             <span class="material-symbols-outlined">search</span>
                         </span>
-                        <input class="pl-10 pr-4 py-2 bg-surface-muted border-none rounded-full w-80 text-body-md focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Search data, patients, reports..." type="text">
+                        <input class="pl-10 pr-4 py-2 bg-surface-muted border-none rounded-full w-80 text-body-md focus:ring-2 focus:ring-primary/20 transition-all" placeholder="${t('adash.searchPlaceholder')}" type="text">
                     </div>
                     <nav class="hidden md:flex gap-6">
-                        <a class="text-primary dark:text-primary-fixed-dim border-b-2 border-primary font-bold px-1 py-4 transition-all" href="#">Analytics</a>
-                        <a class="text-on-surface-variant dark:text-surface-variant hover:text-primary px-1 py-4 transition-all" href="#">Reporting</a>
+                        <a class="text-primary dark:text-primary-fixed-dim border-b-2 border-primary font-bold px-1 py-4 transition-all" href="#">${t('adash.analytics')}</a>
+                        <a class="text-on-surface-variant dark:text-surface-variant hover:text-primary px-1 py-4 transition-all" href="#">${t('adash.reporting')}</a>
                     </nav>
                 </div>
                 <div class="flex items-center gap-4">
@@ -37,7 +37,7 @@ return `
                     </div>
                     <button class="flex items-center gap-2 bg-primary-container text-on-primary-container px-4 py-2 rounded-lg font-button-text text-button-text hover:opacity-90 active:opacity-80 transition-all">
                         <span class="material-symbols-outlined">download</span>
-                        Quick Export
+                        ${t('adash.quickExport')}
                     </button>
                     <div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden flex items-center justify-center text-primary">
                         <span class="material-symbols-outlined text-[28px]">account_circle</span>
@@ -57,7 +57,7 @@ return `
                             </span>
                         </div>
                         <div>
-                            <p class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">Total Revenue</p>
+                            <p class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">${t('adash.totalRevenue')}</p>
                             <h3 class="font-headline-lg text-headline-lg font-bold text-primary mt-1">Rp 48.250.000</h3>
                         </div>
                         <div class="mt-4 h-1 w-full bg-surface-muted rounded-full overflow-hidden">
@@ -74,12 +74,12 @@ return `
                             </span>
                         </div>
                         <div>
-                            <p class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">Appointments</p>
+                            <p class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">${t('adash.appointments')}</p>
                             <h3 class="font-headline-lg text-headline-lg font-bold text-secondary mt-1">1,284</h3>
                         </div>
                         <div class="mt-4 flex items-center gap-2">
                             <span class="w-2 h-2 rounded-full bg-success-green"></span>
-                            <p class="text-on-surface-variant text-[12px]">84 New today</p>
+                            <p class="text-on-surface-variant text-[12px]">84 ${t('adash.newToday')}</p>
                         </div>
                     </div>
                     <div class="bg-clinical-white p-6 rounded-xl shadow-[0_4px_20px_-5px_rgba(14,116,144,0.05)] border border-outline-variant/30 flex flex-col justify-between">
@@ -92,7 +92,7 @@ return `
                             </span>
                         </div>
                         <div>
-                            <p class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">New Patients</p>
+                            <p class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">${t('adash.newPatients')}</p>
                             <h3 class="font-headline-lg text-headline-lg font-bold text-on-surface mt-1">156</h3>
                         </div>
                         <div class="mt-4 flex -space-x-2">
@@ -112,7 +112,7 @@ return `
                             </span>
                         </div>
                         <div>
-                            <p class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">Retention Rate</p>
+                            <p class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">${t('adash.retentionRate')}</p>
                             <h3 class="font-headline-lg text-headline-lg font-bold text-tertiary mt-1">94.2%</h3>
                         </div>
                         <div class="mt-4 h-8 w-full flex items-end gap-1">
@@ -130,12 +130,12 @@ return `
                     <div class="lg:col-span-2 bg-clinical-white p-8 rounded-xl shadow-sm border border-outline-variant/30">
                         <div class="flex justify-between items-center mb-8">
                             <div>
-                                <h2 class="font-headline-md text-headline-md font-bold text-on-surface">Revenue Growth</h2>
-                                <p class="text-on-surface-variant text-body-md">Monthly breakdown of clinic earnings</p>
+                                <h2 class="font-headline-md text-headline-md font-bold text-on-surface">${t('adash.revenueGrowth')}</h2>
+                                <p class="text-on-surface-variant text-body-md">${t('adash.revenueSub')}</p>
                             </div>
                             <select class="bg-surface-muted border-none rounded-lg text-label-sm font-label-sm focus:ring-primary">
-                                <option>Last 6 Months</option>
-                                <option>Year to Date</option>
+                                <option>${t('adash.last6Months')}</option>
+                                <option>${t('adash.ytd')}</option>
                             </select>
                         </div>
                         <div class="relative h-[300px] w-full flex items-end justify-between gap-4 px-2">
@@ -174,7 +174,7 @@ return `
                     </div>
                     <div class="bg-clinical-white p-8 rounded-xl shadow-sm border border-outline-variant/30 flex flex-col">
                         <div class="flex justify-between items-center mb-6">
-                            <h2 class="font-headline-md text-headline-md font-bold text-on-surface">Today's Schedule</h2>
+                            <h2 class="font-headline-md text-headline-md font-bold text-on-surface">${t('adash.todaySchedule')}</h2>
                             <span class="text-primary font-bold">24 Oct</span>
                         </div>
                         <div class="flex-1 space-y-4 overflow-y-auto pr-2 custom-scrollbar">
@@ -185,7 +185,7 @@ return `
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-on-surface">Sarah Johnson</h4>
-                                    <p class="text-body-md text-on-surface-variant text-sm">Post-op Recovery • Dr. Aris</p>
+                                    <p class="text-body-md text-on-surface-variant text-sm">${t('adash.postOp')} • Dr. Aris</p>
                                 </div>
                             </div>
                             <div class="flex gap-4 p-4 rounded-xl bg-surface-muted">
@@ -195,7 +195,7 @@ return `
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-on-surface">Michael Chen</h4>
-                                    <p class="text-body-md text-on-surface-variant text-sm">Sports Massage • Dr. Elena</p>
+                                    <p class="text-body-md text-on-surface-variant text-sm">${t('adash.sportsMassage')} • Dr. Elena</p>
                                 </div>
                             </div>
                             <div class="flex gap-4 p-4 rounded-xl bg-surface-container-low border-l-4 border-secondary">
@@ -205,7 +205,7 @@ return `
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-on-surface">Emma Watson</h4>
-                                    <p class="text-body-md text-on-surface-variant text-sm">Initial Consultation • Dr. Aris</p>
+                                    <p class="text-body-md text-on-surface-variant text-sm">${t('adash.initialConsult')} • Dr. Aris</p>
                                 </div>
                             </div>
                             <div class="flex gap-4 p-4 rounded-xl bg-surface-muted">
@@ -215,12 +215,12 @@ return `
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-on-surface">Robert Davis</h4>
-                                    <p class="text-body-md text-on-surface-variant text-sm">Spinal Rehab • Dr. Marcus</p>
+                                    <p class="text-body-md text-on-surface-variant text-sm">${t('adash.spinalRehab')} • Dr. Marcus</p>
                                 </div>
                             </div>
                         </div>
                         <button class="mt-6 w-full py-3 text-primary font-button-text text-button-text border border-primary/20 rounded-lg hover:bg-primary/5 transition-colors">
-                            View Full Calendar
+                            ${t('adash.viewFullCalendar')}
                         </button>
                     </div>
                 </div>
@@ -228,23 +228,23 @@ return `
                 <div class="bg-clinical-white rounded-xl shadow-sm border border-outline-variant/30 overflow-hidden">
                     <div class="p-6 border-b border-outline-variant/30 flex justify-between items-center">
                         <div>
-                            <h2 class="font-headline-md text-headline-md font-bold text-on-surface">Therapist Activity</h2>
-                            <p class="text-on-surface-variant text-body-md">Performance metrics for current staff</p>
+                            <h2 class="font-headline-md text-headline-md font-bold text-on-surface">${t('adash.therapistActivity')}</h2>
+                            <p class="text-on-surface-variant text-body-md">${t('adash.activitySub')}</p>
                         </div>
                         <button class="text-primary font-bold flex items-center gap-2 hover:underline">
-                            View Detailed Report <span class="material-symbols-outlined">chevron_right</span>
+                            ${t('adash.viewReport')} <span class="material-symbols-outlined">chevron_right</span>
                         </button>
                     </div>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left border-collapse">
                             <thead>
                                 <tr class="bg-surface-muted text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
-                                    <th class="px-8 py-4">Therapist</th>
-                                    <th class="px-6 py-4">Specialization</th>
-                                    <th class="px-6 py-4">Appointments (MTD)</th>
-                                    <th class="px-6 py-4">Revenue Gen.</th>
-                                    <th class="px-6 py-4">Rating</th>
-                                    <th class="px-8 py-4">Status</th>
+                                    <th class="px-8 py-4">${t('adash.therapistTh')}</th>
+                                    <th class="px-6 py-4">${t('adash.specialization')}</th>
+                                    <th class="px-6 py-4">${t('adash.appointmentsMtd')}</th>
+                                    <th class="px-6 py-4">${t('adash.revenueGen')}</th>
+                                    <th class="px-6 py-4">${t('adash.rating')}</th>
+                                    <th class="px-8 py-4">${t('adash.status')}</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-outline-variant/30">
@@ -260,7 +260,7 @@ return `
                                     <td class="px-6 py-4">142</td>
                                     <td class="px-6 py-4 font-bold">$12,450</td>
                                     <td class="px-6 py-4"><span class="text-warning-amber flex items-center"><span class="material-symbols-outlined !text-sm" style="font-variation-settings: 'FILL' 1;">star</span><span class="ml-1 text-on-surface font-bold">4.9</span></span></td>
-                                    <td class="px-8 py-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-success-green/10 text-success-green border border-success-green/20">On Duty</span></td>
+                                    <td class="px-8 py-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-success-green/10 text-success-green border border-success-green/20">${t('adash.onDuty')}</span></td>
                                 </tr>
                                 <tr class="hover:bg-surface-container-low transition-colors group">
                                     <td class="px-8 py-4 flex items-center gap-3">
@@ -274,7 +274,7 @@ return `
                                     <td class="px-6 py-4">98</td>
                                     <td class="px-6 py-4 font-bold">$8,200</td>
                                     <td class="px-6 py-4"><span class="text-warning-amber flex items-center"><span class="material-symbols-outlined !text-sm" style="font-variation-settings: 'FILL' 1;">star</span><span class="ml-1 text-on-surface font-bold">4.8</span></span></td>
-                                    <td class="px-8 py-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-success-green/10 text-success-green border border-success-green/20">On Duty</span></td>
+                                    <td class="px-8 py-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-success-green/10 text-success-green border border-success-green/20">${t('adash.onDuty')}</span></td>
                                 </tr>
                                 <tr class="hover:bg-surface-container-low transition-colors group">
                                     <td class="px-8 py-4 flex items-center gap-3">
@@ -288,7 +288,7 @@ return `
                                     <td class="px-6 py-4">115</td>
                                     <td class="px-6 py-4 font-bold">$10,120</td>
                                     <td class="px-6 py-4"><span class="text-warning-amber flex items-center"><span class="material-symbols-outlined !text-sm" style="font-variation-settings: 'FILL' 1;">star</span><span class="ml-1 text-on-surface font-bold">5.0</span></span></td>
-                                    <td class="px-8 py-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-outline/10 text-on-surface-variant border border-outline/20">On Leave</span></td>
+                                    <td class="px-8 py-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-outline/10 text-on-surface-variant border border-outline/20">${t('adash.onLeave')}</span></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -301,11 +301,11 @@ return `
                         <div class="flex items-center gap-3">
                             <span class="material-symbols-outlined text-error">assignment_late</span>
                             <div>
-                                <h2 class="font-headline-md text-headline-md font-bold text-on-surface">Emergency Reschedule & Refund Approvals</h2>
-                                <p class="text-on-surface-variant text-body-md">Requires manual review for < 24h cancellations</p>
+                                <h2 class="font-headline-md text-headline-md font-bold text-on-surface">${t('adash.emergencyApprovals')}</h2>
+                                <p class="text-on-surface-variant text-body-md">${t('adash.emergencySub')}</p>
                             </div>
                         </div>
-                        <span class="bg-error text-white px-3 py-1 rounded-full text-xs font-bold">2 Pending</span>
+                        <span class="bg-error text-white px-3 py-1 rounded-full text-xs font-bold">2 ${t('adash.pending')}</span>
                     </div>
                     <div class="p-6 space-y-4">
                         <!-- Request 1 -->
@@ -313,18 +313,18 @@ return `
                             <div>
                                 <div class="flex items-center gap-2 mb-1">
                                     <h4 class="font-bold text-on-surface">Budi Santoso</h4>
-                                    <span class="bg-warning-amber/20 text-warning-amber px-2 py-0.5 rounded text-[10px] font-bold uppercase">Reschedule</span>
+                                    <span class="bg-warning-amber/20 text-warning-amber px-2 py-0.5 rounded text-[10px] font-bold uppercase">${t('adash.reschedule')}</span>
                                 </div>
-                                <p class="text-sm text-on-surface-variant mb-2">Original: Oct 25, 09:00 AM • Home Visit</p>
+                                <p class="text-sm text-on-surface-variant mb-2">${t('adash.original')} Oct 25, 09:00 AM • Home Visit</p>
                                 <div class="bg-surface-container p-3 rounded-lg border border-outline-variant text-sm border-l-4 border-l-error">
-                                    <span class="font-bold block mb-1">Reason (Emergency):</span>
-                                    "I was admitted to the hospital last night for dengue fever. Attached ER admission letter."
+                                    <span class="font-bold block mb-1">${t('adash.reason')}</span>
+                                    ${t('adash.req1')}
                                     <button class="text-primary font-bold mt-2 flex items-center gap-1 text-xs hover:underline"><span class="material-symbols-outlined text-[14px]">attachment</span> View ER_Letter.pdf</button>
                                 </div>
                             </div>
                             <div class="flex gap-2 w-full md:w-auto">
-                                <button class="flex-1 md:flex-none px-4 py-2 border border-error text-error rounded-lg font-bold hover:bg-error/10 transition-colors">Reject</button>
-                                <button class="flex-1 md:flex-none px-4 py-2 bg-primary text-white rounded-lg font-bold hover:bg-primary/90 transition-colors shadow-md">Approve (Waive Fee)</button>
+                                <button class="flex-1 md:flex-none px-4 py-2 border border-error text-error rounded-lg font-bold hover:bg-error/10 transition-colors">${t('adash.reject')}</button>
+                                <button class="flex-1 md:flex-none px-4 py-2 bg-primary text-white rounded-lg font-bold hover:bg-primary/90 transition-colors shadow-md">${t('adash.approveWaive')}</button>
                             </div>
                         </div>
                         
@@ -333,18 +333,18 @@ return `
                             <div>
                                 <div class="flex items-center gap-2 mb-1">
                                     <h4 class="font-bold text-on-surface">Siti Aminah</h4>
-                                    <span class="bg-error/20 text-error px-2 py-0.5 rounded text-[10px] font-bold uppercase">Refund</span>
+                                    <span class="bg-error/20 text-error px-2 py-0.5 rounded text-[10px] font-bold uppercase">${t('adash.refund')}</span>
                                 </div>
-                                <p class="text-sm text-on-surface-variant mb-2">Original: Oct 24, 02:00 PM • Standard Physio</p>
+                                <p class="text-sm text-on-surface-variant mb-2">${t('adash.original')} Oct 24, 02:00 PM • ${t('booking.stdPhysio')}</p>
                                 <div class="bg-surface-container p-3 rounded-lg border border-outline-variant text-sm border-l-4 border-l-error">
-                                    <span class="font-bold block mb-1">Reason (Emergency):</span>
-                                    "Car accident on the way to the clinic."
+                                    <span class="font-bold block mb-1">${t('adash.reason')}</span>
+                                    ${t('adash.req2')}
                                     <button class="text-primary font-bold mt-2 flex items-center gap-1 text-xs hover:underline"><span class="material-symbols-outlined text-[14px]">attachment</span> View Police_Report.jpg</button>
                                 </div>
                             </div>
                             <div class="flex gap-2 w-full md:w-auto">
-                                <button class="flex-1 md:flex-none px-4 py-2 border border-error text-error rounded-lg font-bold hover:bg-error/10 transition-colors">Reject</button>
-                                <button class="flex-1 md:flex-none px-4 py-2 bg-primary text-white rounded-lg font-bold hover:bg-primary/90 transition-colors shadow-md">Approve Refund (50%)</button>
+                                <button class="flex-1 md:flex-none px-4 py-2 border border-error text-error rounded-lg font-bold hover:bg-error/10 transition-colors">${t('adash.reject')}</button>
+                                <button class="flex-1 md:flex-none px-4 py-2 bg-primary text-white rounded-lg font-bold hover:bg-primary/90 transition-colors shadow-md">${t('adash.approveRefund')}</button>
                             </div>
                         </div>
                     </div>
@@ -352,11 +352,11 @@ return `
             </section>
             <!-- Footer -->
             <footer class="p-8 mt-8 border-t border-outline-variant/30 flex justify-between items-center text-on-surface-variant">
-                <p class="text-body-md text-sm">© 2024 PhysioAdmin Pro Management System. All rights reserved.</p>
+                <p class="text-body-md text-sm">${t('adash.footer')}</p>
                 <div class="flex gap-6 text-sm">
-                    <a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
-                    <a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
-                    <a class="hover:text-primary transition-colors" href="#">Compliance Center</a>
+                    <a class="hover:text-primary transition-colors" href="#">${t('adash.privacy')}</a>
+                    <a class="hover:text-primary transition-colors" href="#">${t('adash.terms')}</a>
+                    <a class="hover:text-primary transition-colors" href="#">${t('adash.compliance')}</a>
                 </div>
             </footer>
 </main>

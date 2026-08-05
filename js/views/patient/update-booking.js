@@ -21,8 +21,8 @@ const PatientUpdateBookingView = {
             ${NavbarPatient.render('dashboard', name)}
             <main class="max-w-container-max mx-auto px-gutter py-stack-lg">
                 <div class="text-center py-20">
-                    <h2 class="text-2xl font-bold text-on-surface">Appointment not found</h2>
-                    <a href="#/patient/dashboard" class="text-primary mt-4 inline-block">Return to Dashboard</a>
+                    <h2 class="text-2xl font-bold text-on-surface">${t('update.notFound')}</h2>
+                    <a href="#/patient/dashboard" class="text-primary mt-4 inline-block">${t('update.returnDashboard')}</a>
                 </div>
             </main>
             ${Footer.render()}
@@ -37,29 +37,29 @@ const PatientUpdateBookingView = {
                 <div class="flex items-center gap-2 text-on-surface-variant mb-6">
                     <a href="#/patient/dashboard" class="hover:text-primary transition-colors flex items-center">
                         <span class="material-symbols-outlined text-[20px]">arrow_back</span>
-                        Back to Dashboard
+                        ${t('update.backDashboard')}
                     </a>
                 </div>
 
                 <div class="bg-clinical-white border border-outline-variant rounded-2xl p-8 soft-shadow relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-32 h-32 bg-primary-container/20 rounded-bl-full -z-10"></div>
                     
-                    <h1 class="font-headline-lg text-headline-md text-on-surface mb-2">Update Session</h1>
-                    <p class="text-on-surface-variant mb-8">Reschedule your upcoming appointment with ${appointment.therapistName || 'your therapist'}.</p>
+                    <h1 class="font-headline-lg text-headline-md text-on-surface mb-2">${t('update.title')}</h1>
+                    <p class="text-on-surface-variant mb-8">${t('update.sub', {therapist: appointment.therapistName || 'your therapist'})}</p>
                     
                     <form id="update-booking-form" class="space-y-8">
                         <!-- Current Info -->
                         <div class="bg-surface-muted p-5 rounded-xl border border-outline-variant/30 flex flex-col md:flex-row gap-6">
                             <div class="flex-1">
-                                <span class="text-label-sm uppercase tracking-wider text-on-surface-variant block mb-1">Service</span>
+                                <span class="text-label-sm uppercase tracking-wider text-on-surface-variant block mb-1">${t('update.service')}</span>
                                 <p class="font-bold text-on-surface">${appointment.serviceName}</p>
                             </div>
                             <div class="flex-1">
-                                <span class="text-label-sm uppercase tracking-wider text-on-surface-variant block mb-1">Current Date</span>
+                                <span class="text-label-sm uppercase tracking-wider text-on-surface-variant block mb-1">${t('update.currentDate')}</span>
                                 <p class="font-bold text-primary">${appointment.date}</p>
                             </div>
                             <div class="flex-1">
-                                <span class="text-label-sm uppercase tracking-wider text-on-surface-variant block mb-1">Current Time</span>
+                                <span class="text-label-sm uppercase tracking-wider text-on-surface-variant block mb-1">${t('update.currentTime')}</span>
                                 <p class="font-bold text-primary">${appointment.time}</p>
                             </div>
                         </div>
@@ -67,7 +67,7 @@ const PatientUpdateBookingView = {
                         <!-- New Date & Time -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="space-y-2">
-                                <label class="font-button-text text-button-text text-on-surface block">New Date <span class="text-emergency-red">*</span></label>
+                                <label class="font-button-text text-button-text text-on-surface block">${t('update.newDate')} <span class="text-emergency-red">*</span></label>
                                 <div class="relative">
                                     <span class="material-symbols-outlined absolute left-3 top-3 text-on-surface-variant">calendar_month</span>
                                     <input type="date" id="update-date" required class="w-full bg-surface-muted border-none rounded-lg pl-10 pr-4 py-3 focus:ring-2 focus:ring-primary outline-none" value="${appointment.date}">
@@ -75,7 +75,7 @@ const PatientUpdateBookingView = {
                             </div>
                             
                             <div class="space-y-2">
-                                <label class="font-button-text text-button-text text-on-surface block">New Time <span class="text-emergency-red">*</span></label>
+                                <label class="font-button-text text-button-text text-on-surface block">${t('update.newTime')} <span class="text-emergency-red">*</span></label>
                                 <div class="relative">
                                     <span class="material-symbols-outlined absolute left-3 top-3 text-on-surface-variant">schedule</span>
                                     <select id="update-time" required class="w-full bg-surface-muted border-none rounded-lg pl-10 pr-4 py-3 focus:ring-2 focus:ring-primary outline-none appearance-none">
@@ -91,13 +91,13 @@ const PatientUpdateBookingView = {
 
                         <!-- Payment Method -->
                         <div class="space-y-3">
-                            <label class="font-button-text text-button-text text-on-surface block">Payment Method</label>
+                            <label class="font-button-text text-button-text text-on-surface block">${t('update.paymentMethod')}</label>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <label class="relative flex items-center p-4 border border-outline-variant rounded-xl cursor-pointer hover:bg-surface-container-low transition-colors has-[:checked]:border-secondary has-[:checked]:bg-secondary/5">
                                     <input type="radio" name="update-payment" value="credit_card" class="peer h-5 w-5 text-secondary focus:ring-secondary border-outline-variant" ${appointment.paymentMethod === 'credit_card' ? 'checked' : ''}>
                                     <span class="ml-3 flex flex-col">
                                         <span class="font-bold text-on-surface flex items-center gap-2">
-                                            <span class="material-symbols-outlined text-secondary">credit_card</span> Credit Card
+                                            <span class="material-symbols-outlined text-secondary">credit_card</span> ${t('update.creditCard')}
                                         </span>
                                     </span>
                                 </label>
@@ -106,7 +106,7 @@ const PatientUpdateBookingView = {
                                     <input type="radio" name="update-payment" value="bank_transfer" class="peer h-5 w-5 text-secondary focus:ring-secondary border-outline-variant" ${appointment.paymentMethod === 'bank_transfer' ? 'checked' : (!appointment.paymentMethod ? 'checked' : '')}>
                                     <span class="ml-3 flex flex-col">
                                         <span class="font-bold text-on-surface flex items-center gap-2">
-                                            <span class="material-symbols-outlined text-secondary">account_balance</span> Bank Transfer
+                                            <span class="material-symbols-outlined text-secondary">account_balance</span> ${t('update.bankTransfer')}
                                         </span>
                                     </span>
                                 </label>
@@ -118,29 +118,29 @@ const PatientUpdateBookingView = {
                             <div class="flex items-start gap-3">
                                 <span class="material-symbols-outlined text-warning-amber">info</span>
                                 <div>
-                                    <p class="font-bold text-on-surface text-sm mb-1">Cancellation & Reschedule Policy</p>
-                                    <p class="text-xs text-on-surface-variant">Changes made less than 24 hours before the appointment require an emergency reason and manual admin approval. Standard changes are free.</p>
+                                    <p class="font-bold text-on-surface text-sm mb-1">${t('update.policy')}</p>
+                                    <p class="text-xs text-on-surface-variant">${t('update.policyDesc')}</p>
                                 </div>
                             </div>
                             <div id="emergency-reason-container" class="mt-4 hidden animate-fade-in">
-                                <label class="block font-label-sm text-label-sm mb-1 text-on-surface">Reason for late reschedule <span class="text-error">*</span></label>
-                                <textarea id="emergency-reason" class="w-full p-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary outline-none resize-none h-20" placeholder="e.g. Admitted to ER, car accident..."></textarea>
-                                <p class="text-[10px] text-error mt-1">Admin may request supporting documents (e.g. medical letter).</p>
+                                <label class="block font-label-sm text-label-sm mb-1 text-on-surface">${t('update.reason')} <span class="text-error">*</span></label>
+                                <textarea id="emergency-reason" class="w-full p-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary outline-none resize-none h-20" placeholder="${t('update.reasonPlaceholder')}"></textarea>
+                                <p class="text-[10px] text-error mt-1">${t('update.adminDoc')}</p>
                             </div>
                         </div>
                         
                         <div class="flex items-start gap-3 mt-4">
                             <input type="checkbox" id="agree-policy" required class="mt-1 w-4 h-4 text-primary focus:ring-primary border-outline-variant rounded">
                             <label for="agree-policy" class="text-sm cursor-pointer text-on-surface-variant">
-                                I agree to the <a href="#" class="text-primary hover:underline">Terms & Conditions</a> regarding cancellations and refunds.
+                                ${t('update.agree')} <a href="#" class="text-primary hover:underline">${t('update.terms')}</a> ${t('update.regarding')}
                             </label>
                         </div>
 
                         <!-- Actions -->
                         <div class="pt-6 border-t border-outline-variant/30 flex gap-4 justify-end">
-                            <a href="#/patient/dashboard" class="px-6 py-3 rounded-lg font-button-text text-button-text border border-outline-variant hover:bg-surface-muted transition-colors">Cancel</a>
+                            <a href="#/patient/dashboard" class="px-6 py-3 rounded-lg font-button-text text-button-text border border-outline-variant hover:bg-surface-muted transition-colors">${t('update.cancel')}</a>
                             <button type="submit" class="px-6 py-3 bg-primary text-on-primary rounded-lg font-button-text text-button-text hover:bg-primary/90 active:scale-95 transition-all flex items-center gap-2">
-                                Save Changes
+                                ${t('update.save')}
                             </button>
                         </div>
                     </form>
@@ -184,7 +184,7 @@ const PatientUpdateBookingView = {
                 
                 const agreePolicy = document.getElementById('agree-policy').checked;
                 if (!agreePolicy) {
-                    alert('Please agree to the cancellation policy.');
+                    alert(t('update.agreeRequired'));
                     return;
                 }
 
@@ -208,9 +208,9 @@ const PatientUpdateBookingView = {
                 
                 // Show success and redirect
                 if (!emergencyContainer.classList.contains('hidden')) {
-                    alert('Reschedule requested! Your emergency reason has been submitted for admin approval.');
+                    alert(t('update.rescheduleRequested'));
                 } else {
-                    alert('Session updated successfully!');
+                    alert(t('update.updated'));
                 }
                 window.location.hash = '#/patient/dashboard';
             });

@@ -12,11 +12,11 @@ const GuestServiceDetailView = {
         if (!service) {
             return `
             ${NavbarGuest.render('services')}
-            <div class="min-h-[60vh] flex flex-col items-center justify-center px-6 text-center">
+<div class="min-h-[60vh] flex flex-col items-center justify-center px-6 text-center">
                 <span class="material-symbols-outlined text-[80px] text-primary mb-6">search_off</span>
-                <h1 class="font-headline-lg text-headline-lg text-primary mb-4">Layanan Tidak Ditemukan</h1>
-                <p class="text-on-surface-variant mb-8">Layanan yang Anda cari tidak tersedia.</p>
-                <a href="#/services" class="bg-primary text-on-primary px-8 py-4 rounded-xl font-button-text hover:bg-primary-container transition-all">Lihat Semua Layanan</a>
+                <h1 class="font-headline-lg text-headline-lg text-primary mb-4">${t('detail.notFound')}</h1>
+                <p class="text-on-surface-variant mb-8">${t('detail.notFoundDesc')}</p>
+                <a href="#/services" class="bg-primary text-on-primary px-8 py-4 rounded-xl font-button-text hover:bg-primary-container transition-all">${t('detail.viewAllServices')}</a>
             </div>
             ${Footer.render()}`;
         }
@@ -45,8 +45,8 @@ const GuestServiceDetailView = {
                 
                 <div class="max-w-container-max mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div>
-                        <a href="#/services" class="inline-flex items-center gap-2 text-secondary font-bold mb-8 hover:text-primary transition-colors group">
-                            <span class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">arrow_back</span> Back to Services
+<a href="#/services" class="inline-flex items-center gap-2 text-secondary font-bold mb-8 hover:text-primary transition-colors group">
+                            <span class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">arrow_back</span> ${t('detail.backToServices')}
                         </a>
                         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary font-bold text-sm mb-6 backdrop-blur-sm">
                             <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">${service.icon}</span>
@@ -57,12 +57,12 @@ const GuestServiceDetailView = {
                         
                         <div class="flex flex-col sm:flex-row items-start sm:items-center gap-8 bg-white/50 backdrop-blur-md p-6 rounded-3xl border border-outline-variant/30 shadow-sm inline-flex">
                             <div>
-                                <p class="text-[11px] font-bold uppercase tracking-wider text-outline-variant mb-1">Starting from</p>
+<p class="text-[11px] font-bold uppercase tracking-wider text-outline-variant mb-1">${t('services.startingFrom')}</p>
                                 <p class="text-4xl text-primary font-extrabold">${price}</p>
                             </div>
                             <div class="hidden sm:block w-px h-12 bg-outline-variant/30"></div>
                             <a href="#/booking" class="bg-primary text-white px-8 py-4 rounded-2xl font-bold shadow-[0_10px_30px_rgba(14,116,144,0.2)] hover:shadow-[0_15px_40px_rgba(14,116,144,0.3)] hover:scale-105 hover:-translate-y-1 transition-all flex items-center justify-center gap-2 group/btn">
-                                Book This Service
+                                ${t('detail.bookThisService')}
                                 <span class="material-symbols-outlined group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
                             </a>
                         </div>
@@ -77,16 +77,16 @@ const GuestServiceDetailView = {
             <section class="py-20 px-6 max-w-container-max mx-auto">
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
                     <div class="lg:col-span-2">
-                        <h2 class="font-headline-md text-headline-md mb-8">Apa yang termasuk?</h2>
+<h2 class="font-headline-md text-headline-md mb-8">${t('detail.whatsIncluded')}</h2>
                         <ul class="space-y-4">
                             ${features}
                         </ul>
                         <div class="mt-12 p-6 bg-surface-muted rounded-2xl border border-outline-variant/30 flex gap-4">
                             <span class="material-symbols-outlined text-primary text-[40px]">medical_information</span>
                             <div>
-                                <h3 class="font-headline-md text-headline-md mb-2">Indikasi Penanganan</h3>
-                                <p class="text-on-surface-variant font-body-md">
-                                    Layanan ini sesuai untuk pasien dengan kondisi ${service.name.toLowerCase()}. Konsultasikan dengan terapis kami untuk asesmen awal dan rencana perawatan yang disesuaikan.
+                                <h3 class="font-headline-md text-headline-md mb-2">${t('detail.indications')}</h3>
+<p class="text-on-surface-variant font-body-md">
+                                    ${t('detail.indicationsDesc', { condition: service.name.toLowerCase() })}
                                 </p>
                             </div>
                         </div>
@@ -95,31 +95,31 @@ const GuestServiceDetailView = {
                         <div class="bg-clinical-white rounded-xl border border-outline-variant/20 p-8 shadow-sm sticky top-24">
                             <h3 class="font-headline-md text-headline-md mb-6 flex items-center gap-2">
                                 <span class="material-symbols-outlined text-primary">info</span>
-                                Informasi Cepat
+                                ${t('detail.quickInfo')}
                             </h3>
                             <div class="space-y-4">
                                 <div class="flex justify-between">
-                                    <span class="text-on-surface-variant">Durasi</span>
+                                    <span class="text-on-surface-variant">${t('detail.duration')}</span>
                                     <span class="font-bold">${service.duration}</span>
                                 </div>
                                 <div class="flex justify-between">
-                                    <span class="text-on-surface-variant">Harga Mulai</span>
+                                    <span class="text-on-surface-variant">${t('detail.priceFrom')}</span>
                                     <span class="font-bold text-primary">${price}</span>
                                 </div>
                                 <div class="flex justify-between">
-                                    <span class="text-on-surface-variant">Terapis</span>
-                                    <span class="font-bold">STR Verified</span>
+<span class="text-on-surface-variant">${t('detail.therapists')}</span>
+                                    <span class="font-bold">${t('detail.strVerified')}</span>
                                 </div>
                                 <div class="flex justify-between">
-                                    <span class="text-on-surface-variant">Garansi</span>
-                                    <span class="font-bold text-success-green">Free Reschedule</span>
+                                    <span class="text-on-surface-variant">${t('detail.warranty')}</span>
+                                    <span class="font-bold text-success-green">${t('detail.freeReschedule')}</span>
                                 </div>
                             </div>
                             <a href="#/booking" class="w-full mt-8 py-3 bg-primary text-on-primary rounded-xl font-button-text text-center hover:bg-primary-container transition-all block">
-                                Book Now
+                                ${t('detail.bookNow')}
                             </a>
                             <a href="#/contact" class="w-full mt-3 py-3 border-2 border-primary text-primary rounded-xl font-button-text text-center hover:bg-primary/5 transition-all block">
-                                Ask a Question
+                                ${t('detail.askQuestion')}
                             </a>
                         </div>
                     </div>

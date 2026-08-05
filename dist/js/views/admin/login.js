@@ -24,9 +24,9 @@ async render() {
                     <div class="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center text-secondary mx-auto mb-4">
                         <span class="material-symbols-outlined text-[36px]">admin_panel_settings</span>
                     </div>
-                    <h1 class="font-headline-md text-headline-md text-on-surface mb-2">Login Administrator</h1>
+                    <h1 class="font-headline-md text-headline-md text-on-surface mb-2">${t('adminLogin.title')}</h1>
                     <p class="font-body-md text-body-md text-on-surface-variant">
-                        Masuk untuk mengelola sistem klinik.
+                        ${t('adminLogin.sub')}
                     </p>
                 </div>
                 <div id="admin-login-error" class="hidden mb-6 p-4 bg-error-container border border-error/30 rounded-lg text-error flex items-center gap-2">
@@ -35,7 +35,7 @@ async render() {
                 </div>
                 <form id="admin-login-form" class="space-y-6">
                     <div class="space-y-2">
-                        <label class="block font-button-text text-button-text text-on-surface-variant" for="admin-email">Email Admin</label>
+                        <label class="block font-button-text text-button-text text-on-surface-variant" for="admin-email">${t('adminLogin.emailLabel')}</label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <span class="material-symbols-outlined text-outline text-xl">mail</span>
@@ -45,8 +45,8 @@ async render() {
                     </div>
                     <div class="space-y-2">
                         <div class="flex justify-between items-center">
-                            <label class="block font-button-text text-button-text text-on-surface-variant" for="admin-password">Password</label>
-                            <a class="font-label-sm text-label-sm text-primary hover:text-secondary transition-colors" href="#/forgot-password">Forgot Password?</a>
+                            <label class="block font-button-text text-button-text text-on-surface-variant" for="admin-password">${t('adminLogin.password')}</label>
+                            <a class="font-label-sm text-label-sm text-primary hover:text-secondary transition-colors" href="#/forgot-password">${t('adminLogin.forgot')}</a>
                         </div>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -59,12 +59,12 @@ async render() {
                         </div>
                     </div>
                     <button class="w-full bg-primary hover:bg-on-primary-fixed-variant text-white font-button-text text-button-text py-4 px-6 rounded-lg shadow-md hover:shadow-lg transform active:scale-[0.98] transition-all" type="submit">
-                        Masuk ke Dashboard
+                        ${t('adminLogin.signIn')}
                     </button>
                 </form>
             </div>
             <p class="mt-8 text-center text-sm text-on-surface-variant">
-                <a class="text-primary hover:underline" href="#/">← Kembali ke Website</a>
+                <a class="text-primary hover:underline" href="#/">${t('adminLogin.backToWebsite')}</a>
             </p>
 </div>
         </div>
@@ -104,7 +104,7 @@ async render() {
                 router.navigate('/admin/dashboard');
             } else {
                 errorBox.classList.remove('hidden');
-                errorMsg.textContent = 'Kredensial admin salah. Silakan coba lagi.';
+                errorMsg.textContent = t('adminLogin.error');
                 setTimeout(() => errorBox.classList.add('hidden'), 4000);
             }
         });

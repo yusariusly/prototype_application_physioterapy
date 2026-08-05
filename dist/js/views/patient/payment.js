@@ -9,18 +9,18 @@ const PatientPaymentView = {
     async render() {
         const booking = GuestBookingView.state;
         const summaryData = {
-            service: booking.service || { name: 'Standard Physiotherapy', shortDescription: '60-minute initial consult' },
+            service: booking.service || { name: t('booking.stdPhysio'), shortDescription: t('booking.consult60') },
             therapist: booking.therapist || { name: 'Dr. Sarah Mitchell', image: null, strVerified: true },
-            date: booking.date ? `Thursday, Oct ${booking.date}` : 'Thursday, Oct 24',
-            time: booking.time || '10:00 AM — 11:00 AM',
+            date: I18n.formatAppointmentSchedule(booking.date || 24, booking.time || '10:00 AM — 11:00 AM'),
+            time: I18n.formatTimeRange('10:00 AM', '11:00 AM'),
             price: booking.service ? booking.service.price : 85000
         };
 
         const paymentMethods = [
-            { id: 'qris', name: 'QRIS', icon: 'qr_code_2', desc: 'Scan & pay', color: 'bg-primary/10 text-primary' },
-            { id: 'transfer', name: 'Transfer Bank', icon: 'account_balance', desc: 'BCA, BNI, Mandiri', color: 'bg-secondary/10 text-secondary' },
-            { id: 'ewallet', name: 'E-Wallet', icon: 'account_balance_wallet', desc: 'GoPay, OVO, DANA', color: 'bg-success-green/10 text-success-green' },
-            { id: 'card', name: 'Kartu Kredit', icon: 'credit_card', desc: 'Visa, Mastercard', color: 'bg-warning-amber/10 text-warning-amber' }
+            { id: 'qris', name: 'QRIS', icon: 'qr_code_2', desc: t('payment.scanPay'), color: 'bg-primary/10 text-primary' },
+            { id: 'transfer', name: t('payment.transferBank'), icon: 'account_balance', desc: 'BCA, BNI, Mandiri', color: 'bg-secondary/10 text-secondary' },
+            { id: 'ewallet', name: t('payment.ewallet'), icon: 'account_balance_wallet', desc: 'GoPay, OVO, DANA', color: 'bg-success-green/10 text-success-green' },
+            { id: 'card', name: t('payment.creditCard'), icon: 'credit_card', desc: 'Visa, Mastercard', color: 'bg-warning-amber/10 text-warning-amber' }
         ];
 
         const methodCards = paymentMethods.map(m => `
@@ -47,21 +47,21 @@ const PatientPaymentView = {
                         <div class="w-10 h-10 rounded-full bg-success-green flex items-center justify-center text-white mb-2 shadow-sm">
                             <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">check</span>
                         </div>
-                        <span class="font-label-sm text-label-sm text-success-green uppercase tracking-wider">Step 1: Selection</span>
+                        <span class="font-label-sm text-label-sm text-success-green uppercase tracking-wider">${t('assessment.step1')}</span>
                     </div>
                     <div class="h-[2px] w-12 md:w-24 bg-success-green mb-6"></div>
                     <div class="flex flex-col items-center flex-1">
                         <div class="w-10 h-10 rounded-full bg-success-green flex items-center justify-center text-white mb-2 shadow-sm">
                             <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">check</span>
                         </div>
-                        <span class="font-label-sm text-label-sm text-success-green uppercase tracking-wider">Step 2: Assessment</span>
+                        <span class="font-label-sm text-label-sm text-success-green uppercase tracking-wider">${t('assessment.step2')}</span>
                     </div>
                     <div class="h-[2px] w-12 md:w-24 bg-secondary mb-6"></div>
                     <div class="flex flex-col items-center flex-1">
                         <div class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-white mb-2 shadow-md ring-4 ring-secondary/20">
                             <span class="font-bold">3</span>
                         </div>
-                        <span class="font-label-sm text-label-sm text-secondary font-bold uppercase tracking-wider">Step 3: Payment</span>
+                        <span class="font-label-sm text-label-sm text-secondary font-bold uppercase tracking-wider">${t('assessment.step3')}</span>
                     </div>
                 </div>
             </div>
@@ -69,13 +69,13 @@ const PatientPaymentView = {
                 <!-- Payment Left Column -->
                 <div class="lg:col-span-8 space-y-gutter">
                     <header>
-                        <h1 class="font-headline-lg text-headline-lg text-primary mb-2">Konfirmasi Pembayaran</h1>
-                        <p class="font-body-lg text-body-lg text-on-surface-variant">Pilih metode pembayaran yang Anda inginkan. Booking akan dikonfirmasi setelah pembayaran diterima.</p>
+                        <h1 class="font-headline-lg text-headline-lg text-primary mb-2">${t('payment.title')}</h1>
+                        <p class="font-body-lg text-body-lg text-on-surface-variant">${t('payment.sub')}</p>
                     </header>
                     <div class="bg-clinical-white p-8 rounded-xl shadow-[0_20px_40px_rgba(14,116,144,0.05)] border border-surface-muted">
                         <h2 class="font-headline-md text-headline-md mb-6 flex items-center gap-2">
                             <span class="material-symbols-outlined text-primary">point_of_sale</span>
-                            Metode Pembayaran
+                            ${t('payment.method')}
                         </h2>
                         <div class="flex flex-col gap-4">
                             ${methodCards}
@@ -83,18 +83,18 @@ const PatientPaymentView = {
                         <div class="mt-8 p-4 bg-surface-muted rounded-lg border border-outline-variant/30 flex gap-3">
                             <span class="material-symbols-outlined text-warning-amber">info</span>
                             <p class="text-[12px] leading-relaxed text-on-surface-variant">
-                                Pembayaran aman dan terenkripsi. Pembatalan gratis hingga 24 jam sebelum jadwal. Biaya konsultasi yang sudah dibayar tidak dapat dikembalikan.
+                                ${t('payment.secure')}
                             </p>
                         </div>
                     </div>
                     <div class="flex flex-col sm:flex-row justify-between gap-4 pt-6">
                         <a href="#/patient/assessment" class="flex items-center justify-center gap-2 px-8 py-4 rounded-lg border-2 border-primary text-primary font-button-text hover:bg-surface-muted transition-all active:scale-95">
                             <span class="material-symbols-outlined">arrow_back</span>
-                            Back
+                            ${t('payment.back')}
                         </a>
                         <button id="pay-now" class="flex items-center justify-center gap-2 px-10 py-4 rounded-lg bg-primary text-on-primary font-button-text shadow-lg hover:bg-primary-container transition-all active:scale-95">
                             <span class="material-symbols-outlined">lock</span>
-                            Bayar Sekarang
+                            ${t('payment.payNow')}
                         </button>
                     </div>
                 </div>
@@ -112,7 +112,7 @@ const PatientPaymentView = {
         const payBtn = document.getElementById('pay-now');
         if (!payBtn) return;
 
-payBtn.addEventListener('click', async () => {
+        payBtn.addEventListener('click', async () => {
             const user = User.getCurrentUser();
             const booking = GuestBookingView.state;
 
@@ -125,7 +125,7 @@ payBtn.addEventListener('click', async () => {
                 patientId: user ? user.patientId : 'PC-8842',
                 patientName: user ? user.name : 'James Miller',
                 serviceId: booking.service ? booking.service.id : 'standard-physiotherapy',
-                serviceName: booking.service ? booking.service.name : 'Standard Physiotherapy',
+                serviceName: booking.service ? booking.service.name : t('booking.stdPhysio'),
                 therapistId: booking.therapist ? booking.therapist.id : 'therapist-1',
                 therapistName: booking.therapist ? booking.therapist.name : 'Dr. Sarah Mitchell',
                 date: `Oct ${booking.date || '24'}, 2024`,

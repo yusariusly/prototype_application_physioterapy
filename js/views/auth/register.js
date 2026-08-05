@@ -18,8 +18,8 @@ async render() {
                         </div>
                         <span class="font-headline-md text-headline-md font-bold tracking-tight text-white">PhysioCare</span>
                     </div>
-                    <h1 class="font-headline-lg text-headline-lg mb-4 leading-tight">Start Your Recovery Journey</h1>
-                    <p class="font-body-lg text-body-lg text-primary-fixed opacity-90">Create your account to book appointments, track your recovery progress, and access personalized therapy programs.</p>
+                    <h1 class="font-headline-lg text-headline-lg mb-4 leading-tight">${t('register.title')}</h1>
+                    <p class="font-body-lg text-body-lg text-primary-fixed opacity-90">${t('register.sub')}</p>
                 </div>
                 <div class="bg-clinical-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
                     <div class="flex items-center gap-4 mb-4">
@@ -27,11 +27,11 @@ async render() {
                             <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified</span>
                         </div>
                         <div>
-                            <p class="font-button-text text-button-text text-white">Free Initial Assessment</p>
-                            <p class="font-label-sm text-label-sm text-primary-fixed">No commitment required</p>
+                            <p class="font-button-text text-button-text text-white">${t('register.freeAssessment')}</p>
+                            <p class="font-label-sm text-label-sm text-primary-fixed">${t('register.noCommitment')}</p>
                         </div>
                     </div>
-                    <p class="text-sm text-primary-fixed opacity-90">Get a personalized recovery roadmap from our STR Verified specialists on your first visit.</p>
+                    <p class="text-sm text-primary-fixed opacity-90">${t('register.specialistDesc')}</p>
                 </div>
             </div>
             <div class="absolute bottom-0 right-0 w-64 h-64 bg-secondary-container/20 blur-[120px] rounded-full translate-x-1/2 translate-y-1/2"></div>
@@ -44,8 +44,8 @@ async render() {
                     <span class="font-headline-md text-headline-md font-bold text-primary">PhysioCare</span>
                 </div>
                 <div class="mb-10">
-                    <h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-md md:text-headline-md text-on-surface mb-2">Create Account</h2>
-                    <p class="font-body-md text-body-md text-on-surface-variant">Join PhysioCare and start your recovery journey.</p>
+                    <h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-md md:text-headline-md text-on-surface mb-2">${t('register.createAccount')}</h2>
+                    <p class="font-body-md text-body-md text-on-surface-variant">${t('register.joinSub')}</p>
                 </div>
                 <div id="register-error" class="hidden mb-6 p-4 bg-error-container border border-error/30 rounded-lg text-error flex items-center gap-2">
                     <span class="material-symbols-outlined">error</span>
@@ -53,16 +53,16 @@ async render() {
                 </div>
                 <form id="register-form" class="space-y-5">
                     <div class="space-y-2">
-                        <label class="block font-button-text text-button-text text-on-surface-variant" for="reg-name">Full Name</label>
+                        <label class="block font-button-text text-button-text text-on-surface-variant" for="reg-name">${t('register.fullName')}</label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <span class="material-symbols-outlined text-outline text-xl">person</span>
                             </div>
-                            <input class="block w-full pl-10 pr-3 py-3 bg-surface-bright border border-outline-variant rounded-lg font-body-md text-body-md text-on-surface placeholder:text-outline-variant focus-ring transition-all" id="reg-name" name="name" placeholder="Nama Lengkap" required="" type="text">
+                            <input class="block w-full pl-10 pr-3 py-3 bg-surface-bright border border-outline-variant rounded-lg font-body-md text-body-md text-on-surface placeholder:text-outline-variant focus-ring transition-all" id="reg-name" name="name" placeholder="${t('register.namePlaceholder')}" required="" type="text">
                         </div>
                     </div>
                     <div class="space-y-2">
-                        <label class="block font-button-text text-button-text text-on-surface-variant" for="reg-email">Email Address</label>
+                        <label class="block font-button-text text-button-text text-on-surface-variant" for="reg-email">${t('login.email')}</label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <span class="material-symbols-outlined text-outline text-xl">mail</span>
@@ -71,50 +71,50 @@ async render() {
                         </div>
                     </div>
                     <div class="space-y-2">
-                        <label class="block font-button-text text-button-text text-on-surface-variant" for="reg-password">Password</label>
+                        <label class="block font-button-text text-button-text text-on-surface-variant" for="reg-password">${t('register.password')}</label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <span class="material-symbols-outlined text-outline text-xl">lock</span>
                             </div>
-                            <input class="block w-full pl-10 pr-10 py-3 bg-surface-bright border border-outline-variant rounded-lg font-body-md text-body-md text-on-surface placeholder:text-outline-variant focus-ring transition-all" id="reg-password" name="password" placeholder="Minimal 8 karakter" required="" type="password" minlength="8">
+                            <input class="block w-full pl-10 pr-10 py-3 bg-surface-bright border border-outline-variant rounded-lg font-body-md text-body-md text-on-surface placeholder:text-outline-variant focus-ring transition-all" id="reg-password" name="password" placeholder="${t('register.passwordPlaceholder')}" required="" type="password" minlength="8">
                             <button class="absolute inset-y-0 right-0 pr-3 flex items-center text-outline hover:text-primary transition-colors" type="button" id="toggle-reg-password">
                                 <span class="material-symbols-outlined text-xl">visibility</span>
                             </button>
                         </div>
                     </div>
                     <div class="space-y-2">
-                        <label class="block font-button-text text-button-text text-on-surface-variant" for="reg-password2">Confirm Password</label>
+                        <label class="block font-button-text text-button-text text-on-surface-variant" for="reg-password2">${t('register.confirm')}</label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <span class="material-symbols-outlined text-outline text-xl">lock</span>
                             </div>
-                            <input class="block w-full pl-10 pr-3 py-3 bg-surface-bright border border-outline-variant rounded-lg font-body-md text-body-md text-on-surface placeholder:text-outline-variant focus-ring transition-all" id="reg-password2" name="password2" placeholder="Ulangi password" required="" type="password">
+                            <input class="block w-full pl-10 pr-3 py-3 bg-surface-bright border border-outline-variant rounded-lg font-body-md text-body-md text-on-surface placeholder:text-outline-variant focus-ring transition-all" id="reg-password2" name="password2" placeholder="${t('register.confirmPlaceholder')}" required="" type="password">
                         </div>
                     </div>
                     <div class="flex items-start">
                         <input class="h-4 w-4 text-primary border-outline-variant rounded focus:ring-primary mt-1" id="reg-terms" name="terms" type="checkbox" required="">
                         <label class="ml-2 block font-body-md text-body-md text-on-surface-variant" for="reg-terms">
-                            Saya menyetujui <a class="text-primary hover:underline" href="#">Syarat & Ketentuan</a> dan <a class="text-primary hover:underline" href="#">Kebijakan Privasi</a>
+                            ${t('register.agree')} <a class="text-primary hover:underline" href="#">${t('register.termsAndConditions')}</a> ${t('register.and')} <a class="text-primary hover:underline" href="#">${t('register.privacyPolicy')}</a>
                         </label>
                     </div>
                     <button class="w-full bg-primary hover:bg-on-primary-fixed-variant text-white font-button-text text-button-text py-4 px-6 rounded-lg shadow-md hover:shadow-lg transform active:scale-[0.98] transition-all flex items-center justify-center gap-2 group" type="submit">
-                        Create Account
+                        ${t('register.createAccount')}
                         <span class="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">arrow_forward</span>
                     </button>
                 </form>
                 <p class="mt-8 text-center font-body-md text-body-md text-on-surface-variant">
-                    Already have an account?
-                    <a class="text-primary font-button-text hover:underline decoration-2 underline-offset-4" href="#/login">Sign in</a>
+                    ${t('register.alreadyHave')}
+                    <a class="text-primary font-button-text hover:underline decoration-2 underline-offset-4" href="#/login">${t('register.signIn')}</a>
                 </p>
                 <div class="flex flex-col items-center gap-4 border-t border-surface-muted mt-8 pt-8">
                     <div class="flex items-center gap-6">
                         <div class="flex items-center gap-1 text-on-surface-variant">
                             <span class="material-symbols-outlined text-sm">lock</span>
-                            <span class="font-label-sm text-label-sm">HIPAA Compliant</span>
+                            <span class="font-label-sm text-label-sm">${t('register.hipaa')}</span>
                         </div>
                         <div class="flex items-center gap-1 text-on-surface-variant">
                             <span class="material-symbols-outlined text-sm">verified_user</span>
-                            <span class="font-label-sm text-label-sm">Secure Data</span>
+                            <span class="font-label-sm text-label-sm">${t('register.secureData')}</span>
                         </div>
                     </div>
                 </div>
@@ -154,7 +154,7 @@ async render() {
 
             if (password !== password2) {
                 errorBox.classList.remove('hidden');
-                errorMsg.textContent = 'Konfirmasi password tidak cocok.';
+                errorMsg.textContent = t('register.pwMismatch');
                 setTimeout(() => errorBox.classList.add('hidden'), 4000);
                 return;
             }

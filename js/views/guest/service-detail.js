@@ -57,7 +57,7 @@ const GuestServiceDetailView = {
                         
                         <div class="flex flex-col sm:flex-row items-start sm:items-center gap-8 bg-white/50 backdrop-blur-md p-6 rounded-3xl border border-outline-variant/30 shadow-sm inline-flex">
                             <div>
-<p class="text-[11px] font-bold uppercase tracking-wider text-outline-variant mb-1">${t('detail.startingFrom')}</p>
+<p class="text-[11px] font-bold uppercase tracking-wider text-outline-variant mb-1">${t('services.startingFrom')}</p>
                                 <p class="text-4xl text-primary font-extrabold">${price}</p>
                             </div>
                             <div class="hidden sm:block w-px h-12 bg-outline-variant/30"></div>
@@ -77,7 +77,7 @@ const GuestServiceDetailView = {
             <section class="py-20 px-6 max-w-container-max mx-auto">
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
                     <div class="lg:col-span-2">
-<h2 class="font-headline-md text-headline-md mb-8">${t('detail.whatIncluded')}</h2>
+<h2 class="font-headline-md text-headline-md mb-8">${t('detail.whatsIncluded')}</h2>
                         <ul class="space-y-4">
                             ${features}
                         </ul>
@@ -85,8 +85,8 @@ const GuestServiceDetailView = {
                             <span class="material-symbols-outlined text-primary text-[40px]">medical_information</span>
                             <div>
                                 <h3 class="font-headline-md text-headline-md mb-2">${t('detail.indications')}</h3>
-                                <p class="text-on-surface-variant font-body-md">
-                                    ${t('detail.indicationsDesc')} ${service.name.toLowerCase()}. ${t('detail.indicationsDesc2')}
+<p class="text-on-surface-variant font-body-md">
+                                    ${t('detail.indicationsDesc', { condition: service.name.toLowerCase() })}
                                 </p>
                             </div>
                         </div>
@@ -107,8 +107,8 @@ const GuestServiceDetailView = {
                                     <span class="font-bold text-primary">${price}</span>
                                 </div>
                                 <div class="flex justify-between">
-                                    <span class="text-on-surface-variant">${t('detail.therapist')}</span>
-                                    <span class="font-bold">STR Verified</span>
+<span class="text-on-surface-variant">${t('detail.therapists')}</span>
+                                    <span class="font-bold">${t('detail.strVerified')}</span>
                                 </div>
                                 <div class="flex justify-between">
                                     <span class="text-on-surface-variant">${t('detail.warranty')}</span>

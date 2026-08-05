@@ -11,7 +11,7 @@ const WhatsAppFab = {
             <!-- Tooltip Message -->
             <div class="bg-clinical-white px-4 py-3 rounded-2xl shadow-xl border border-outline-variant/30 text-sm font-bold text-on-surface pointer-events-auto transform transition-all origin-bottom-right hover:scale-105 flex items-center gap-3 animate-fade-in">
                 <div class="w-2 h-2 bg-success-green rounded-full animate-pulse"></div>
-                Konsultasi Gratis via WhatsApp
+${t('wa.tooltip')}
                 <button onclick="this.parentElement.style.display='none'" class="text-outline hover:text-on-surface-variant ml-2">
                     <span class="material-symbols-outlined text-[16px]">close</span>
                 </button>

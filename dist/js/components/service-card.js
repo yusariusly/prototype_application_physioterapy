@@ -31,7 +31,7 @@ const ServiceCard = {
                         <span class="material-symbols-outlined text-white text-2xl" style="font-variation-settings: 'FILL' 1;">${service.icon}</span>
                     </div>
                     <div class="text-white">
-                        <p class="text-xs font-bold uppercase tracking-wider opacity-80">Starting from</p>
+<p class="text-xs font-bold uppercase tracking-wider opacity-80">${t('services.startingFrom')}</p>
                         <p class="font-bold text-lg">${price}</p>
                     </div>
                 </div>
@@ -65,8 +65,8 @@ const ServiceCard = {
                     <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300 shadow-inner">
                         <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">${service.icon}</span>
                     </div>
-                    <div class="text-right bg-surface-muted px-4 py-2 rounded-xl">
-                        <p class="text-[10px] font-bold uppercase tracking-wider text-outline">Starting from</p>
+<div class="text-right bg-surface-muted px-4 py-2 rounded-xl">
+                        <p class="text-[10px] font-bold uppercase tracking-wider text-outline">${t('services.startingFrom')}</p>
                         <p class="text-primary font-bold text-lg">${price}</p>
                     </div>
                 </div>
@@ -79,7 +79,7 @@ const ServiceCard = {
                         <span class="text-xs font-bold uppercase tracking-wide text-on-surface-variant">${service.duration}</span>
                     </div>
                     <a href="#/services/${service.id}" class="w-full py-4 bg-transparent border-2 border-primary text-primary rounded-xl font-bold hover:bg-primary hover:text-white transition-all text-center block shadow-sm hover:shadow-md flex items-center justify-center gap-2 group/btn">
-                        Explore Treatment
+${t('services.exploreTreatment')}
                         <span class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
                     </a>
                 </div>

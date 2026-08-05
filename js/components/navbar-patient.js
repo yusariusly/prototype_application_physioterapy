@@ -20,8 +20,8 @@ const navLinks = links.map(link => {
             return `<a class="${activeClass} transition-colors font-body-md text-body-md" href="${link.href}">${link.label}</a>`;
         }).join('');
 
-        const langBtn = `
-            <button onclick="I18n.toggleLang()" class="flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary transition-all font-bold text-sm" title="Switch language">
+const langBtn = `
+            <button onclick="I18n.toggleLang()" class="flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary transition-all font-bold text-sm" title="${t('nav.switchLang')}">
                 <span class="material-symbols-outlined text-[16px]">translate</span>
                 ${t('lang.switch')}
             </button>
@@ -38,10 +38,10 @@ const navLinks = links.map(link => {
                 </div>
 <div class="flex items-center gap-stack-md">
                     ${langBtn}
-                    <button class="p-2 text-on-surface-variant hover:bg-surface-muted rounded-full transition-all" aria-label="Notifications">
+<button class="p-2 text-on-surface-variant hover:bg-surface-muted rounded-full transition-all" aria-label="${t('nav.notifications')}">
                         <span class="material-symbols-outlined">notifications</span>
                     </button>
-                    <button class="p-2 text-on-surface-variant hover:bg-surface-muted rounded-full transition-all" aria-label="Settings">
+                    <button class="p-2 text-on-surface-variant hover:bg-surface-muted rounded-full transition-all" aria-label="${t('nav.settings')}">
                         <span class="material-symbols-outlined">settings</span>
                     </button>
                     <div class="h-10 w-10 rounded-full overflow-hidden border-2 border-primary-container">

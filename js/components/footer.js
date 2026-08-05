@@ -36,8 +36,8 @@ const Footer = {
                     <div class="space-y-4">
                         <div class="flex gap-3">
                             <span class="material-symbols-outlined text-primary">location_on</span>
-                            <div class="text-on-surface-variant font-body-md">
-                                Sudirman Central Business District, Level 12<br>Jakarta, Indonesia
+<div class="text-on-surface-variant font-body-md">
+                                ${t('footer.address')}
                             </div>
                         </div>
                         <div class="flex gap-3">

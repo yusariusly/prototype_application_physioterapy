@@ -19,17 +19,17 @@ async render() {
                     <div class="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center text-secondary mx-auto mb-4">
                         <span class="material-symbols-outlined text-[36px]">lock_reset</span>
                     </div>
-                    <h1 class="font-headline-md text-headline-md text-on-surface mb-2">Lupa Kata Sandi</h1>
+                    <h1 class="font-headline-md text-headline-md text-on-surface mb-2">${t('forgot.title')}</h1>
                     <p class="font-body-md text-body-md text-on-surface-variant">
-                        Masukkan email Anda dan kami akan mengirimkan tautan untuk mereset password.
+                        ${t('forgot.sub')}
                     </p>
                 </div>
                 <div id="forgot-success" class="hidden mb-6 p-4 bg-success-green/10 border border-success-green/30 rounded-lg text-success-green font-bold text-center">
-                    ✅ Tautan reset telah dikirim ke email Anda!
+                    ${t('forgot.success')}
                 </div>
                 <form id="forgot-form" class="space-y-6">
                     <div class="space-y-2">
-                        <label class="block font-button-text text-button-text text-on-surface-variant" for="forgot-email">Email Address</label>
+                        <label class="block font-button-text text-button-text text-on-surface-variant" for="forgot-email">${t('forgot.email')}</label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <span class="material-symbols-outlined text-outline text-xl">mail</span>
@@ -38,18 +38,18 @@ async render() {
                         </div>
                     </div>
                     <button class="w-full bg-primary hover:bg-on-primary-fixed-variant text-white font-button-text text-button-text py-4 px-6 rounded-lg shadow-md hover:shadow-lg transform active:scale-[0.98] transition-all" type="submit">
-                        Kirim Tautan Reset
+                        ${t('forgot.send')}
                     </button>
                 </form>
                 <div class="mt-6 text-center">
                     <a class="text-primary font-button-text hover:underline decoration-2 underline-offset-4 flex items-center justify-center gap-2" href="#/login">
                         <span class="material-symbols-outlined text-lg">arrow_back</span>
-                        Kembali ke Login
+                        ${t('forgot.backToLogin')}
                     </a>
                 </div>
             </div>
             <p class="mt-8 text-center text-sm text-on-surface-variant">
-                Butuh bantuan? <a class="text-primary hover:underline" href="#/contact">Hubungi kami</a>
+                ${t('forgot.needHelp')} <a class="text-primary hover:underline" href="#/contact">${t('forgot.contactUs')}</a>
             </p>
 </div>
         </div>

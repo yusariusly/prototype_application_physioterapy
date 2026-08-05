@@ -21,14 +21,14 @@ const AdminPatientsView = {
                         <p class="text-sm text-on-surface-variant">${p.patientId}</p>
                     </div>
                 </td>
-                <td class="px-6 py-4 text-on-surface">${p.activeTreatment || 'Belum ada'}</td>
+                <td class="px-6 py-4 text-on-surface">${p.activeTreatment || t('apat.none')}</td>
                 <td class="px-6 py-4">${p.lastVisit || '-'}</td>
                 <td class="px-6 py-4">
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-success-green/10 text-success-green border border-success-green/20">Aktif</span>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-success-green/10 text-success-green border border-success-green/20">${t('apat.active')}</span>
                 </td>
                 <td class="px-8 py-4">
                     <button class="text-primary font-bold flex items-center gap-1 hover:underline">
-                        Detail <span class="material-symbols-outlined text-sm">chevron_right</span>
+                        ${t('apat.detail')} <span class="material-symbols-outlined text-sm">chevron_right</span>
                     </button>
                 </td>
             </tr>
@@ -42,14 +42,14 @@ return `
                 <div class="flex items-center gap-8">
                     <span class="font-headline-md text-headline-md font-extrabold text-primary">PhysioAdmin</span>
                     <div class="hidden md:flex gap-6">
-                        <a class="text-on-surface-variant hover:text-primary font-medium" href="#">Analytics</a>
-                        <a class="text-on-surface-variant hover:text-primary font-medium" href="#">Reporting</a>
+                        <a class="text-on-surface-variant hover:text-primary font-medium" href="#">${t('adash.analytics')}</a>
+                        <a class="text-on-surface-variant hover:text-primary font-medium" href="#">${t('adash.reporting')}</a>
                     </div>
                 </div>
                 <div class="flex items-center gap-4">
                     <div class="relative">
                         <span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline">search</span>
-                        <input class="pl-10 pr-4 py-2 bg-surface-muted border-none rounded-full text-body-md focus:ring-2 focus:ring-secondary w-64" placeholder="Search patients..." type="text">
+                        <input class="pl-10 pr-4 py-2 bg-surface-muted border-none rounded-full text-body-md focus:ring-2 focus:ring-secondary w-64" placeholder="${t('apat.searchPlaceholder')}" type="text">
                     </div>
                     <button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full relative">
                         <span class="material-symbols-outlined">notifications</span>
@@ -62,12 +62,12 @@ return `
             <div class="p-8 max-w-[1440px] mx-auto">
                 <div class="flex justify-between items-end mb-8">
                     <div>
-                        <h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Rekam Medis Pasien</h2>
-                        <p class="text-on-surface-variant max-w-2xl">Akses dan kelola rekam medis elektronik (EMR) seluruh pasien PhysioCare.</p>
+                        <h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">${t('apat.title')}</h2>
+                        <p class="text-on-surface-variant max-w-2xl">${t('apat.sub')}</p>
                     </div>
                     <button class="flex items-center gap-2 bg-primary text-on-primary px-6 py-3 rounded-xl font-button-text text-button-text shadow-clinical hover:translate-y-[-2px] transition-all">
                         <span class="material-symbols-outlined">person_add</span>
-                        Register Patient
+                        ${t('apat.register')}
                     </button>
                 </div>
                 <!-- Stats -->
@@ -77,7 +77,7 @@ return `
                             <span class="material-symbols-outlined">groups</span>
                         </div>
                         <div>
-                            <p class="text-label-sm font-label-sm uppercase tracking-wider text-on-surface-variant">Total Pasien</p>
+                            <p class="text-label-sm font-label-sm uppercase tracking-wider text-on-surface-variant">${t('apat.totalPatients')}</p>
                             <p class="text-headline-md font-headline-md font-bold">${patients.length}</p>
                         </div>
                     </div>
@@ -86,7 +86,7 @@ return `
                             <span class="material-symbols-outlined">person_add</span>
                         </div>
                         <div>
-                            <p class="text-label-sm font-label-sm uppercase tracking-wider text-on-surface-variant">Baru (Bulan Ini)</p>
+                            <p class="text-label-sm font-label-sm uppercase tracking-wider text-on-surface-variant">${t('apat.newThisMonth')}</p>
                             <p class="text-headline-md font-headline-md font-bold">156</p>
                         </div>
                     </div>
@@ -95,7 +95,7 @@ return `
                             <span class="material-symbols-outlined">verified_user</span>
                         </div>
                         <div>
-                            <p class="text-label-sm font-label-sm uppercase tracking-wider text-on-surface-variant">Dokumen Lengkap</p>
+                            <p class="text-label-sm font-label-sm uppercase tracking-wider text-on-surface-variant">${t('apat.completeDocs')}</p>
                             <p class="text-headline-md font-headline-md font-bold">82%</p>
                         </div>
                     </div>
@@ -104,7 +104,7 @@ return `
                             <span class="material-symbols-outlined">upload_file</span>
                         </div>
                         <div>
-                            <p class="text-label-sm font-label-sm uppercase tracking-wider text-on-surface-variant">Menunggu Verifikasi</p>
+                            <p class="text-label-sm font-label-sm uppercase tracking-wider text-on-surface-variant">${t('apat.pendingVerif')}</p>
                             <p class="text-headline-md font-headline-md font-bold">24</p>
                         </div>
                     </div>
@@ -113,23 +113,23 @@ return `
                 <div class="bg-clinical-white rounded-xl shadow-sm border border-outline-variant/30 overflow-hidden">
                     <div class="p-6 border-b border-outline-variant/30 flex justify-between items-center">
                         <div>
-                            <h2 class="font-headline-md text-headline-md font-bold text-on-surface">Daftar Pasien</h2>
-                            <p class="text-on-surface-variant text-body-md">Semua pasien terdaftar di sistem</p>
+                            <h2 class="font-headline-md text-headline-md font-bold text-on-surface">${t('apat.patientList')}</h2>
+                            <p class="text-on-surface-variant text-body-md">${t('apat.patientListSub')}</p>
                         </div>
                         <div class="flex gap-2">
-                            <button class="bg-surface-muted px-4 py-2 rounded-lg text-sm font-medium hover:bg-surface-variant transition-colors">Filter</button>
-                            <button class="bg-surface-muted px-4 py-2 rounded-lg text-sm font-medium hover:bg-surface-variant transition-colors">Export CSV</button>
+                            <button class="bg-surface-muted px-4 py-2 rounded-lg text-sm font-medium hover:bg-surface-variant transition-colors">${t('apat.filter')}</button>
+                            <button class="bg-surface-muted px-4 py-2 rounded-lg text-sm font-medium hover:bg-surface-variant transition-colors">${t('apat.exportCsv')}</button>
                         </div>
                     </div>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left border-collapse">
                             <thead>
                                 <tr class="bg-surface-muted text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
-                                    <th class="px-8 py-4">Pasien</th>
-                                    <th class="px-6 py-4">Treatment Aktif</th>
-                                    <th class="px-6 py-4">Kunjungan Terakhir</th>
-                                    <th class="px-6 py-4">Status</th>
-                                    <th class="px-8 py-4">Aksi</th>
+                                    <th class="px-8 py-4">${t('apat.patient')}</th>
+                                    <th class="px-6 py-4">${t('apat.activeTreatment')}</th>
+                                    <th class="px-6 py-4">${t('apat.lastVisit')}</th>
+                                    <th class="px-6 py-4">${t('apat.status')}</th>
+                                    <th class="px-8 py-4">${t('apat.action')}</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-outline-variant/30">

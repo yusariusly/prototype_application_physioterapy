@@ -8,54 +8,12 @@ const GuestArticlesView = {
      */
     async render() {
         const articles = [
-            {
-                title: "5 Tips Mengurangi Nyeri Punggung Bawah di Rumah",
-                category: "Pendidikan",
-                date: "Oct 2024",
-                mins: "8 min",
-                excerpt: "Pelajari latihan aman dan kebiasaan sehari-hari untuk membantu meredakan nyeri punggung bawah kronis.",
-                icon: "spine"
-            },
-            {
-                title: "Pemulihan Pasca Stroke: Langkah Awal yang Benar",
-                category: "Rehabilitasi",
-                date: "Sep 2024",
-                mins: "10 min",
-                excerpt: "Panduan komprehensif untuk keluarga pasien stroke dalam mendukung proses pemulihan motorik.",
-                icon: "neurology"
-            },
-            {
-                title: "Mengenal Fisioterapi Olahraga untuk Pemula",
-                category: "Olahraga",
-                date: "Sep 2024",
-                mins: "6 min",
-                excerpt: "Apa itu fisioterapi olahraga dan kapan Anda perlu mengunjungi spesialis? Simak penjelasannya.",
-                icon: "sports_gymnastics"
-            },
-            {
-                title: "Pencegahan Jatuh untuk Lansia di Rumah",
-                category: "Geriatri",
-                date: "Aug 2024",
-                mins: "7 min",
-                excerpt: "Tips penting untuk mencegah jatuh pada lansia dan menjaga kemandirian serta mobilitas mereka.",
-                icon: "elderly"
-            },
-            {
-                title: "Latihan Peregangan untuk Pekerja Kantoran",
-                category: "Kesehatan",
-                date: "Aug 2024",
-                mins: "5 min",
-                excerpt: "Rutinitas peregangan singkat yang bisa dilakukan di meja kerja untuk mengurangi kekakuan.",
-                icon: "work"
-            },
-            {
-                title: "Pemulihan Cedera ACL: Panduan Lengkap",
-                category: "Olahraga",
-                date: "Jul 2024",
-                mins: "12 min",
-                excerpt: "Dari diagnosis hingga kembali berolahraga, pelajari tahapan rehabilitasi cedera ACL.",
-                icon: "fitness_center"
-            }
+            { titleT: 'articles.a1Title', categoryT: 'articles.catEducation', monthIndex: 9, year: 2024, mins: "8 min", excerptT: 'articles.a1Excerpt', icon: "spine" },
+            { titleT: 'articles.a2Title', categoryT: 'articles.catRehab', monthIndex: 8, year: 2024, mins: "10 min", excerptT: 'articles.a2Excerpt', icon: "neurology" },
+            { titleT: 'articles.a3Title', categoryT: 'articles.catSports', monthIndex: 8, year: 2024, mins: "6 min", excerptT: 'articles.a3Excerpt', icon: "sports_gymnastics" },
+            { titleT: 'articles.a4Title', categoryT: 'articles.catGeriatric', monthIndex: 7, year: 2024, mins: "7 min", excerptT: 'articles.a4Excerpt', icon: "elderly" },
+            { titleT: 'articles.a5Title', categoryT: 'articles.catHealth', monthIndex: 7, year: 2024, mins: "5 min", excerptT: 'articles.a5Excerpt', icon: "work" },
+            { titleT: 'articles.a6Title', categoryT: 'articles.catSports', monthIndex: 6, year: 2024, mins: "12 min", excerptT: 'articles.a6Excerpt', icon: "fitness_center" }
         ];
 
         const cards = articles.map(a => `
@@ -66,14 +24,14 @@ const GuestArticlesView = {
                 </div>
                 <div class="p-6">
                     <div class="flex items-center gap-3 mb-3">
-                        <span class="bg-secondary/10 text-secondary text-[11px] font-bold px-2 py-0.5 rounded-full">${a.category}</span>
-                        <span class="text-xs text-on-surface-variant">${a.date}</span>
+                        <span class="bg-secondary/10 text-secondary text-[11px] font-bold px-2 py-0.5 rounded-full">${t(a.categoryT)}</span>
+                        <span class="text-xs text-on-surface-variant">${I18n.formatMonthYear(a.monthIndex, a.year)}</span>
                         <span class="text-xs text-on-surface-variant flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span>${a.mins}</span>
                     </div>
-                    <h3 class="font-headline-md text-headline-md mb-2 group-hover:text-primary transition-colors">${a.title}</h3>
-                    <p class="text-on-surface-variant font-body-md mb-4">${a.excerpt}</p>
+                    <h3 class="font-headline-md text-headline-md mb-2 group-hover:text-primary transition-colors">${t(a.titleT)}</h3>
+                    <p class="text-on-surface-variant font-body-md mb-4">${t(a.excerptT)}</p>
                     <a href="#/contact" class="text-primary font-bold flex items-center gap-2 group-hover:gap-3 transition-all">
-                        Read Article <span class="material-symbols-outlined">arrow_forward</span>
+                        ${t('articles.read')} <span class="material-symbols-outlined">arrow_forward</span>
                     </a>
                 </div>
             </article>
@@ -88,12 +46,12 @@ const GuestArticlesView = {
                     <div class="absolute bottom-0 right-0 w-96 h-96 bg-secondary-container rounded-full blur-3xl -mr-48 -mb-48"></div>
                 </div>
                 <div class="max-w-container-max mx-auto text-center relative z-10">
-                    <span class="inline-block px-4 py-1.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant font-label-sm text-label-sm mb-6">
-                        HEALTH EDUCATION
+<span class="inline-block px-4 py-1.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant font-label-sm text-label-sm mb-6">
+                        ${t('articles.badge')}
                     </span>
-                    <h1 class="font-headline-lg text-headline-lg mb-6">Pulih Bersama Kami</h1>
+                    <h1 class="font-headline-lg text-headline-lg mb-6">${t('articles.title')}</h1>
                     <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
-                        Artikel edukasi dan latihan mandiri untuk membantu perjalanan pemulihan Anda, disusun oleh tim fisioterapis kami.
+                        ${t('articles.sub')}
                     </p>
                 </div>
             </section>

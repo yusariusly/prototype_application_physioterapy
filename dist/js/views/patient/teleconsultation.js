@@ -25,21 +25,21 @@ const PatientTeleconsultationView = {
                         <a href="#/patient/dashboard" class="font-headline-md text-headline-md font-bold text-primary hover:opacity-80 transition-opacity">PhysioCare</a>
                         <div class="h-6 w-px bg-outline-variant hidden md:block"></div>
                         <div class="hidden md:flex items-center gap-3">
-                            <span class="font-body-md text-on-surface-variant">Session with</span>
+                            <span class="font-body-md text-on-surface-variant">${t('tele.sessionWith')}</span>
                             <span class="font-bold text-primary">${therapistName}</span>
                             <span class="bg-success-green/10 text-success-green px-3 py-0.5 rounded-full text-label-sm font-label-sm flex items-center gap-1">
                                 <span class="material-symbols-outlined text-[14px]">fiber_manual_record</span>
-                                LIVE
+                                ${t('tele.live')}
                             </span>
                         </div>
                     </div>
                     <div class="flex items-center gap-6">
                         <div class="flex items-center gap-2 bg-surface-muted px-4 py-2 rounded-xl">
                             <span class="material-symbols-outlined text-secondary">schedule</span>
-                            <span class="font-label-sm text-label-sm text-on-surface-variant tabular-nums" id="tele-timer">24:18 remaining</span>
+                            <span class="font-label-sm text-label-sm text-on-surface-variant tabular-nums" id="tele-timer">24:18 ${t('tele.remaining')}</span>
                         </div>
                         <a href="#/patient/dashboard" class="bg-primary text-on-primary px-6 py-2 rounded-lg font-button-text text-button-text hover:opacity-90 active:scale-95 transition-all inline-block">
-                            End Session
+                            ${t('tele.endSession')}
                         </a>
                     </div>
                 </div>
@@ -67,7 +67,7 @@ const PatientTeleconsultationView = {
                         <!-- Self View (Floating PIP) -->
                         <div class="absolute top-6 right-6 w-32 md:w-48 aspect-video bg-on-surface-variant rounded-xl overflow-hidden border-2 border-clinical-white/20 shadow-xl z-10">
                             <img class="w-full h-full object-cover grayscale-[20%]" data-alt="A patient sitting in a living room." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBS0zOeUQFJ0_sv62hW-BidsNH3BlD0vu45wbSz3fxnMHQDfzqDIIA1GcvI4Qy55Kh4AamWWXFsPGWixQxWl6DhKWKVUjtwkm08obqr7DGChXaqaW_TbmyDSX4urd-FfrFh-1yTdnFx-Gk0Yn_BrdPYqRiaWHykwmXxsx7D4wRs191s24_IFJinYLLKKrUMaP0pIfdE_dBcPTa8iyvrwkD6DJ4XgVftnuDHUhYAjED3Otq2ckCUn_fN-Q"/>
-                            <div class="absolute bottom-2 left-2 px-2 py-0.5 bg-black/40 rounded backdrop-blur-md text-[10px] text-clinical-white font-medium">You</div>
+                            <div class="absolute bottom-2 left-2 px-2 py-0.5 bg-black/40 rounded backdrop-blur-md text-[10px] text-clinical-white font-medium">${t('ai.you')}</div>
                         </div>
 
                         <!-- Floating Shared Resource Alert -->
@@ -76,7 +76,7 @@ const PatientTeleconsultationView = {
                                 <span class="material-symbols-outlined text-secondary">exercise</span>
                             </div>
                             <div>
-                                <p class="text-[12px] font-bold text-primary leading-tight">New Exercise Added</p>
+                                <p class="text-[12px] font-bold text-primary leading-tight">${t('tele.newExercise')}</p>
                                 <p class="text-[10px] text-on-surface-variant">Lumbar Extension Ver. 2</p>
                             </div>
                             <span class="material-symbols-outlined text-on-surface-variant text-[18px]">chevron_right</span>
@@ -105,8 +105,8 @@ const PatientTeleconsultationView = {
                 <aside class="w-full md:w-[400px] bg-clinical-white border-l border-outline-variant flex flex-col shadow-[-4px_0px_20px_rgba(0,0,0,0.02)]">
                     <!-- Panel Navigation -->
                     <nav class="flex border-b border-outline-variant">
-                        <button class="tele-tab-btn active flex-1 py-4 text-button-text font-button-text text-secondary border-b-2 border-secondary bg-surface-container-low transition-all" data-target="tele-notes-tab">Notes</button>
-                        <button class="tele-tab-btn flex-1 py-4 text-button-text font-button-text text-on-surface-variant hover:text-secondary transition-all" data-target="tele-chat-tab">Chat</button>
+                        <button class="tele-tab-btn active flex-1 py-4 text-button-text font-button-text text-secondary border-b-2 border-secondary bg-surface-container-low transition-all" data-target="tele-notes-tab">${t('tele.notes')}</button>
+                        <button class="tele-tab-btn flex-1 py-4 text-button-text font-button-text text-on-surface-variant hover:text-secondary transition-all" data-target="tele-chat-tab">${t('tele.chat')}</button>
                     </nav>
 
                     <div class="flex-1 overflow-y-auto p-6 space-y-8" style="scrollbar-width: thin;">
@@ -115,17 +115,17 @@ const PatientTeleconsultationView = {
                             <div>
                                 <h3 class="font-headline-md text-primary mb-3 flex items-center gap-2">
                                     <span class="material-symbols-outlined text-[20px]">description</span>
-                                    Session Notes
+                                    ${t('tele.sessionNotes')}
                                 </h3>
                                 <div class="bg-surface-muted p-4 rounded-xl border border-outline-variant/30 italic text-on-surface-variant">
-                                    "Patient reports reduced pain in the lumbar region during lateral movement. Focus on spinal decompression and core stability today."
+                                    ${t('tele.noteText')}
                                 </div>
                             </div>
 
                             <div>
                                 <h3 class="font-headline-md text-primary mb-3 flex items-center gap-2">
                                     <span class="material-symbols-outlined text-[20px]">fitness_center</span>
-                                    Prescribed Exercises
+                                    ${t('tele.prescribedExercises')}
                                 </h3>
                                 <div class="space-y-3">
                                     <div class="group p-3 border border-outline-variant rounded-xl hover:border-secondary transition-colors cursor-pointer bg-clinical-white shadow-sm hover:shadow-md">
@@ -163,10 +163,10 @@ const PatientTeleconsultationView = {
                                 <div class="bg-secondary-container/10 p-4 rounded-2xl border border-secondary/20">
                                     <div class="flex items-center gap-3 mb-2">
                                         <span class="material-symbols-outlined text-secondary">task_alt</span>
-                                        <p class="font-bold text-secondary">Post-Session Plan</p>
+                                        <p class="font-bold text-secondary">${t('tele.postSessionPlan')}</p>
                                     </div>
                                     <p class="text-body-md text-on-surface-variant leading-relaxed">
-                                        A full summary of today's progress and your updated rehabilitation roadmap will be available in your profile immediately after this call.
+                                        ${t('tele.postSessionDesc')}
                                     </p>
                                 </div>
                             </div>
@@ -177,26 +177,26 @@ const PatientTeleconsultationView = {
                             <div class="flex-1 space-y-4">
                                 <div class="flex flex-col items-start max-w-[80%]">
                                     <div class="bg-surface-muted p-3 rounded-2xl rounded-tl-none text-body-md text-on-surface">
-                                        Hello! Please let me know if you can hear me clearly.
+                                        ${t('tele.chat1')}
                                     </div>
                                     <span class="text-[10px] text-outline mt-1 ml-1">10:02 AM</span>
                                 </div>
                                 <div class="flex flex-col items-end self-end max-w-[80%] ml-auto">
                                     <div class="bg-primary text-on-primary p-3 rounded-2xl rounded-tr-none text-body-md">
-                                        Yes, I can hear you perfectly, Dr. Jenkins.
+                                        ${t('tele.chat2')}
                                     </div>
                                     <span class="text-[10px] text-outline mt-1 mr-1">10:03 AM</span>
                                 </div>
                                 <div class="flex flex-col items-start max-w-[80%]">
                                     <div class="bg-surface-muted p-3 rounded-2xl rounded-tl-none text-body-md text-on-surface">
-                                        Great. I've just shared a link to the exercise video we discussed.
+                                        ${t('tele.chat3')}
                                         <a class="block mt-2 text-secondary underline font-medium" href="#">physiocare.com/video/lumbar-ext</a>
                                     </div>
                                     <span class="text-[10px] text-outline mt-1 ml-1">10:05 AM</span>
                                 </div>
                             </div>
                             <div class="mt-4 relative sticky bottom-0 bg-clinical-white pt-2">
-                                <input class="w-full bg-surface-muted border-none rounded-full px-5 py-3 pr-12 focus:ring-2 focus:ring-secondary/30 outline-none" placeholder="Type a message..." type="text"/>
+                                <input class="w-full bg-surface-muted border-none rounded-full px-5 py-3 pr-12 focus:ring-2 focus:ring-secondary/30 outline-none" placeholder="${t('tele.typeMessage')}" type="text"/>
                                 <button class="absolute right-2 top-[calc(0.5rem+4px)] w-8 h-8 rounded-full bg-secondary text-on-primary flex items-center justify-center">
                                     <span class="material-symbols-outlined text-[18px]">send</span>
                                 </button>
@@ -208,13 +208,13 @@ const PatientTeleconsultationView = {
 
             <!-- Footer Information (Non-Navigation) -->
             <div class="bg-surface-muted px-6 py-2 border-t border-outline-variant flex justify-between items-center text-[11px] text-outline uppercase tracking-widest font-label-sm">
-                <span>Session Encrypted: AES-256 Bit</span>
+                <span>${t('tele.sessionEncrypted')}</span>
                 <div class="flex items-center gap-4">
                     <span class="flex items-center gap-1">
                         <span class="w-2 h-2 rounded-full bg-success-green"></span>
-                        Connection Excellent
+                        ${t('tele.connectionExcellent')}
                     </span>
-                    <span>STR-V24 Verified</span>
+                    <span>${t('tele.strVerified')}</span>
                 </div>
             </div>
         </div>
@@ -275,7 +275,7 @@ const PatientTeleconsultationView = {
                 }
             }
             if (timerEl) {
-                timerEl.textContent = `${minutes}:${seconds.toString().padStart(2, '0')} remaining`;
+                timerEl.textContent = `${minutes}:${seconds.toString().padStart(2, '0')} ${t('tele.remaining')}`;
             }
         }, 1000);
 

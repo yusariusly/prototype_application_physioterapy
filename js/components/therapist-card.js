@@ -61,7 +61,7 @@ const map = {
                     <div class="flex-grow pt-2">
                         <h3 class="font-headline-md text-2xl font-bold text-on-surface mb-1 group-hover:text-primary transition-colors">${therapist.name}</h3>
                         <div class="flex items-center gap-2 mb-2 flex-wrap">
-                            ${therapist.strVerified ? `<span class="bg-secondary/10 text-secondary text-[10px] px-2.5 py-1 rounded-full font-bold uppercase tracking-wider border border-secondary/20">STR Verified</span>` : ''}
+${therapist.strVerified ? `<span class="bg-secondary/10 text-secondary text-[10px] px-2.5 py-1 rounded-full font-bold uppercase tracking-wider border border-secondary/20">${t('therapist.strVerified')}</span>` : ''}
                         </div>
                         <span class="text-sm font-medium text-on-surface-variant block">${therapist.title}</span>
                     </div>
@@ -113,7 +113,7 @@ const map = {
                     <div>
                         <h3 class="font-headline-md text-[20px] text-on-surface mb-1">${therapist.name}</h3>
                         <div class="flex items-center gap-2 mb-2">
-                            ${therapist.strVerified ? `<span class="bg-secondary/10 text-secondary text-[11px] font-bold px-2 py-0.5 rounded-full border border-secondary/20">STR VERIFIED</span>` : ''}
+${therapist.strVerified ? `<span class="bg-secondary/10 text-secondary text-[11px] font-bold px-2 py-0.5 rounded-full border border-secondary/20">${t('therapist.strVerified').toUpperCase()}</span>` : ''}
                             <span class="text-label-sm font-label-sm text-on-surface-variant">${therapist.title}</span>
                         </div>
                         <p class="text-on-surface-variant text-sm flex items-center gap-1">
@@ -122,7 +122,7 @@ const map = {
                         </p>
                     </div>
                 </div>
-                <button class="text-outline hover:text-primary transition-colors" aria-label="More options">
+<button class="text-outline hover:text-primary transition-colors" aria-label="${t('therapist.moreOptions')}">
                     <span class="material-symbols-outlined">more_vert</span>
                 </button>
             </div>

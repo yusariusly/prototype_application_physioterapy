@@ -13,27 +13,27 @@ const GuestContactView = {
                 address: "Sudirman Central Business District, Level 12",
                 city: "Jakarta",
                 phone: "+62 21 5550-1234",
-                hours: "Mon - Sat: 08:00 - 20:00",
+hours: "Mon - Sat: 08:00 - 20:00",
                 icon: "location_city",
-                status: "Open Now"
+                status: t('contact.openNow')
             },
             {
                 name: "PhysioCare Kelapa Gading",
                 address: "Mall Kelapa Gading 3, Lt. 2 No. 15",
                 city: "Jakarta Utara",
                 phone: "+62 21 5550-5678",
-                hours: "Mon - Sat: 09:00 - 19:00",
+hours: "Mon - Sat: 09:00 - 19:00",
                 icon: "storefront",
-                status: "Open Now"
+                status: t('contact.openNow')
             },
             {
                 name: "PhysioCare BSD",
                 address: "BSD Green Office Park, Jl. Boulevard",
                 city: "Tangerang Selatan",
                 phone: "+62 21 5550-9012",
-                hours: "Mon - Sat: 08:30 - 20:30",
+hours: "Mon - Sat: 08:30 - 20:30",
                 icon: "apartment",
-                status: "Open Now"
+                status: t('contact.openNow')
             }
         ];
 
